@@ -3,921 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doggy HR — The Job Interview You Didn't Know You Had to Pass</title>
+<title>Doggy HR — The World's Only Recruitment Agency Where Dogs Hire Their Humans</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap');
-:root{--black:#0a0a08;--cream:#f2ede4;--bone:#e8e0d0;--amber:#c8782a;--amber-light:#e8973e;--red:#c23b2e;--green:#2d6a4a;--yellow:#e8c84a;--text:#1a1a16;--muted:#6b6558}
 *{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558}
 body{background:var(--black);color:var(--cream);font-family:'DM Mono',monospace;min-height:100vh;overflow-x:hidden}
-.screen{display:none;min-height:100vh}
-.screen.active{display:flex;flex-direction:column}
-
-/* LANDING */
-#screen-landing{background:var(--black);position:relative;overflow:hidden;align-items:center;justify-content:center}
-.noise{position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
-.landing-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 20px;text-align:center}
-.stamp{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);padding:5px 16px;margin-bottom:32px;opacity:0;animation:fadeUp .6s .2s forwards}
-.landing-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,160px);line-height:.9;color:var(--cream);margin-bottom:8px;opacity:0;animation:fadeUp .7s .35s forwards}
-.landing-title span{color:var(--amber)}
-.landing-sub{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(16px,3vw,22px);color:var(--muted);margin-bottom:20px;opacity:0;animation:fadeUp .7s .5s forwards}
-.landing-divider{width:60px;height:1px;background:var(--amber);margin:0 auto 20px;opacity:0;animation:fadeUp .7s .6s forwards}
-.landing-tagline{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);max-width:400px;line-height:1.8;margin-bottom:56px;opacity:0;animation:fadeUp .7s .7s forwards}
-.path-cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .7s .85s forwards}
-.path-card{background:transparent;border:1px solid rgba(200,120,42,.4);color:var(--cream);padding:28px 36px;cursor:pointer;text-align:left;transition:all .25s;max-width:280px;position:relative;overflow:hidden}
-.path-card::before{content:'';position:absolute;inset:0;background:var(--amber);transform:translateY(100%);transition:transform .3s ease;z-index:0}
-.path-card:hover::before{transform:translateY(0)}
-.path-card:hover{color:var(--black);border-color:var(--amber)}
-.path-card>*{position:relative;z-index:1}
-.card-number{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;transition:color .25s}
-.path-card:hover .card-number{color:var(--black)}
-.card-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.05em;line-height:1.1;margin-bottom:10px}
-.card-desc{font-size:11px;line-height:1.7;opacity:.7}
-.card-arrow{margin-top:20px;font-size:20px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em}
-.landing-footer{margin-top:60px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,.25);opacity:0;animation:fadeUp .7s 1.1s forwards}
-
-/* BREED SELECT */
-#screen-breed-select{background:var(--cream);color:var(--text);align-items:center;padding:60px 20px}
-.section-eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,7vw,72px);color:var(--black);margin-bottom:8px}
-.section-sub{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:var(--muted);margin-bottom:48px;max-width:480px;text-align:center}
-.breed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;max-width:900px;width:100%}
-.breed-btn{background:white;border:1.5px solid var(--bone);color:var(--text);padding:18px 20px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Mono',monospace}
-.breed-btn:hover{border-color:var(--amber);background:var(--amber);color:white}
-.breed-btn-name{font-size:13px;font-weight:500;display:block;margin-bottom:4px}
-.breed-btn-tag{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.1em}
-
-/* QUIZ */
-#screen-quiz{background:var(--black);align-items:center;padding:40px 20px}
-.quiz-inner{max-width:680px;width:100%}
-.quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
-.quiz-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
-.quiz-progress-bar{width:120px;height:2px;background:rgba(255,255,255,.1);position:relative}
-.quiz-progress-fill{height:100%;background:var(--amber);transition:width .4s ease}
-.question-block{position:relative;margin-bottom:40px}
-.question-number-bg{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,20vw,140px);line-height:1;color:rgba(255,255,255,.04);position:absolute;right:-10px;top:-20px;pointer-events:none;user-select:none}
-.question-phase{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;opacity:.8}
-.question-text{font-family:'Instrument Serif',serif;font-size:clamp(22px,4vw,32px);line-height:1.35;color:var(--cream)}
-.answers{display:flex;flex-direction:column;gap:10px}
-.answer-btn{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--cream);padding:16px 20px;cursor:pointer;text-align:left;font-family:'DM Mono',monospace;font-size:13px;line-height:1.5;transition:all .2s;display:flex;align-items:flex-start;gap:14px;width:100%}
-.answer-btn:hover{border-color:var(--amber);background:rgba(200,120,42,.1)}
-.answer-btn.selected{border-color:var(--amber);background:var(--amber);color:var(--black)}
-.answer-letter{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5;min-width:16px;padding-top:2px;flex-shrink:0}
-.answer-btn.selected .answer-letter{opacity:.7}
-
-/* RESPONSE FLASH */
-.response-flash{background:rgba(200,120,42,.12);border-left:3px solid var(--amber);padding:12px 16px;margin-top:12px;font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;color:var(--amber-light);display:none;animation:fadeUp .3s forwards}
-.response-flash.visible{display:block}
-
-.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--cream);padding:12px 24px;cursor:pointer;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s}
-.btn-ghost:hover{border-color:var(--cream)}
-.btn-primary{background:var(--amber);border:none;color:var(--black);padding:14px 32px;cursor:pointer;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;transition:all .2s}
-.btn-primary:hover{background:var(--amber-light)}
-.btn-primary:disabled{opacity:.3;cursor:not-allowed}
-
-/* RESULTS */
-#screen-results{background:var(--cream);color:var(--text);align-items:center;padding:60px 20px}
-.results-inner{max-width:760px;width:100%}
-.verdict-block{background:var(--black);color:var(--cream);padding:40px;margin-bottom:32px;position:relative;overflow:hidden}
-.verdict-block::before{content:'"';font-family:'Instrument Serif',serif;font-size:220px;line-height:1;color:rgba(255,255,255,.04);position:absolute;top:-30px;left:10px;pointer-events:none}
-.verdict-from{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
-.verdict-quote{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(18px,3vw,24px);line-height:1.5;position:relative}
-.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
-.score-main{grid-column:1/-1;background:white;border:1.5px solid var(--bone);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.score-number{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,12vw,100px);line-height:1}
-.score-number.high{color:var(--green)}
-.score-number.mid{color:var(--amber)}
-.score-number.low{color:var(--red)}
-.score-number.fail{color:var(--red)}
-.score-breed-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.05em;color:var(--black)}
-.score-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.score-verdict-badge{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.15em;padding:8px 18px}
-.badge-high{background:var(--green);color:white}
-.badge-mid{background:var(--amber);color:var(--black)}
-.badge-low{background:var(--red);color:white}
-.badge-fail{background:var(--red);color:white}
-.trait-card{background:white;border:1.5px solid var(--bone);padding:20px 24px}
-.trait-name{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.trait-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.trait-bar-label{font-size:11px;color:var(--muted);min-width:40px}
-.trait-bar-track{flex:1;height:6px;background:var(--bone);position:relative}
-.trait-bar-fill{height:100%;transition:width 1s ease}
-.bar-you{background:var(--amber)}
-.bar-breed{background:var(--black)}
-.trait-gap{font-size:10px;letter-spacing:.05em;margin-top:6px}
-.gap-ok{color:var(--green)}
-.gap-warn{color:var(--amber)}
-.gap-bad{color:var(--red)}
-.section-divider{display:flex;align-items:center;gap:16px;margin:36px 0 24px}
-.section-divider-line{flex:1;height:1px;background:var(--bone)}
-.section-divider-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.weakness-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-.weakness-item{background:white;border:1.5px solid var(--bone);border-left:4px solid var(--red);padding:16px 20px;border-radius:0}
-.weakness-title{font-size:13px;font-weight:500;color:var(--black);margin-bottom:4px}
-.weakness-text{font-size:11px;line-height:1.7;color:var(--muted)}
-.breed-results{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-.breed-result-card{background:white;border:1.5px solid var(--bone);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.breed-result-card.rank-1{border-color:var(--amber)}
-.breed-result-rank{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--bone);line-height:1}
-.breed-result-card.rank-1 .breed-result-rank{color:var(--amber)}
-.breed-result-info{flex:1}
-.breed-result-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.05em;color:var(--black)}
-.breed-result-summary{font-size:11px;color:var(--muted);line-height:1.6;margin-top:4px}
-.breed-result-score{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--black)}
-.breed-result-card.rank-1 .breed-result-score{color:var(--green)}
-.cta-block{text-align:center;padding:40px 0 0}
-.cta-block p{font-size:12px;color:var(--muted);margin-top:16px;letter-spacing:.05em}
-.back-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:40px;transition:color .2s}
-.back-btn:hover{color:var(--amber)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:500px){.score-grid{grid-template-columns:1fr}.path-cards{flex-direction:column;align-items:center}.score-main{flex-direction:column;text-align:center}.breed-result-card{flex-direction:column}}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(200,120,42,0.2);position:relative;z-index:10}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.1em;color:var(--amber)}
+.nav-links{display:flex;gap:32px}
+.nav-link{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,228,0.4);cursor:pointer;text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--amber)}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 20px 0;max-width:700px;margin:0 auto}
+.stamp{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,0.5);padding:5px 14px;margin-bottom:28px;opacity:0;animation:fadeUp 0.5s 0.1s both}
+.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,14vw,140px);line-height:0.88;color:var(--cream);margin-bottom:6px;opacity:0;animation:fadeUp 0.5s 0.2s both}
+.title span{color:var(--amber)}
+.subtitle{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(15px,2.5vw,20px);color:var(--muted);margin-bottom:32px;opacity:0;animation:fadeUp 0.5s 0.3s both}
+.rule{width:48px;height:1px;background:var(--amber);margin:0 auto 32px;opacity:0;animation:fadeUp 0.5s 0.35s both}
+.video-wrap{width:100%;max-width:360px;margin:0 auto 36px;opacity:0;animation:fadeUp 0.5s 0.4s both;position:relative}
+.video-container{position:relative;width:100%;background:#000}
+.video-container iframe{display:block;width:100%;height:640px;border:none}
+.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:32px;background:rgba(10,10,8,0.45);cursor:pointer;transition:opacity 0.4s}
+.unmute-icon{font-size:28px;margin-bottom:8px}
+.unmute-text{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream)}
+.panel-section{width:100%;max-width:640px;margin:0 auto 48px;opacity:0;animation:fadeUp 0.5s 0.5s both;padding:0 20px}
+.panel-label{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;text-align:center}
+.panel-cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.panel-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,120,42,0.2);padding:16px 20px;text-align:center;flex:1;min-width:140px}
+.panel-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.05em;color:var(--cream);margin-bottom:2px}
+.panel-role{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber)}
+.panel-img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;border:2px solid rgba(200,120,42,0.4)}
+.cta-section{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:60px;opacity:0;animation:fadeUp 0.5s 0.6s both}
+.cta-btn{background:var(--amber);color:var(--black);border:none;padding:18px 48px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block}
+.cta-btn:hover{background:var(--amber-light)}
+.smallprint{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2)}
+footer{border-top:1px solid rgba(200,120,42,0.15);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2)}
+.footer-links{display:flex;gap:20px}
+.footer-link{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2);text-decoration:none;transition:color 0.2s}
+.footer-link:hover{color:var(--amber)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){nav{padding:16px 20px}.nav-links{gap:16px}footer{padding:16px 20px;flex-direction:column;text-align:center}.footer-links{justify-content:center}}
 </style>
 </head>
 <body>
 
-<!-- LANDING -->
-<div id="screen-landing" class="screen active">
-<div class="noise"></div>
-<div class="landing-inner">
-  <div class="stamp">Applications Now Open</div>
-  <div class="landing-title">DOGGY<br><span>HR</span></div>
-  <div class="landing-sub">The job interview you didn't know you had to pass.</div>
-  <div class="landing-divider"></div>
-  <div class="landing-tagline">Dogs have been hiring humans for centuries.<br>Most of you have been wildly underqualified.<br>This is your chance to prove otherwise.</div>
-  <div class="path-cards">
-    <button class="path-card" onclick="startPath('discover')">
-      <div class="card-number">Path 01</div>
-      <div class="card-title">I Don't Know<br>What Dog<br>I Want</div>
-      <div class="card-desc">Answer 10 questions. We'll match you to your top 3 breeds. Brutal honesty included.</div>
-      <div class="card-arrow">→ Discover</div>
-    </button>
-    <button class="path-card" onclick="showBreedSelect()">
-      <div class="card-number">Path 02</div>
-      <div class="card-title">Test Me For<br>A Specific<br>Breed</div>
-      <div class="card-desc">Think you're ready for a Husky? A Bull Terrier? Let the breed decide.</div>
-      <div class="card-arrow">→ Apply Now</div>
-    </button>
+<nav>
+  <div class="nav-logo">DOGGY HR</div>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="quiz.html">The Interview</a>
+    <a class="nav-link" href="https://www.youtube.com/@doggyhr" target="_blank">YouTube</a>
   </div>
-  <div class="landing-footer">© Doggy HR · All applicants will be judged · No appeals accepted</div>
-</div>
+</nav>
+
+<div class="hero">
+  <div class="stamp">Now Recruiting Humans</div>
+  <div class="title">DOGGY<br><span>HR</span></div>
+  <div class="subtitle">The world's only recruitment agency where dogs hire their humans.</div>
+  <div class="rule"></div>
+
+  <!-- CHOPPER VIDEO — autoplays muted, click to unmute -->
+  <div class="video-wrap">
+    <div class="video-container">
+      <iframe id="chopper-iframe"
+        src="https://www.youtube.com/embed/hXzEyFdWZ3s?autoplay=1&mute=1&controls=0&loop=1&playlist=hXzEyFdWZ3s&rel=0&modestbranding=1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <div class="unmute-overlay" id="unmute-overlay" onclick="unmute()">
+        <div class="unmute-icon">🔇</div>
+        <div class="unmute-text">Click to hear Chopper</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- BREED SELECT -->
-<div id="screen-breed-select" class="screen">
-<div style="text-align:center;width:100%;max-width:900px;margin:0 auto;padding:60px 20px">
-  <button class="back-btn" onclick="showScreen('screen-landing')" style="margin:0 auto 40px">← Back</button>
-  <div class="section-eyebrow">Path 02 — Specific Breed Test</div>
-  <div class="section-title">Select Your Breed</div>
-  <div class="section-sub">Choose the breed you're applying for. They will be reviewing your application personally.</div>
-  <div class="breed-grid" id="breed-grid"></div>
-</div>
+<!-- MEET THE PANEL -->
+<div class="panel-section">
+  <div class="panel-label">Meet the Panel</div>
+  <div class="panel-cards">
+    <div class="panel-card">
+      <img class="panel-img" src="chopper-cherie.jpg" alt="Chopper and Cherie">
+      <div class="panel-name">Chopper</div>
+      <div class="panel-role">Lead Interviewer · Bull Terrier</div>
+    </div>
+    <div class="panel-card">
+      <img class="panel-img" src="chopper-cherie.jpg" alt="Cherie">
+      <div class="panel-name">Cherie</div>
+      <div class="panel-role">Senior Assessor · Am. Staffy</div>
+    </div>
+  </div>
 </div>
 
-<!-- QUIZ -->
-<div id="screen-quiz" class="screen">
-<div class="quiz-inner">
-  <div class="quiz-meta">
-    <span class="quiz-label" id="quiz-mode-label">Universal Test</span>
-    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
-    <span class="quiz-label" id="quiz-progress-label">1 / 15</span>
-  </div>
-  <div class="question-block" id="question-block">
-    <div class="question-phase" id="question-phase"></div>
-    <div class="question-text" id="question-text"></div>
-    <div class="question-number-bg" id="question-number-bg"></div>
-  </div>
-  <div class="answers" id="answers"></div>
-  <div class="response-flash" id="response-flash"></div>
-  <div class="quiz-nav">
-    <button class="btn-ghost" id="btn-back-q" onclick="prevQuestion()">← Back</button>
-    <button class="btn-primary" id="btn-next-q" onclick="nextQuestion()" disabled>Continue →</button>
-  </div>
-</div>
+<!-- CTA -->
+<div class="cta-section">
+  <a class="cta-btn" href="quiz.html">Submit Your Application →</a>
+  <div class="smallprint">All candidates assessed without mercy · Results are final · No appeals</div>
 </div>
 
-<!-- RESULTS -->
-<div id="screen-results" class="screen">
-<div class="results-inner">
-  <button class="back-btn" onclick="showScreen('screen-landing')">← Start Over</button>
-  <div id="results-content"></div>
-</div>
-</div>
+<footer>
+  <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
+  <div class="footer-links">
+    <a class="footer-link" href="https://www.youtube.com/@doggyhr" target="_blank">YouTube</a>
+    <a class="footer-link" href="quiz.html">Take the Test</a>
+  </div>
+</footer>
 
 <script>
-// ═══════════════════════════════════
-// CORE QUESTIONS — Chopper's 10 Tests
-// ═══════════════════════════════════
-const CORE_QUESTIONS = [
-  {
-    id:'q1', trait:'Discipline', phase:'Test 01 — Leadership',
-    text:'6 a.m. I\'m staring at you. No blinking. Your move?',
-    answers:[
-      {text:'Get up immediately.',score:5,response:'Promising. You may survive.'},
-      {text:'Negotiate 5 more minutes.',score:3,response:'You think this is a democracy.'},
-      {text:'Ignore and hope for the best.',score:2,response:'Bold strategy. It will fail.'},
-      {text:'Panic internally.',score:1,response:'Excellent. I sense weakness.'}
-    ]
-  },
-  {
-    id:'q2', trait:'TimeCommitment', phase:'Test 02 — Time Availability',
-    text:'I follow you everywhere. Bathroom included. Thoughts?',
-    answers:[
-      {text:'I love it. Shadow me, shadow.',score:5,response:'Correct answer. You belong to me now.'},
-      {text:'Fine. I accept this.',score:4,response:'You\'ll adjust. You don\'t have a choice.'},
-      {text:'I close the door sometimes.',score:2,response:'Suspicious behaviour.'},
-      {text:'I need personal space.',score:1,response:'Denied. Next candidate.'}
-    ]
-  },
-  {
-    id:'q3', trait:'EnergyMatch', phase:'Test 03 — Exercise',
-    text:'Daily walk. Rain. Cold. Still going?',
-    answers:[
-      {text:'Of course. Weather is irrelevant.',score:5,response:'Good. Weather is irrelevant.'},
-      {text:'Most days, yes.',score:4,response:'Define \'most.\' I\'m watching.'},
-      {text:'Sometimes. Depends.',score:2,response:'Inconsistent. Concerning.'},
-      {text:'Honestly, probably not.',score:1,response:'We are not compatible.'}
-    ]
-  },
-  {
-    id:'q4', trait:'Discipline', phase:'Test 04 — Training',
-    text:'I heard you. I\'m ignoring you. Your next move?',
-    answers:[
-      {text:'Calmly repeat the command.',score:5,response:'Annoying. But effective.'},
-      {text:'Repeat it firmer this time.',score:4,response:'You\'re trying. I respect effort.'},
-      {text:'Eventually give up.',score:2,response:'I will remember this weakness.'},
-      {text:'I wasn\'t prepared for this.',score:1,response:'Neither was the furniture.'}
-    ]
-  },
-  {
-    id:'q5', trait:'EmotionalStability', phase:'Test 05 — Patience',
-    text:'You just bought it. I just destroyed it. Now what?',
-    answers:[
-      {text:'Stay calm. Assess. Move on.',score:5,response:'Suspicious composure. I like it.'},
-      {text:'Deep sigh. Carry on.',score:4,response:'Acceptable emotional damage.'},
-      {text:'Get annoyed. Takes time.',score:2,response:'You will struggle.'},
-      {text:'Take it very personally.',score:1,response:'It was personal.'}
-    ]
-  },
-  {
-    id:'q6', trait:'Responsibility', phase:'Test 06 — Financial',
-    text:'Surprise vet bill. Your mindset?',
-    answers:[
-      {text:'Handle it. That\'s ownership.',score:5,response:'Responsible. Rare.'},
-      {text:'Adjust the budget. We\'ll manage.',score:4,response:'You\'ll survive.'},
-      {text:'Stressed, but I\'ll pay.',score:3,response:'Financially ok but emotionally fragile.'},
-      {text:'Full panic mode.',score:1,response:'I am expensive. This won\'t work.'}
-    ]
-  },
-  {
-    id:'q7', trait:'EnergyMatch', phase:'Test 07 — Chaos Tolerance',
-    text:'Sudden energy indoors. Things may move. You?',
-    answers:[
-      {text:'Find it entertaining.',score:5,response:'Correct. Let it happen.'},
-      {text:'Manageable. We negotiate.',score:4,response:'We\'ll negotiate destruction.'},
-      {text:'Slight concern. Minor stress.',score:2,response:'You\'re already stressed.'},
-      {text:'This is not acceptable.',score:1,response:'Then I am not acceptable.'}
-    ]
-  },
-  {
-    id:'q8', trait:'TimeCommitment', phase:'Test 08 — Routine',
-    text:'Same schedule. Every day. Forever. You?',
-    answers:[
-      {text:'Love it. Stability is everything.',score:5,response:'Finally. Stability.'},
-      {text:'Strongly prefer it.',score:4,response:'You\'re learning.'},
-      {text:'I\'ll try my best.',score:3,response:'Inconsistent energy detected.'},
-      {text:'Sounds incredibly hard.',score:1,response:'This will fall apart quickly.'}
-    ]
-  },
-  {
-    id:'q9', trait:'EmotionalStability', phase:'Test 09 — Social',
-    text:'I interact… enthusiastically. With everyone. You?',
-    answers:[
-      {text:'Train it, guide it, own it.',score:5,response:'Leadership. Impressive.'},
-      {text:'Manage it. We get by.',score:4,response:'We\'ll get by.'},
-      {text:'Apologise constantly.',score:2,response:'You will apologise a lot.'},
-      {text:'Avoid situations entirely.',score:1,response:'Avoiding me is not an option.'}
-    ]
-  },
-  {
-    id:'q10', trait:'Responsibility', phase:'Test 10 — Commitment',
-    text:'10+ years. No exit clause.',
-    answers:[
-      {text:'Fully in. No conditions.',score:5,response:'Bold. I will test that.'},
-      {text:'Ready. Let\'s do this.',score:4,response:'We\'ll see.'},
-      {text:'Still a bit unsure.',score:2,response:'I need certainty.'},
-      {text:'This isn\'t for me.',score:1,response:'Correct. Leave.'}
-    ]
-  }
-];
-
-// ═══════════════════════════════════
-// BREED DATA — 12 Breeds
-// ═══════════════════════════════════
-const BREEDS = {
-  bullterrier:{
-    name:'Bull Terrier',tag:'Chopper\'s Breed',
-    requirements:{Discipline:3,TimeCommitment:4,EnergyMatch:3,EmotionalStability:5,Responsibility:4},
-    hardFail:true,hardFailThreshold:55,
-    summary:'Egg-shaped head. Roman nose. Zero concept of personal space. Extremely loyal. Will destroy everything you own with love.',
-    chopper:'Hello. I am a Bull Terrier. I reviewed your file personally. I have questions.',
-    questions:[
-      {id:'bs1',trait:'EmotionalStability',phase:'Breed Test — Bull Terrier',
-       text:'I disagree with everything you just said. My face says nothing. What now?',
-       answers:[{text:'Stay calm. Repeat calmly.',score:5,response:'Correct. My face never changes anyway.'},{text:'Try a different approach.',score:4,response:'Adaptive. I will note this.'},{text:'Start negotiating.',score:2,response:'I don\'t negotiate.'},{text:'Give up.',score:1,response:'I win. Every time.'}]},
-      {id:'bs2',trait:'Responsibility',phase:'Breed Test — Bull Terrier',
-       text:'Strangers cross the street when they see me. Landlord sends a letter. Your response?',
-       answers:[{text:'I researched BSL before adopting.',score:5,response:'You came prepared. Rare.'},{text:'Handle it when it happens.',score:3,response:'It will happen a lot.'},{text:'Didn\'t consider this.',score:2,response:'Consider it now.'},{text:'This is a real problem.',score:1,response:'Then so am I.'}]},
-      {id:'bs3',trait:'EmotionalStability',phase:'Breed Test — Bull Terrier',
-       text:'Third destroyed item this month. I look peaceful. You?',
-       answers:[{text:'Review my enrichment plan.',score:5,response:'Correct. The problem is yours, not mine.'},{text:'Frustrated but problem-solve.',score:4,response:'Acceptable frustration level.'},{text:'Question all my choices.',score:2,response:'Too late for that.'},{text:'Lose my temper.',score:1,response:'Noted. Application reconsidered.'}]},
-      {id:'bs4',trait:'Discipline',phase:'Breed Test — Bull Terrier',
-       text:'Another dog appears. I have opinions. Strong ones. You?',
-       answers:[{text:'Space. No punishment. Training later.',score:5,response:'Good. Punishment achieves nothing here.'},{text:'Pull away, attempt calm.',score:3,response:'Attempt accepted.'},{text:'Panic in public.',score:2,response:'I can feel your panic.'},{text:'This genuinely terrifies me.',score:1,response:'This is not the breed for terror.'}]},
-      {id:'bs5',trait:'EnergyMatch',phase:'Breed Test — Bull Terrier',
-       text:'Full body play. Contact sport. You are involved whether you like it or not. Tolerance?',
-       answers:[{text:'In. I can match and redirect.',score:5,response:'Finally. Someone who keeps up.'},{text:'I\'ll manage the chaos.',score:4,response:'Chaos is my baseline.'},{text:'I prefer calmer dogs.',score:2,response:'I am not a calmer dog.'},{text:'This doesn\'t suit my lifestyle.',score:1,response:'Correct. We\'re done here.'}]}
-    ],
-    weaknesses:[
-      {title:'Destruction tolerance',text:'Your possessions are not possessions. They are enrichment items in waiting. Attachment to things is a liability.'},
-      {title:'Stubbornness management',text:'A Bull Terrier that wins one negotiation will negotiate forever. You must never lose. You will sometimes lose. Reset and continue.'},
-      {title:'Social reputation',text:'People will cross the street. Neighbours will write letters. You must be your dog\'s advocate every single day without apology.'}
-    ]
-  },
-
-  bordercollie:{
-    name:'Border Collie',tag:'The Overachiever',
-    requirements:{Discipline:5,TimeCommitment:5,EnergyMatch:4,EmotionalStability:4,Responsibility:4},
-    hardFail:true,hardFailThreshold:65,
-    summary:'The most intelligent dog breed. This is not a compliment without context. They need a job or they will invent one. You will not enjoy their job.',
-    chopper:'Border Collies are smarter than most of the people applying. The question is whether you can manage someone more competent than yourself.',
-    questions:[
-      {id:'bs1',trait:'Discipline',phase:'Breed Test — Border Collie',
-       text:'I\'ve already solved today\'s puzzle toy. Twice. I\'m bored. It\'s 7am. Plan?',
-       answers:[{text:'Agility, scent work, obedience. Scheduled.',score:5,response:'Good. Boredom is your enemy, not mine.'},{text:'Build something. Figure it out.',score:4,response:'Start building faster.'},{text:'Longer walks should help?',score:2,response:'They won\'t.'},{text:'I hadn\'t planned this far.',score:1,response:'I planned this far before you woke up.'}]},
-      {id:'bs2',trait:'EmotionalStability',phase:'Breed Test — Border Collie',
-       text:'I\'m herding the children. And the cyclists. And the man with the trolley. You?',
-       answers:[{text:'Redirect immediately. Trained for this.',score:5,response:'Anticipated and managed. Correct.'},{text:'Call them back. Work on it.',score:4,response:'Work faster.'},{text:'Feel embarrassed. Not sure how.',score:2,response:'Embarrassment helps no one here.'},{text:'This hadn\'t occurred to me.',score:1,response:'It occurred to me on the first walk.'}]},
-      {id:'bs3',trait:'TimeCommitment',phase:'Breed Test — Border Collie',
-       text:'I require structure. Daily. Non-negotiable. Your schedule is?',
-       answers:[{text:'Built around this dog. Fixed times.',score:5,response:'Correct arrangement of priorities.'},{text:'Generally structured. I can adapt.',score:4,response:'Adapt faster.'},{text:'Variable. Some days are hard.',score:2,response:'Variable doesn\'t work for me.'},{text:'Unpredictable. I work odd hours.',score:1,response:'I work all hours. This is the problem.'}]},
-      {id:'bs4',trait:'Discipline',phase:'Breed Test — Border Collie',
-       text:'I outsmarted your puppy-proofing setup. Third time this week. You?',
-       answers:[{text:'Impressed. Upgrade the setup. Game on.',score:5,response:'Finally someone who enjoys the challenge.'},{text:'Frustrated but find a better solution.',score:4,response:'Frustration is acceptable. Giving up is not.'},{text:'Exhausted. Is this every dog?',score:2,response:'No. Just the intelligent ones.'},{text:'Starting to think this was a mistake.',score:1,response:'That thought arrived late.'}]},
-      {id:'bs5',trait:'EnergyMatch',phase:'Breed Test — Border Collie',
-       text:'Do you currently do agility, flyball, working trials, or any structured dog sport?',
-       answers:[{text:'Yes. Active in structured dog sport.',score:5,response:'The only correct answer.'},{text:'Not yet. Actively planning to start.',score:4,response:'Start planning faster.'},{text:'Open to it. No commitment yet.',score:2,response:'Open is not the same as ready.'},{text:'I just want a companion.',score:1,response:'Get a different breed. Sincerely.'}]}
-    ],
-    weaknesses:[
-      {title:'Mental stimulation requirements',text:'A bored Border Collie is a destructive, neurotic Border Collie. Daily structured training is not optional — it is the price of admission.'},
-      {title:'Herding instinct',text:'Children, cars, cyclists — they will attempt to manage all of it. This requires consistent management from day one, not month six.'},
-      {title:'Intensity',text:'Border Collies do not switch off. If you want a dog that is happy doing nothing, this is categorically the wrong breed.'}
-    ]
-  },
-
-  rottweiler:{
-    name:'Rottweiler',tag:'The Calm Powerhouse',
-    requirements:{Discipline:5,TimeCommitment:4,EnergyMatch:3,EmotionalStability:5,Responsibility:5},
-    hardFail:true,hardFailThreshold:60,
-    summary:'Confident, loyal, deeply loving with their family. Powerful beyond what most people are prepared for. Not a breed for first impressions — a breed for earned trust.',
-    chopper:'Rottweilers do not perform for approval. They observe you. They decide what kind of person you are. The verdict is final.',
-    questions:[
-      {id:'bs1',trait:'Discipline',phase:'Breed Test — Rottweiler',
-       text:'I test limits. Once. Firmly. Your response to a direct challenge must be?',
-       answers:[{text:'Calm. Clear. Immediate. No drama.',score:5,response:'Correct response. Drama achieves nothing.'},{text:'Firm but I might second-guess myself.',score:3,response:'Second-guessing is visible. I see it.'},{text:'Not sure I\'d know how.',score:2,response:'You need to know how before you get me.'},{text:'I\'d back off and hope.',score:1,response:'Hoping is not handling.'}]},
-      {id:'bs2',trait:'Responsibility',phase:'Breed Test — Rottweiler',
-       text:'I am a public responsibility. Legal risk. Reputation. Daily management. Prepared?',
-       answers:[{text:'Legal awareness, muzzle training, ambassador mindset. Yes.',score:5,response:'You came with a plan. Acceptable.'},{text:'I\'ll handle it as it comes.',score:3,response:'It will come faster than you expect.'},{text:'Hadn\'t considered the legal dimension.',score:2,response:'Consider it before signing anything.'},{text:'This feels exaggerated to me.',score:1,response:'It is not exaggerated. Ask a lawyer.'}]},
-      {id:'bs3',trait:'EmotionalStability',phase:'Breed Test — Rottweiler',
-       text:'Have you previously owned a large, powerful breed?',
-       answers:[{text:'Yes. I understand this responsibility.',score:5,response:'Experience counts. Noted positively.'},{text:'No, but I\'ve researched extensively.',score:3,response:'Research is not experience. Supplement with a trainer.'},{text:'No. I\'m committed to learning.',score:2,response:'Commitment is necessary. Not sufficient.'},{text:'This would be my first dog.',score:1,response:'Start with a different first dog.'}]},
-      {id:'bs4',trait:'Discipline',phase:'Breed Test — Rottweiler',
-       text:'Puppy socialisation window is closing. Your plan?',
-       answers:[{text:'Classes immediately. Structured exposure. Trainer involved.',score:5,response:'Correct sequence. Do not delay.'},{text:'Socialise regularly. Parks, people, places.',score:4,response:'Regularity is the key word. Keep it.'},{text:'Schedule makes this harder than ideal.',score:2,response:'Adjust the schedule. The window doesn\'t wait.'},{text:'I\'ll wing it.',score:1,response:'Do not wing this.'}]},
-      {id:'bs5',trait:'EmotionalStability',phase:'Breed Test — Rottweiler',
-       text:'I\'m displaying protective behaviour toward your family. Stranger at the door. You?',
-       answers:[{text:'Intervene calmly. Trained and rehearsed.',score:5,response:'Rehearsal is the difference between managed and dangerous.'},{text:'Try to manage it. Makes me nervous.',score:3,response:'Nervous energy transfers directly to me.'},{text:'Freeze. I don\'t know the right response.',score:2,response:'Learn it before you need it.'},{text:'This scenario genuinely worries me.',score:1,response:'That worry is correct information. Use it.'}]}
-    ],
-    weaknesses:[
-      {title:'Handler experience',text:'Rottweilers need someone who leads calmly and clearly. First-time owners without professional guidance take significant risk — for themselves and the dog.'},
-      {title:'Public responsibility',text:'Owning a Rottweiler is a public commitment. One incident can affect the entire breed. You represent them everywhere you go.'},
-      {title:'Socialisation window',text:'Early socialisation is critical and non-negotiable. Miss the window and you spend years managing what could have been prevented in weeks.'}
-    ]
-  },
-
-  beagle:{
-    name:'Beagle',tag:'The Nose With a Dog Attached',
-    requirements:{Discipline:3,TimeCommitment:4,EnergyMatch:3,EmotionalStability:3,Responsibility:3},
-    hardFail:false,
-    summary:'Friendly, curious, and constitutionally driven by their nose. Will follow a scent off a cliff without a second thought. Training recall is a lifelong project.',
-    chopper:'Beagles are not ignoring you. They are prioritising. The smell is simply more important right now. Adjust your expectations accordingly.',
-    questions:[
-      {id:'bs1',trait:'Discipline',phase:'Breed Test — Beagle',
-       text:'I picked up a scent. I am gone. Recall command: ignored. In public. You?',
-       answers:[{text:'I only walk in secured areas. Recall was never fully trusted.',score:5,response:'Correct assessment of a Beagle\'s recall ceiling.'},{text:'Chase while calling. It\'s a process.',score:3,response:'A very long process.'},{text:'Panic. This would ruin my day.',score:2,response:'Many days will be ruined.'},{text:'I assumed training would fix this.',score:1,response:'It helps. It does not cure.'}]},
-      {id:'bs2',trait:'EmotionalStability',phase:'Breed Test — Beagle',
-       text:'I howl. Neighbours knock. Neighbours complain. You?',
-       answers:[{text:'House, garden, tolerant neighbours or soundproofing.',score:5,response:'You planned ahead. Rare.'},{text:'Apartment. I\'ll seriously manage it.',score:3,response:'Manage it very seriously.'},{text:'Apartment. Noise-sensitive neighbours.',score:2,response:'This combination will cause problems.'},{text:'The howling is going to be a problem.',score:1,response:'Then I am going to be a problem.'}]},
-      {id:'bs3',trait:'EnergyMatch',phase:'Breed Test — Beagle',
-       text:'Sniff walks. Nose work. Tracking. Scent games. Your reaction?',
-       answers:[{text:'Love this. Planned and scheduled.',score:5,response:'You understand how I actually work.'},{text:'Try it. If it tires them out, great.',score:4,response:'It will tire me out. And entertain me.'},{text:'Regular walks. That should be fine.',score:2,response:'It won\'t be quite enough.'},{text:'I hadn\'t considered breed-specific enrichment.',score:1,response:'Consider it now.'}]},
-      {id:'bs4',trait:'Responsibility',phase:'Breed Test — Beagle',
-       text:'I ate your lunch. I\'ll eat your dinner. Food security in your home?',
-       answers:[{text:'Latched bins. Cleared counters. Nothing accessible.',score:5,response:'Correct defensive posture.'},{text:'I\'ll upgrade. Some adjustments needed.',score:4,response:'Start upgrading today.'},{text:'I\'m not tidy. This will be a battle.',score:2,response:'A daily battle.'},{text:'I don\'t want to dog-proof my kitchen.',score:1,response:'Then I will proof it for you.'}]},
-      {id:'bs5',trait:'TimeCommitment',phase:'Breed Test — Beagle',
-       text:'I dislike being alone. I am a pack animal. Your daily solo situation?',
-       answers:[{text:'Minimal alone time. Someone always around.',score:5,response:'Good. Absence is audible with a Beagle.'},{text:'Up to 5 hours. Routine in place.',score:4,response:'5 hours is manageable with good prep.'},{text:'6-8 hours on work days.',score:2,response:'That\'s a long concert for the neighbours.'},{text:'Long periods. My life doesn\'t change for a dog.',score:1,response:'My vocals disagree with that policy.'}]}
-    ],
-    weaknesses:[
-      {title:'Recall reliability',text:'Once on a scent, the brain switches off. Off-lead freedom requires secured areas. Accept this early and stop hoping for a miracle.'},
-      {title:'Howling and vocalisation',text:'Beagles are vocal dogs. Boredom, separation, excitement — all expressed loudly. Neighbours are part of this adoption.'},
-      {title:'Food obsession',text:'They will find it, steal it, and look innocent. A Beagle-proof kitchen is not optional — it is infrastructure.'}
-    ]
-  },
-
-  bulldog:{
-    name:'English Bulldog',tag:'The Stubborn Charmer',
-    requirements:{Discipline:2,TimeCommitment:3,EnergyMatch:1,EmotionalStability:3,Responsibility:5},
-    hardFail:false,
-    summary:'Unmistakable face. Immovable opinions. Snores like a chainsaw. Will plant themselves on your sofa and remain there for the duration of their natural life.',
-    chopper:'Bulldogs have decided this is fine. The chair is theirs. The schedule is theirs. Your job is to keep them comfortable and pay the vet bills. Welcome.',
-    questions:[
-      {id:'bs1',trait:'Responsibility',phase:'Breed Test — English Bulldog',
-       text:'Breathing issues. Skin folds. Joint problems. Vet visits are a subscription service. Ready?',
-       answers:[{text:'Yes. Pet insurance purchased. Research done.',score:5,response:'The only responsible answer.'},{text:'Aware of costs. Have some savings.',score:4,response:'Some savings will become significant savings.'},{text:'Hoping for a healthy one.',score:2,response:'Hope is not a health plan.'},{text:'I wanted a low-maintenance dog.',score:1,response:'This is not that dog.'}]},
-      {id:'bs2',trait:'EnergyMatch',phase:'Breed Test — English Bulldog',
-       text:'Short walk. Slow pace. Flat ground. Hot day is cancelled. This is the exercise plan. You?',
-       answers:[{text:'Perfect. I prefer calm, easy walks.',score:5,response:'Ideal match of expectations.'},{text:'Fine. I can adjust my pace.',score:4,response:'Adjust permanently.'},{text:'I wanted a more active dog.',score:2,response:'Wrong aisle.'},{text:'I run. I need a running partner.',score:1,response:'I do not run. Ever.'}]},
-      {id:'bs3',trait:'EmotionalStability',phase:'Breed Test — English Bulldog',
-       text:'I have decided not to move from this spot. You need to leave. Options?',
-       answers:[{text:'Plan around it. Bulldogs don\'t negotiate.',score:5,response:'Correct. I don\'t negotiate.'},{text:'Coax with a treat. Maybe.',score:4,response:'Treats are a valid currency.'},{text:'Try to physically move them.',score:2,response:'Good luck.'},{text:'Get frustrated at the standoff.',score:1,response:'The standoff always ends in my favour.'}]},
-      {id:'bs4',trait:'Responsibility',phase:'Breed Test — English Bulldog',
-       text:'Summer. Heat. Air conditioning. Your home situation?',
-       answers:[{text:'Air conditioned. Heat managed. Always.',score:5,response:'Non-negotiable. You understand this.'},{text:'AC some rooms. Will manage.',score:4,response:'Manage it consistently.'},{text:'Hot climate. Limited AC.',score:2,response:'This is a welfare issue. Address it.'},{text:'I don\'t use AC usually.',score:1,response:'Then I cannot live with you.'}]},
-      {id:'bs5',trait:'Discipline',phase:'Breed Test — English Bulldog',
-       text:'Basic training. Positive reinforcement. Slow progress. Your patience?',
-       answers:[{text:'As long as it takes. Positive only.',score:5,response:'Correct approach. Pressure achieves nothing here.'},{text:'Patient enough. I\'ll try different things.',score:4,response:'Try treats first. Then more treats.'},{text:'I get frustrated with slow progress.',score:2,response:'Progress will be slow. Prepare.'},{text:'I want a naturally obedient dog.',score:1,response:'I am not that. I am opinionated.'}]}
-    ],
-    weaknesses:[
-      {title:'Health costs',text:'Bulldogs come with a subscription model for vet visits. Pet insurance is not optional. Budget for it from day one.'},
-      {title:'Heat sensitivity',text:'Hot weather is dangerous. Air conditioning is not a luxury — it is a requirement. This affects where you can live and how you can travel.'},
-      {title:'Exercise mismatch',text:'Bulldogs are not active dogs. If you want a running partner or an adventurous hiking companion, this is the wrong breed.'}
-    ]
-  },
-
-  poodle:{
-    name:'Standard Poodle',tag:'The Brilliant One',
-    requirements:{Discipline:4,TimeCommitment:4,EnergyMatch:3,EmotionalStability:3,Responsibility:4},
-    hardFail:false,
-    summary:'Among the most intelligent breeds. Highly trainable, deeply sensitive. Not as fussy as the haircut suggests. Significantly smarter than the haircut suggests.',
-    chopper:'People underestimate Poodles because of the grooming. This is the Poodle\'s greatest advantage. They see it coming. You don\'t.',
-    questions:[
-      {id:'bs1',trait:'TimeCommitment',phase:'Breed Test — Standard Poodle',
-       text:'Professional grooming. Every 6-8 weeks. Forever. Budgeted?',
-       answers:[{text:'Yes. In the budget. Part of ownership.',score:5,response:'You did the maths. Correct.'},{text:'I\'ll learn some and supplement.',score:4,response:'Learning is acceptable. Standards must be maintained.'},{text:'Didn\'t realise how frequent this was.',score:2,response:'The coat does not take breaks.'},{text:'This is more than I expected.',score:1,response:'The coat grows regardless of expectations.'}]},
-      {id:'bs2',trait:'Discipline',phase:'Breed Test — Standard Poodle',
-       text:'I\'m bored with this training. I solved it. What\'s next?',
-       answers:[{text:'Varied, progressive, challenging sessions. Always.',score:5,response:'Finally someone who keeps up with my pace.'},{text:'Regular sessions. I keep it interesting.',score:4,response:'Keep it very interesting.'},{text:'Basic obedience then maintain.',score:2,response:'Maintenance is not stimulation.'},{text:'I prefer a dog with less mental demand.',score:1,response:'Then we are a mismatch.'}]},
-      {id:'bs3',trait:'EmotionalStability',phase:'Breed Test — Standard Poodle',
-       text:'I absorb household tension like a sponge. Your home environment is?',
-       answers:[{text:'Calm, stable, consistent. Good for a sensitive dog.',score:5,response:'Correct environment. I will thrive here.'},{text:'Generally stable. Has its moments.',score:4,response:'Moments affect me. Minimise them.'},{text:'Can be chaotic or emotionally intense.',score:2,response:'Chaotic homes produce anxious Poodles.'},{text:'High-stress household honestly.',score:1,response:'I will mirror that stress back at you. Amplified.'}]},
-      {id:'bs4',trait:'EnergyMatch',phase:'Breed Test — Standard Poodle',
-       text:'Swimming, retrieving, agility. I was a sporting dog before the haircut. Activity level?',
-       answers:[{text:'Active. Daily exercise plus structured activity.',score:5,response:'Suitable lifestyle confirmed.'},{text:'Daily walks. Some activity. Can build.',score:4,response:'Build consistently.'},{text:'Fairly sedentary. I prefer calm dogs.',score:2,response:'I am calm. I am not sedentary.'},{text:'Minimal physical activity is my reality.',score:1,response:'That reality and I are incompatible.'}]},
-      {id:'bs5',trait:'Responsibility',phase:'Breed Test — Standard Poodle',
-       text:'Mental enrichment. Daily. Puzzle feeders, games, training. Your commitment?',
-       answers:[{text:'All of it. Scheduled and planned.',score:5,response:'Correct level of commitment.'},{text:'Regular walks, play, some training.',score:4,response:'Some is better than none. Add more.'},{text:'I\'ll do what I can around schedule.',score:2,response:'Your schedule must include me.'},{text:'I want a happy dog with minimal intervention.',score:1,response:'I require significant intervention.'}]}
-    ],
-    weaknesses:[
-      {title:'Grooming costs',text:'Poodle coats grow continuously. Professional grooming every 6-8 weeks for the dog\'s entire life is a financial and time commitment — not a phase.'},
-      {title:'Mental stimulation',text:'A Poodle under-stimulated invents entertainment. You will not enjoy their ideas. Daily training is maintenance, not a bonus.'},
-      {title:'Emotional sensitivity',text:'They absorb household stress. A calm, consistent environment is not just pleasant for them — it is necessary for their mental health.'}
-    ]
-  },
-
-  labrador:{
-    name:'Labrador Retriever',tag:'The Classic',
-    requirements:{Discipline:3,TimeCommitment:4,EnergyMatch:4,EmotionalStability:3,Responsibility:3},
-    hardFail:false,
-    summary:'Enthusiastic, food-obsessed, constitutionally optimistic. Will love everyone you have ever met, including people you don\'t like.',
-    chopper:'A Labrador believes every person is a friend and every meal is insufficient. Managing both beliefs is your full-time job.',
-    questions:[
-      {id:'bs1',trait:'EnergyMatch',phase:'Breed Test — Labrador',
-       text:'I will eat everything. Literally everything. Including things that are not food. Feeding strategy?',
-       answers:[{text:'Measured portions. Meal times. No begging wins. Ever.',score:5,response:'Discipline with food. The Lab will test this daily.'},{text:'Mostly consistent. I give in sometimes.',score:3,response:'Sometimes becomes always. Watch the waistline.'},{text:'Free feeding. They\'ll stop when full.',score:1,response:'They will not stop when full.'},{text:'Haven\'t thought about this specifically.',score:2,response:'Think about it before the dog thinks about your lunch.'}]},
-      {id:'bs2',trait:'Discipline',phase:'Breed Test — Labrador',
-       text:'Puppy phase. Mouthing, grabbing, biting hands. Every object is a chew toy. You?',
-       answers:[{text:'Redirect to toys. Clear no. Every time. Weeks of this.',score:5,response:'Correct. Weeks of this. Then months. Then it clicks.'},{text:'Try but puppies are hard.',score:3,response:'Puppies are very hard. Try anyway.'},{text:'It\'ll stop eventually.',score:2,response:'It stops when you teach it to stop.'},{text:'I\'m not sure I could manage a puppy phase.',score:1,response:'Puppies are a phase. Labs are forever.'}]},
-      {id:'bs3',trait:'EnergyMatch',phase:'Breed Test — Labrador',
-       text:'Shedding. Always. Everywhere. On everything. Your tolerance?',
-       answers:[{text:'Vacuuming is just life now. Fine.',score:5,response:'Correct relationship with the hoover.'},{text:'I\'ll manage. More cleaning than now.',score:4,response:'More. Significantly more.'},{text:'I like a clean home. This will bother me.',score:2,response:'It will bother you every day.'},{text:'Hair everywhere is a nightmare.',score:1,response:'Then Labradors are a nightmare. Your words.'}]},
-      {id:'bs4',trait:'TimeCommitment',phase:'Breed Test — Labrador',
-       text:'Bored Lab. Unchallenged Lab. Remodelling Lab. Mental stimulation plan?',
-       answers:[{text:'Puzzle feeders, training, fetch. All of it. Scheduled.',score:5,response:'Correct. Boredom is expensive with a Lab.'},{text:'Try a few things. See what works.',score:3,response:'Commit to what works. Then stick to it.'},{text:'A walk should be enough.',score:2,response:'A walk is a start. Not a finish.'},{text:'Still figuring out the basics.',score:1,response:'Figure them out before the couch suffers.'}]},
-      {id:'bs5',trait:'EmotionalStability',phase:'Breed Test — Labrador',
-       text:'I greet your guests with full body enthusiasm. They don\'t all love this. Plan?',
-       answers:[{text:'Train four-on-floor. Guests briefed. No exceptions.',score:5,response:'Briefing guests is underrated preparation.'},{text:'Mixed guests. Manage in the moment.',score:3,response:'In-the-moment management is very public.'},{text:'Some guests hate dogs. Real problem.',score:2,response:'Real problem. Real training required.'},{text:'Haven\'t thought about guest dynamics.',score:1,response:'Your guests have thought about it.'}]}
-    ],
-    weaknesses:[
-      {title:'Food obsession',text:'Labs will manipulate every person in your household into giving extra food. You need rules that everyone follows. No exceptions. The dog will find the exception.'},
-      {title:'Shedding',text:'Your furniture, clothes, and car will serve as a permanent memorial to this dog\'s coat. Grooming tools are not optional equipment.'},
-      {title:'Boredom destruction',text:'An under-stimulated Lab does not sit quietly. It renovates. Daily mental exercise is non-negotiable — not a bonus activity for good days.'}
-    ]
-  },
-
-  frenchbulldog:{
-    name:'French Bulldog',tag:'The High Maintenance Charmer',
-    requirements:{Discipline:2,TimeCommitment:3,EnergyMatch:2,EmotionalStability:3,Responsibility:5},
-    hardFail:false,
-    summary:'Compact. Opinionated. Expensive to maintain. Will sit on your laptop, your lap, and your life plans. Absolutely worth it to the right person.',
-    chopper:'French Bulldogs are not low-maintenance dogs in small packaging. They are high-maintenance dogs in small packaging. Know the difference before you sign anything.',
-    questions:[
-      {id:'bs1',trait:'Responsibility',phase:'Breed Test — French Bulldog',
-       text:'Flat face. Breathing limitations. No intense exercise. No heat. This is medical reality. You?',
-       answers:[{text:'No heat. AC always. Regular vet checks. I know.',score:5,response:'You read the manual. Most don\'t.'},{text:'I\'ll learn the restrictions.',score:4,response:'Learn them before they become emergencies.'},{text:'They\'re small so they don\'t need much exercise.',score:1,response:'Small breed. Large health responsibility.'},{text:'Wasn\'t fully aware of the breathing implications.',score:2,response:'Now you are. Proceed accordingly.'}]},
-      {id:'bs2',trait:'Responsibility',phase:'Breed Test — French Bulldog',
-       text:'Vet bills. Skin issues. Spine problems. Breathing surgeries. Pet insurance?',
-       answers:[{text:'Insurance purchased. Breed-specific research done.',score:5,response:'Financially prepared. Statistically unusual.'},{text:'Aware of costs. Some savings buffer.',score:4,response:'Buffer generously.'},{text:'Hoping for the healthy version.',score:1,response:'There is no guaranteed healthy version.'},{text:'Hadn\'t considered ongoing health costs.',score:2,response:'Consider them now. Then double your estimate.'}]},
-      {id:'bs3',trait:'EmotionalStability',phase:'Breed Test — French Bulldog',
-       text:'I will follow you everywhere. I require your presence. Independence is not my strong suit. You?',
-       answers:[{text:'I wanted a dog that wants to be near me.',score:5,response:'We are going to get along well.'},{text:'Fine as long as I get some quiet time.',score:4,response:'You\'ll get less than you think.'},{text:'I travel a lot. Clingy could be an issue.',score:2,response:'Clingy is a permanent feature, not a phase.'},{text:'I prefer independent dogs.',score:1,response:'I am not independent. I am a shadow.'}]},
-      {id:'bs4',trait:'TimeCommitment',phase:'Breed Test — French Bulldog',
-       text:'Hot day. Beach trip. Long walk. Your French Bulldog\'s opinion?',
-       answers:[{text:'I know the limits. Shaded, short, cool only.',score:5,response:'Correct scheduling of expectations.'},{text:'I\'ll adjust plans for their limits.',score:4,response:'Adjust before the problem, not during.'},{text:'Outdoor-heavy lifestyle. Could be challenging.',score:2,response:'It will be challenging. And potentially dangerous.'},{text:'Beach life is mine. This feels incompatible.',score:1,response:'It is incompatible. Your assessment is accurate.'}]},
-      {id:'bs5',trait:'Discipline',phase:'Breed Test — French Bulldog',
-       text:'Training. Positive reinforcement. Stubborn moments. I will have opinions. Your patience?',
-       answers:[{text:'Treats, praise, patience. Positive all the way.',score:5,response:'Correct method. Pressure achieves nothing with me.'},{text:'Flexible. I\'ll use whatever works.',score:4,response:'Treats work. Lead with treats.'},{text:'I get frustrated with slow progress.',score:2,response:'My progress has its own schedule.'},{text:'I prefer naturally obedient.',score:1,response:'I am naturally opinionated. Different thing.'}]}
-    ],
-    weaknesses:[
-      {title:'Health costs',text:'French Bulldogs come with a subscription model for vet care. Pet insurance is the price of admission. Budget accordingly from day one.'},
-      {title:'Heat sensitivity',text:'Hot weather is dangerous for flat-faced dogs. Air conditioning is a requirement, not a comfort feature. This shapes where you live and how you travel.'},
-      {title:'Separation anxiety',text:'Frenchies bond deeply. Extended alone time leads to anxiety. They need your presence or a settled routine that compensates for your absence.'}
-    ]
-  },
-
-  husky:{
-    name:'Siberian Husky',tag:'The Escape Artist',
-    requirements:{Discipline:4,TimeCommitment:5,EnergyMatch:5,EmotionalStability:4,Responsibility:4},
-    hardFail:true,hardFailThreshold:60,
-    summary:'Beautiful. Loud. Defiant. Requires a full-time commitment to their physical and mental needs, or they will inform you of this constantly and at volume.',
-    chopper:'Huskies are not for people who like peace. They are not for people who like occasional peace. They are for people who find chaos calming.',
-    questions:[
-      {id:'bs1',trait:'EnergyMatch',phase:'Breed Test — Husky',
-       text:'Bred to run 100 miles a day. That was the job description. Your exercise commitment?',
-       answers:[{text:'2+ hours daily minimum. I actually run.',score:5,response:'The only candidate so far who qualified physically.'},{text:'One long walk plus fetch. Active but realistic.',score:3,response:'Realistic but insufficient. Supplement.'},{text:'Daily walks. 45 minutes on a good day.',score:1,response:'A good day is not a plan.'},{text:'My schedule varies significantly.',score:2,response:'My energy does not vary. It is always high.'}]},
-      {id:'bs2',trait:'Discipline',phase:'Breed Test — Husky',
-       text:'45 minutes of howling when you leave. Neighbours have submitted a formal complaint. You?',
-       answers:[{text:'Separation anxiety training. Systematic. This is my problem to solve.',score:5,response:'Correct framing. It is your problem to solve.'},{text:'Doggy daycare. Figure it out.',score:4,response:'Daycare is a valid solution. Implement it.'},{text:'Stressed. This affects my quality of life.',score:2,response:'My quality of life has been affecting everyone\'s.'},{text:'This would become a crisis situation.',score:1,response:'It already is a crisis situation.'}]},
-      {id:'bs3',trait:'EnergyMatch',phase:'Breed Test — Husky',
-       text:'I escape. Fences. Doors. Windows if available. Containment situation?',
-       answers:[{text:'6ft+ secure fence. Double gate. Always supervised outdoors.',score:5,response:'Correct containment protocol.'},{text:'Decent fence. Aware of the risk.',score:3,response:'Aware and inadequately prepared. Upgrade.'},{text:'Standard 4ft fence. Should be fine?',score:1,response:'It will not be fine.'},{text:'I live in an apartment. Limited outdoor space.',score:2,response:'The walls are also not sufficient containment.'}]},
-      {id:'bs4',trait:'TimeCommitment',phase:'Breed Test — Husky',
-       text:'Coat blowing season. Fur everywhere. For weeks. Twice a year. Your readiness?',
-       answers:[{text:'I\'ve researched this. Own a Dyson. Ready.',score:5,response:'The Dyson is a mandatory accessory.'},{text:'I\'ll deal with it. More cleaning.',score:4,response:'Significantly more cleaning. Accept this.'},{text:'I didn\'t understand what heavy shedder meant.',score:2,response:'You will understand by the end of spring.'},{text:'This sounds genuinely overwhelming.',score:1,response:'It is genuinely overwhelming. Correct assessment.'}]},
-      {id:'bs5',trait:'EmotionalStability',phase:'Breed Test — Husky',
-       text:'Off lead. Unsecured park. I don\'t come back. People watching. You?',
-       answers:[{text:'I never go off lead in unsecured areas. This is a management decision.',score:5,response:'Correct policy. Apply it permanently.'},{text:'Recall training. Still a work in progress.',score:4,response:'Always a work in progress with a Husky.'},{text:'This would stress and embarrass me enormously.',score:2,response:'Embarrassment is manageable. My safety is not.'},{text:'I would completely panic.',score:1,response:'Panic is not a recall command.'}]}
-    ],
-    weaknesses:[
-      {title:'Energy requirements',text:'A Husky that doesn\'t get enough exercise doesn\'t nap. It decorates. Your furniture, your garden, your sanity — all fair game.'},
-      {title:'Escape risk',text:'These dogs were bred to run. They will test every boundary you create. Containment is not optional — it is a daily engineering problem.'},
-      {title:'Independence',text:'Huskies respect you when they feel like it. Recall training is lifelong. Off-lead freedom must be earned and may never be fully safe.'}
-    ]
-  },
-
-  chihuahua:{
-    name:'Chihuahua',tag:'The Tiny Tyrant',
-    requirements:{Discipline:3,TimeCommitment:3,EnergyMatch:2,EmotionalStability:4,Responsibility:3},
-    hardFail:false,
-    summary:'Smallest breed. Largest opinion of themselves. Convinced they are 40kg and in charge. Correct about the second part.',
-    chopper:'Chihuahuas have decided they run things. The remarkable part is that most households agree with them. Know what you\'re voting for.',
-    questions:[
-      {id:'bs1',trait:'Discipline',phase:'Breed Test — Chihuahua',
-       text:'I weigh 3kg. I have challenged a German Shepherd. This is normal to me. Your position on this?',
-       answers:[{text:'Redirect immediately. Size awareness training. Consistently.',score:5,response:'Correct. Small dog syndrome is not cute. It\'s dangerous.'},{text:'It\'s funny. A bit concerning.',score:3,response:'Concerning is the right word. Funny ends badly.'},{text:'They\'re so small, what\'s the harm?',score:2,response:'The harm is the German Shepherd\'s reaction.'},{text:'I find it endearing.',score:1,response:'Find better training instead.'}]},
-      {id:'bs2',trait:'EmotionalStability',phase:'Breed Test — Chihuahua',
-       text:'I shake near strangers. Not from cold. From strong opinions. Your social management?',
-       answers:[{text:'Positive exposure. Never force it. Build confidence slowly.',score:5,response:'Correct approach. Force breaks trust permanently.'},{text:'Give them space. Don\'t push it.',score:4,response:'Space is appropriate. Gradual exposure is better.'},{text:'I\'d comfort them every time they shake.',score:2,response:'Comfort reinforces the fear. Redirect instead.'},{text:'I don\'t have time for this level of management.',score:1,response:'Then I will manage you instead.'}]},
-      {id:'bs3',trait:'EnergyMatch',phase:'Breed Test — Chihuahua',
-       text:'Indoor zoomies. Short burst. Then three-hour nap. Then repeat. Your lifestyle match?',
-       answers:[{text:'Perfect. I wanted a dog that fits my space and pace.',score:5,response:'Compatible lifestyle confirmed.'},{text:'Works for me. Low energy suits my routine.',score:4,response:'Correct match of energy levels.'},{text:'I wanted a more active companion.',score:2,response:'I am active in very short windows.'},{text:'I run marathons. I need a running partner.',score:1,response:'I do not run marathons. Or even the full street.'}]},
-      {id:'bs4',trait:'Responsibility',phase:'Breed Test — Chihuahua',
-       text:'Cold climate. I feel the cold. Heated home, dog-appropriate warmth. Your setup?',
-       answers:[{text:'Heated home. Dog clothes where needed. Prepared.',score:5,response:'You took the cold seriously. Good.'},{text:'Warm home generally. Some adjustments.',score:4,response:'Adjust for all seasons.'},{text:'Cold house. I use blankets myself.',score:2,response:'Blankets will be shared. I insist.'},{text:'Don\'t think about heating much.',score:1,response:'Start thinking about it.'}]},
-      {id:'bs5',trait:'Discipline',phase:'Breed Test — Chihuahua',
-       text:'I\'ve decided your lap is mine. Permanently. You had plans to use it. My opinion on your plans?',
-       answers:[{text:'Fine. I enjoy a lap dog.',score:5,response:'Correct relationship dynamic.'},{text:'Cute but I\'ll set some limits.',score:4,response:'Limits will be negotiated. Heavily.'},{text:'I don\'t love being climbed on.',score:2,response:'Climbing is a core feature, not a bug.'},{text:'I need my personal space.',score:1,response:'Personal space is not available on this plan.'}]}
-    ],
-    weaknesses:[
-      {title:'Small dog syndrome',text:'Chihuahuas challenged with small dog syndrome become bossy, snappy, and aggressive toward larger dogs. This requires consistent training from day one — not excusing because they\'re tiny.'},
-      {title:'Cold sensitivity',text:'They feel the cold significantly. A warm home, appropriate clothing in winter, and awareness of temperature is part of responsible Chihuahua ownership.'},
-      {title:'Fragility',text:'Small dogs are easily injured. Young children, rough handling, or falling from heights are genuine risks. Supervision around children is non-negotiable.'}
-    ]
-  },
-
-  staffie:{
-    name:'Staffordshire Bull Terrier',tag:'The People Dog',
-    requirements:{Discipline:3,TimeCommitment:4,EnergyMatch:3,EmotionalStability:4,Responsibility:4},
-    hardFail:false,
-    summary:'Called the nanny dog historically for good reason. Utterly devoted to people. Needs company, structure, and someone who actually shows up for them.',
-    chopper:'Staffies love humans completely. The question is whether you will return that investment. They are watching to find out.',
-    questions:[
-      {id:'bs1',trait:'EmotionalStability',phase:'Breed Test — Staffie',
-       text:'I love everyone. Loudly. With full body impact. Your guests\' experience?',
-       answers:[{text:'Train polite greetings. Brief guests. Consistent.',score:5,response:'Managed enthusiasm is still enthusiasm. Correct.'},{text:'Work in progress. Manage as we go.',score:4,response:'Manage more proactively.'},{text:'Some guests really don\'t love this.',score:2,response:'Training makes it optional for them.'},{text:'Uncontrolled greetings are fine.',score:1,response:'They are not fine for your guests.'}]},
-      {id:'bs2',trait:'TimeCommitment',phase:'Breed Test — Staffie',
-       text:'I don\'t do alone time well. I need people. Hours matter. Your schedule?',
-       answers:[{text:'Home most of the time or dog care arranged.',score:5,response:'Correct arrangement of priorities.'},{text:'Work hours but evenings fully committed.',score:4,response:'Evenings count. Maximise them.'},{text:'7-9 hours alone most days.',score:2,response:'That\'s too long. Supplement with daycare or a walker.'},{text:'Long hours are just my reality.',score:1,response:'My reality involves your presence. Conflict.'}]},
-      {id:'bs3',trait:'Discipline',phase:'Breed Test — Staffie',
-       text:'Staffies can be dog-selective. Off-lead greeting management?',
-       answers:[{text:'Selective about dogs they meet. Never forced greetings.',score:5,response:'Correct. Forced greetings cause incidents.'},{text:'Monitor carefully. Step in early.',score:4,response:'Early is the right timing.'},{text:'I\'d let them sort it out.',score:2,response:'Let me help you understand why that\'s a bad idea.'},{text:'I hadn\'t considered this.',score:1,response:'Consider it before the first off-lead park visit.'}]},
-      {id:'bs4',trait:'Responsibility',phase:'Breed Test — Staffie',
-       text:'Staffies face breed perception issues in some regions. Your preparedness?',
-       answers:[{text:'Researched breed legislation in my area. Prepared.',score:5,response:'Preparation distinguishes responsible owners.'},{text:'Aware it\'s a factor. Handle as needed.',score:3,response:'Handle proactively, not reactively.'},{text:'Hadn\'t thought about public perception.',score:2,response:'Public perception is your daily reality with this breed.'},{text:'This concern seems exaggerated.',score:1,response:'Ask any Staffie owner if it\'s exaggerated.'}]},
-      {id:'bs5',trait:'EnergyMatch',phase:'Breed Test — Staffie',
-       text:'Moderate exercise. Good training sessions. Daily. You?',
-       answers:[{text:'Daily walks plus training time. Consistent routine.',score:5,response:'Correct baseline. Maintain it.'},{text:'Most days. Generally active.',score:4,response:'Most is close enough. Push toward all.'},{text:'When I have time.',score:2,response:'Schedule it. Don\'t leave it to chance.'},{text:'Exercise isn\'t really my thing.',score:1,response:'Then neither am I, unfortunately.'}]}
-    ],
-    weaknesses:[
-      {title:'Separation anxiety',text:'Staffies are people dogs to their core. Extended alone time causes genuine distress. This breed needs company — human or arranged — during long absences.'},
-      {title:'Dog selectivity',text:'Some Staffies are selective with other dogs. Forced greetings and off-lead confrontations require careful management from day one.'},
-      {title:'Breed perception',text:'Despite their temperament with people, Staffies face perception issues in some areas. Being a responsible, visible advocate for your dog is part of the ownership package.'}
-    ]
-  },
-
-  bichon:{
-    name:'Bichon Frisé',tag:'The Cloud With Opinions',
-    requirements:{Discipline:3,TimeCommitment:3,EnergyMatch:2,EmotionalStability:3,Responsibility:3},
-    hardFail:false,
-    summary:'White, fluffy, and deeply convinced of their own importance. Surprisingly robust in personality for something that looks like a bath toy.',
-    chopper:'Do not be misled by the appearance. Bichons have a very clear agenda. They are simply better dressed than the rest of us while executing it.',
-    questions:[
-      {id:'bs1',trait:'TimeCommitment',phase:'Breed Test — Bichon Frisé',
-       text:'Professional grooming. Regular brushing. This coat requires maintenance. Your commitment?',
-       answers:[{text:'Budgeted. Scheduled. Groomer booked.',score:5,response:'The coat expects this level of commitment.'},{text:'I\'ll manage most of it myself.',score:4,response:'Learn quickly. The coat has standards.'},{text:'Didn\'t realise how much upkeep this involves.',score:2,response:'It involves significant upkeep. Adjust expectations.'},{text:'I wanted a low-maintenance dog.',score:1,response:'The appearance is deceptive. This is not that dog.'}]},
-      {id:'bs2',trait:'EmotionalStability',phase:'Breed Test — Bichon Frisé',
-       text:'I dislike being alone. I may express this vocally. Your availability?',
-       answers:[{text:'Home based or flexible hours. Rarely alone.',score:5,response:'Correct household arrangement.'},{text:'Work hours but structured routine for them.',score:4,response:'Structure compensates for absence. Use it.'},{text:'Long hours regularly.',score:2,response:'Long hours produce anxious Bichons.'},{text:'My schedule doesn\'t change for a dog.',score:1,response:'My anxiety won\'t adjust to your schedule.'}]},
-      {id:'bs3',trait:'Discipline',phase:'Breed Test — Bichon Frisé',
-       text:'I am training you as much as you are training me. Consistency check?',
-       answers:[{text:'Consistent rules. Same response every time.',score:5,response:'The only way this works in your favour.'},{text:'Mostly consistent. Some days harder.',score:4,response:'Inconsistency is information I use against you.'},{text:'I struggle with consistency.',score:2,response:'I do not struggle with exploiting it.'},{text:'Rules feel strict. I like flexibility.',score:1,response:'Flexibility is my advantage, not yours.'}]},
-      {id:'bs4',trait:'EnergyMatch',phase:'Breed Test — Bichon Frisé',
-       text:'Indoor play, short walks, moderate energy. Your lifestyle?',
-       answers:[{text:'Indoor-focused. Calm pace. Perfect match.',score:5,response:'Compatible energy levels confirmed.'},{text:'Some outdoor activity. Can adjust pace.',score:4,response:'Adjust to a Bichon pace. It is non-negotiable.'},{text:'I wanted something more outdoorsy.',score:2,response:'Wrong match of expectations.'},{text:'I hike and run daily.',score:1,response:'I do not hike. I saunter.'}]},
-      {id:'bs5',trait:'Responsibility',phase:'Breed Test — Bichon Frisé',
-       text:'Dental care. Regular vet checks. Bichons need maintenance beyond the coat. Prepared?',
-       answers:[{text:'Dental routine, regular vet visits. All planned.',score:5,response:'Comprehensive preparation. Correct.'},{text:'I\'ll figure out the routine.',score:4,response:'Figure it out early. Dental issues are expensive.'},{text:'I didn\'t know dental care was a significant issue.',score:2,response:'It is a significant issue. Start a routine.'},{text:'Vet visits beyond emergencies seem excessive.',score:1,response:'They are not excessive. They are preventive.'}]}
-    ],
-    weaknesses:[
-      {title:'Grooming demands',text:'The Bichon coat needs regular professional grooming and daily brushing. The appearance is not low maintenance — it is the opposite.'},
-      {title:'Separation anxiety',text:'Bichons form strong attachments. Long periods of isolation cause genuine anxiety. This breed needs company or a structured routine in your absence.'},
-      {title:'Dental health',text:'Bichons are prone to dental issues. Regular brushing and vet dental checks are part of responsible ownership — not optional extras.'}
-    ]
-  }
-};
-
-// ═══════════════════════════════════
-// STATE
-// ═══════════════════════════════════
-let state={path:null,selectedBreed:null,questions:[],currentQ:0,answers:{}};
-
-// ═══════════════════════════════════
-// SCREEN NAVIGATION
-// ═══════════════════════════════════
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-
-// ═══════════════════════════════════
-// PATH 1 — DISCOVER
-// ═══════════════════════════════════
-function startPath(path){
-  state.path=path;state.answers={};state.currentQ=0;
-  if(path==='discover'){
-    state.questions=CORE_QUESTIONS;state.selectedBreed=null;
-    document.getElementById('quiz-mode-label').textContent='Universal Test';
-  }
-  renderQuestion();showScreen('screen-quiz');
-}
-
-// ═══════════════════════════════════
-// PATH 2 — SPECIFIC BREED
-// ═══════════════════════════════════
-function showBreedSelect(){
-  const grid=document.getElementById('breed-grid');grid.innerHTML='';
-  Object.entries(BREEDS).forEach(([key,breed])=>{
-    const btn=document.createElement('button');
-    btn.className='breed-btn';
-    btn.innerHTML=`<span class="breed-btn-name">${breed.name}</span><span class="breed-btn-tag">${breed.tag}</span>`;
-    btn.onclick=()=>startBreedTest(key);
-    grid.appendChild(btn);
-  });
-  showScreen('screen-breed-select');
-}
-
-function startBreedTest(breedKey){
-  state.path='specific';state.selectedBreed=breedKey;state.answers={};state.currentQ=0;
-  state.questions=[...CORE_QUESTIONS,...BREEDS[breedKey].questions];
-  document.getElementById('quiz-mode-label').textContent=BREEDS[breedKey].name;
-  renderQuestion();showScreen('screen-quiz');
-}
-
-// ═══════════════════════════════════
-// QUIZ ENGINE
-// ═══════════════════════════════════
-function renderQuestion(){
-  const q=state.questions[state.currentQ];
-  const total=state.questions.length;
-  document.getElementById('question-phase').textContent=q.phase;
-  document.getElementById('question-text').textContent=q.text;
-  document.getElementById('question-number-bg').textContent=String(state.currentQ+1).padStart(2,'0');
-  document.getElementById('quiz-progress-label').textContent=`${state.currentQ+1} / ${total}`;
-  document.getElementById('quiz-progress-fill').style.width=`${((state.currentQ+1)/total)*100}%`;
-  const answersEl=document.getElementById('answers');answersEl.innerHTML='';
-  const letters=['A','B','C','D'];
-  q.answers.forEach((ans,i)=>{
-    const btn=document.createElement('button');
-    btn.className='answer-btn'+(state.answers[q.id]===i?' selected':'');
-    btn.innerHTML=`<span class="answer-letter">${letters[i]}</span><span>${ans.text}</span>`;
-    btn.onclick=()=>selectAnswer(q.id,i,ans.response);
-    answersEl.appendChild(btn);
-  });
-  const flash=document.getElementById('response-flash');
-  if(q.id in state.answers){
-    const savedResponse=q.answers[state.answers[q.id]].response;
-    flash.textContent=`"${savedResponse}"`;flash.classList.add('visible');
-  } else {
-    flash.textContent='';flash.classList.remove('visible');
-  }
-  document.getElementById('btn-next-q').disabled=!(q.id in state.answers);
-  document.getElementById('btn-back-q').style.visibility=state.currentQ===0?'hidden':'visible';
-  document.getElementById('btn-next-q').textContent=state.currentQ===total-1?'See Results →':'Continue →';
-}
-
-function selectAnswer(qId,idx,response){
-  state.answers[qId]=idx;
-  document.querySelectorAll('.answer-btn').forEach((btn,i)=>{btn.classList.toggle('selected',i===idx)});
-  const flash=document.getElementById('response-flash');
-  flash.textContent=`"${response}"`;flash.classList.add('visible');
-  document.getElementById('btn-next-q').disabled=false;
-}
-
-function nextQuestion(){
-  if(state.currentQ<state.questions.length-1){state.currentQ++;renderQuestion();}
-  else{showResults();}
-}
-function prevQuestion(){
-  if(state.currentQ>0){state.currentQ--;renderQuestion();}
-}
-
-// ═══════════════════════════════════
-// SCORING
-// ═══════════════════════════════════
-function computeTraits(questions){
-  const totals={Discipline:0,TimeCommitment:0,EnergyMatch:0,EmotionalStability:0,Responsibility:0};
-  const counts={Discipline:0,TimeCommitment:0,EnergyMatch:0,EmotionalStability:0,Responsibility:0};
-  questions.forEach(q=>{
-    if(q.id in state.answers){
-      totals[q.trait]+=q.answers[state.answers[q.id]].score;counts[q.trait]++;
-    }
-  });
-  const traits={};
-  Object.keys(totals).forEach(t=>{traits[t]=counts[t]>0?totals[t]/counts[t]:0});
-  return traits;
-}
-
-function computeBreedScore(userTraits,breed){
-  const req=breed.requirements;let totalScore=0,totalPossible=0;
-  const traitScores={};
-  Object.keys(req).forEach(trait=>{
-    const uv=userTraits[trait]||0,rv=req[trait],gap=rv-uv;
-    const score=gap<=0?5:Math.max(0,5-gap*1.5);
-    traitScores[trait]={userVal:uv,reqVal:rv,score};
-    totalScore+=score;totalPossible+=5;
-  });
-  return{pct:Math.round((totalScore/totalPossible)*100),traitScores};
-}
-
-// ═══════════════════════════════════
-// RESULTS
-// ═══════════════════════════════════
-function showResults(){
-  const content=document.getElementById('results-content');
-  if(state.path==='discover'){renderDiscoverResults(content);}
-  else{renderSpecificResults(content);}
-  showScreen('screen-results');
-}
-
-function renderDiscoverResults(container){
-  const userTraits=computeTraits(CORE_QUESTIONS);
-  const breedScores=Object.entries(BREEDS).map(([key,breed])=>{
-    const{pct}=computeBreedScore(userTraits,breed);return{key,breed,pct};
-  }).sort((a,b)=>b.pct-a.pct);
-  const top3=breedScores.slice(0,3);
-  const overallPct=top3[0].pct;
-  const verdicts=[
-    {min:80,text:"You're suspiciously well-prepared. Either you've done your research or you have an existing dog judging you as we speak."},
-    {min:60,text:"Solid foundation. A few gaps to close, but nothing that can't be addressed with honest self-work."},
-    {min:40,text:"There is potential here. It is currently hypothetical. The right breed, implemented correctly, could work."},
-    {min:0,text:"This assessment has raised more questions than it answered. Suggest starting with a goldfish."}
-  ];
-  const verdict=verdicts.find(v=>overallPct>=v.min);
-  container.innerHTML=`
-    <div class="section-eyebrow">Path 01 — Results</div>
-    <div class="section-title" style="color:var(--black);margin-bottom:8px">Your Matches</div>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:36px;max-width:500px">Based on your 10 lifestyle responses. Chopper reviewed your file personally.</p>
-    <div class="verdict-block">
-      <div class="verdict-from">Chopper · Bull Terrier · Lead Interviewer</div>
-      <div class="verdict-quote">${verdict.text}</div>
-    </div>
-    <div class="breed-results">
-      ${top3.map((item,i)=>`
-        <div class="breed-result-card rank-${i+1}">
-          <div class="breed-result-rank">#${i+1}</div>
-          <div class="breed-result-info">
-            <div class="breed-result-name">${item.breed.name}</div>
-            <div class="breed-result-summary">${item.breed.summary}</div>
-          </div>
-          <div class="breed-result-score">${item.pct}%</div>
-        </div>`).join('')}
-    </div>
-    ${renderTraitBarsDiscover(userTraits)}
-    <div class="cta-block">
-      <button class="btn-primary" onclick="showBreedSelect()">Test Yourself For a Specific Breed →</button>
-      <p>Want a deeper breakdown? Apply directly to a breed.</p>
-    </div>`;
-}
-
-function renderTraitBarsDiscover(traits){
-  const labels={Discipline:'Discipline',TimeCommitment:'Time',EnergyMatch:'Energy',EmotionalStability:'Emotional',Responsibility:'Responsibility'};
-  return`<div class="score-grid">${Object.entries(traits).map(([trait,val])=>`
-    <div class="trait-card">
-      <div class="trait-name">${labels[trait]}</div>
-      <div class="trait-bar-row">
-        <span class="trait-bar-label">You</span>
-        <div class="trait-bar-track"><div class="trait-bar-fill bar-you" style="width:${(val/5)*100}%"></div></div>
-        <span style="font-size:11px;min-width:28px">${val.toFixed(1)}</span>
-      </div>
-    </div>`).join('')}</div>`;
-}
-
-function renderSpecificResults(container){
-  const breedKey=state.selectedBreed,breed=BREEDS[breedKey];
-  const userTraits=computeTraits(state.questions);
-  const{pct,traitScores}=computeBreedScore(userTraits,breed);
-  const isHardFail=breed.hardFail&&pct<breed.hardFailThreshold;
-  let scoreClass,badgeClass,badgeText;
-  if(isHardFail){scoreClass='fail';badgeClass='badge-fail';badgeText='Application Rejected';}
-  else if(pct>=75){scoreClass='high';badgeClass='badge-high';badgeText='Strong Match';}
-  else if(pct>=55){scoreClass='mid';badgeClass='badge-mid';badgeText='Conditional Match';}
-  else{scoreClass='low';badgeClass='badge-low';badgeText='Not Recommended';}
-  const chopperLine=isHardFail?`Your application has been reviewed. We regret to inform you that the ${breed.name} position has been filled by someone more qualified. Specifically, anyone else.`:breed.chopper;
-  const traitLabels={Discipline:'Discipline',TimeCommitment:'Time',EnergyMatch:'Energy',EmotionalStability:'Emotional',Responsibility:'Responsibility'};
-  container.innerHTML=`
-    <div class="section-eyebrow">Path 02 — Compatibility Test</div>
-    <div class="section-title" style="color:var(--black);margin-bottom:8px">${breed.name}</div>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:36px">${breed.summary}</p>
-    <div class="verdict-block">
-      <div class="verdict-from">Chopper · Bull Terrier · Lead Interviewer</div>
-      <div class="verdict-quote">${chopperLine}</div>
-    </div>
-    <div class="score-grid">
-      <div class="score-main">
-        <div><div class="score-number ${scoreClass}">${pct}%</div></div>
-        <div>
-          <div class="score-breed-name">${breed.name}</div>
-          <div class="score-label">Compatibility Score</div>
-          <div style="margin-top:12px"><span class="score-verdict-badge ${badgeClass}">${badgeText}</span></div>
-        </div>
-      </div>
-      ${Object.entries(traitScores).map(([trait,data])=>{
-        const gapVal=data.reqVal-data.userVal;
-        const gapClass=gapVal<=0?'gap-ok':gapVal<=1?'gap-warn':'gap-bad';
-        const gapText=gapVal<=0?'✓ Meets requirement':gapVal<=1?`⚠ ${gapVal.toFixed(1)} below requirement`:`✗ ${gapVal.toFixed(1)} below requirement`;
-        return`<div class="trait-card">
-          <div class="trait-name">${traitLabels[trait]}</div>
-          <div class="trait-bar-row">
-            <span class="trait-bar-label">You</span>
-            <div class="trait-bar-track"><div class="trait-bar-fill bar-you" style="width:${(data.userVal/5)*100}%"></div></div>
-            <span style="font-size:11px;min-width:24px">${data.userVal.toFixed(1)}</span>
-          </div>
-          <div class="trait-bar-row">
-            <span class="trait-bar-label">Needs</span>
-            <div class="trait-bar-track"><div class="trait-bar-fill bar-breed" style="width:${(data.reqVal/5)*100}%"></div></div>
-            <span style="font-size:11px;min-width:24px">${data.reqVal.toFixed(1)}</span>
-          </div>
-          <div class="trait-gap ${gapClass}">${gapText}</div>
-        </div>`;}).join('')}
-    </div>
-    <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-label">Where You'll Struggle</div><div class="section-divider-line"></div></div>
-    <div class="weakness-list">
-      ${breed.weaknesses.map(w=>`<div class="weakness-item"><div class="weakness-title">${w.title}</div><div class="weakness-text">${w.text}</div></div>`).join('')}
-    </div>
-    <div class="cta-block">
-      <button class="btn-primary" onclick="showBreedSelect()">Test Another Breed →</button>
-      <p>Or go back to start over from the beginning.</p>
-    </div>`;
+function unmute(){
+  const iframe=document.getElementById('chopper-iframe');
+  iframe.src=iframe.src.replace('mute=1','mute=0');
+  const overlay=document.getElementById('unmute-overlay');
+  overlay.style.transition='opacity 0.4s';
+  overlay.style.opacity='0';
+  setTimeout(()=>overlay.style.display='none',400);
 }
 </script>
 </body>
