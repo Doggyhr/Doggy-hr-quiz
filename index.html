@@ -3,109 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doggy HR — The World's Only Recruitment Agency Where Dogs Hire Their Humans</title>
+<title>Dog Compatibility Test — Find Your Perfect Breed | Doggy HR</title>
+<meta name="description" content="Take the dog compatibility test. Find out which breed suits your lifestyle — or whether your dream breed would actually hire you. Dogs hiring humans since forever.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558}
-body{background:var(--black);color:var(--cream);font-family:'DM Mono',monospace;min-height:100vh;overflow-x:hidden}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(200,120,42,0.2);position:relative;z-index:10}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.1em;color:var(--amber)}
-.nav-links{display:flex;gap:32px}
-.nav-link{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,228,0.4);cursor:pointer;text-decoration:none;transition:color 0.2s}
+html,body{height:100%;overflow:hidden}
+body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;display:flex;flex-direction:column}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-photo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0}
+.nav-logo{font-size:clamp(20px,3.5vw,28px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.nav-link{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600;white-space:nowrap}
 .nav-link:hover{color:var(--amber)}
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 20px 0;max-width:700px;margin:0 auto}
-.stamp{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,0.5);padding:5px 14px;margin-bottom:28px;opacity:0;animation:fadeUp 0.5s 0.1s both}
-.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,14vw,140px);line-height:0.88;color:var(--cream);margin-bottom:6px;opacity:0;animation:fadeUp 0.5s 0.2s both}
+.nav-icon{width:20px;height:20px;opacity:.4;transition:opacity .2s;flex-shrink:0}
+.nav-icon:hover{opacity:.9}
+
+/* MAIN — fills remaining height */
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;overflow:hidden;text-align:center;gap:0}
+
+.stamp{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.5);padding:5px 14px;margin-bottom:14px;display:inline-block;flex-shrink:0}
+.title{font-size:clamp(48px,10vw,100px);font-weight:900;letter-spacing:-.02em;color:var(--cream);line-height:.9;margin-bottom:8px;flex-shrink:0;white-space:nowrap}
 .title span{color:var(--amber)}
-.subtitle{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(15px,2.5vw,20px);color:var(--muted);margin-bottom:32px;opacity:0;animation:fadeUp 0.5s 0.3s both}
-.rule{width:48px;height:1px;background:var(--amber);margin:0 auto 32px;opacity:0;animation:fadeUp 0.5s 0.35s both}
-.video-wrap{width:100%;max-width:360px;margin:0 auto 36px;opacity:0;animation:fadeUp 0.5s 0.4s both;position:relative}
-.video-container{position:relative;width:100%;background:#000}
-.video-container iframe{display:block;width:100%;height:640px;border:none}
-.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:32px;background:rgba(10,10,8,0.45);cursor:pointer;transition:opacity 0.4s}
-.unmute-icon{font-size:28px;margin-bottom:8px}
-.unmute-text{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream)}
-.panel-section{width:100%;max-width:640px;margin:0 auto 48px;opacity:0;animation:fadeUp 0.5s 0.5s both;padding:0 20px}
-.panel-label{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;text-align:center}
-.panel-cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.panel-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,120,42,0.2);padding:16px 20px;text-align:center;flex:1;min-width:140px}
-.panel-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.05em;color:var(--cream);margin-bottom:2px}
-.panel-role{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber)}
-.panel-img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;border:2px solid rgba(200,120,42,0.4)}
-.cta-section{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:60px;opacity:0;animation:fadeUp 0.5s 0.6s both}
-.cta-btn{background:var(--amber);color:var(--black);border:none;padding:18px 48px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block}
+.subtitle{font-size:clamp(12px,2vw,15px);color:var(--muted);margin-bottom:14px;font-style:italic;flex-shrink:0}
+.rule{width:40px;height:2px;background:var(--amber);margin:0 auto 14px;flex-shrink:0}
+
+/* CTA BUTTON */
+.cta-btn{background:var(--amber);color:var(--black);border:none;padding:14px 36px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:10px}
 .cta-btn:hover{background:var(--amber-light)}
-.smallprint{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2)}
-footer{border-top:1px solid rgba(200,120,42,0.15);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.footer-left{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2)}
-.footer-links{display:flex;gap:20px}
-.footer-link{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,228,0.2);text-decoration:none;transition:color 0.2s}
+
+/* VIDEO — square 1:1 container */
+.video-wrap{width:min(42vh,340px);flex-shrink:0;margin:0 auto;position:relative}
+.video-box{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#000}
+.video-box iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56.25%;height:100%;border:none}
+.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(10,10,8,.5);cursor:pointer;transition:opacity .4s}
+.unmute-text{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);font-weight:600}
+.unmute-ring{width:44px;height:44px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
+.unmute-icon{font-size:18px}
+
+/* DESCRIPTION */
+.desc{font-size:clamp(11px,1.8vw,13px);letter-spacing:.06em;text-transform:uppercase;color:rgba(242,237,228,.5);max-width:440px;line-height:1.7;margin-bottom:10px;flex-shrink:0}
+
+/* SMALLPRINT */
+.smallprint{font-size:clamp(11px,1.8vw,13px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,228,.35);flex-shrink:0}
+
+/* FOOTER */
+footer{display:flex;justify-content:space-between;align-items:center;padding:10px 32px;border-top:1px solid rgba(200,120,42,.15);flex-shrink:0;flex-wrap:wrap;gap:8px}
+.footer-left{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.2)}
+.footer-right{display:flex;gap:20px;align-items:center}
+.footer-link{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.2);text-decoration:none;transition:color .2s}
 .footer-link:hover{color:var(--amber)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:480px){nav{padding:16px 20px}.nav-links{gap:16px}footer{padding:16px 20px;flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+
+/* MOBILE */
+@media(max-width:480px){
+  html,body{overflow:auto;height:auto}
+  nav{padding:12px 16px}
+  main{padding:24px 16px;overflow:visible;gap:0}
+  .video-wrap{width:min(72vw,280px)}
+  footer{padding:12px 16px}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">DOGGY HR</div>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="quiz.html">The Interview</a>
-    <a class="nav-link" href="https://www.youtube.com/@doggyhr" target="_blank">YouTube</a>
+  <div class="nav-left">
+    <img class="nav-photo" src="chopper-cherie.jpg" alt="Chopper and Cherie — Doggy HR interviewers">
+    <div class="nav-logo">DOGGY HR</div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" href="quiz.html">Take the Test</a>
+    <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@doggyhr" target="_blank" aria-label="TikTok">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+    <a href="mailto:doggydoggyhr@gmail.com" class="nav-link">Contact</a>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="stamp">Now Recruiting Humans</div>
-  <div class="title">DOGGY<br><span>HR</span></div>
-  <div class="subtitle">The world's only recruitment agency where dogs hire their humans.</div>
+<main>
+  <div class="stamp">Dogs Hiring Humans</div>
+  <div class="title">DOGGY <span>HR</span></div>
+  <div class="subtitle">The world's only dog compatibility test — conducted by the dogs.</div>
   <div class="rule"></div>
 
-  <!-- CHOPPER VIDEO — autoplays muted, click to unmute -->
+  <a class="cta-btn" href="quiz.html">Submit Your Application →</a>
+
+  <div class="desc">The dog compatibility test that tells you which breed would actually hire you — or reject you on the spot.</div>
+
   <div class="video-wrap">
-    <div class="video-container">
+    <div class="video-box">
       <iframe id="chopper-iframe"
         src="https://www.youtube.com/embed/hXzEyFdWZ3s?autoplay=1&mute=1&controls=0&loop=1&playlist=hXzEyFdWZ3s&rel=0&modestbranding=1"
         allow="autoplay; encrypted-media"
         allowfullscreen>
       </iframe>
       <div class="unmute-overlay" id="unmute-overlay" onclick="unmute()">
-        <div class="unmute-icon">🔇</div>
+        <div class="unmute-ring"><div class="unmute-icon">🔇</div></div>
         <div class="unmute-text">Click to hear Chopper</div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- MEET THE PANEL -->
-<div class="panel-section">
-  <div class="panel-label">Meet the Panel</div>
-  <div class="panel-cards">
-    <div class="panel-card">
-      <img class="panel-img" src="chopper-cherie.jpg" alt="Chopper and Cherie">
-      <div class="panel-name">Chopper</div>
-      <div class="panel-role">Lead Interviewer · Bull Terrier</div>
-    </div>
-    <div class="panel-card">
-      <img class="panel-img" src="chopper-cherie.jpg" alt="Cherie">
-      <div class="panel-name">Cherie</div>
-      <div class="panel-role">Senior Assessor · Am. Staffy</div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <a class="cta-btn" href="quiz.html">Submit Your Application →</a>
-  <div class="smallprint">All candidates assessed without mercy · Results are final · No appeals</div>
-</div>
+  <div class="smallprint" style="margin-top:12px">All candidates assessed without mercy · Results are final · No appeals</div>
+</main>
 
 <footer>
   <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
-  <div class="footer-links">
+  <div class="footer-right">
     <a class="footer-link" href="https://www.youtube.com/@doggyhr" target="_blank">YouTube</a>
+    <a class="footer-link" href="https://www.tiktok.com/@doggyhr" target="_blank">TikTok</a>
+    <a class="footer-link" href="mailto:doggydoggyhr@gmail.com">Contact</a>
     <a class="footer-link" href="quiz.html">Take the Test</a>
   </div>
 </footer>
