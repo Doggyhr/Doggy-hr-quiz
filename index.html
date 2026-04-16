@@ -11,53 +11,69 @@
 :root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558}
 html,body{height:100%;overflow:hidden}
 body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;display:flex;flex-direction:column}
-nav{display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
-.nav-left{display:flex;align-items:center;gap:12px}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:10px 28px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
+.nav-left{display:flex;align-items:center;gap:10px}
+/* PHOTO: replace the src below with your base64 string to activate */
+/* data:image/jpeg;base64,/9j/4AAQ... */
 .nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
-.nav-logo{font-size:clamp(18px,3vw,25px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
-.nav-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
-.nav-link{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600;white-space:nowrap}
+.nav-logo{font-size:clamp(17px,2.8vw,24px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.nav-link{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600;white-space:nowrap}
 .nav-link:hover{color:var(--amber)}
-.nav-contact-email{font-size:10px;letter-spacing:.04em;color:rgba(242,237,228,0.35);text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-contact-email{font-size:10px;letter-spacing:.03em;color:rgba(242,237,228,0.3);text-decoration:none;white-space:nowrap;transition:color .2s}
 .nav-contact-email:hover{color:var(--amber)}
-.nav-icon{width:18px;height:18px;opacity:.4;transition:opacity .2s;flex-shrink:0}
-.nav-icon:hover{opacity:.9}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 24px;overflow:hidden;text-align:center;gap:0}
-.stamp{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.5);padding:4px 12px;margin-bottom:9px;display:inline-block;flex-shrink:0}
-.title{font-size:clamp(40px,8.5vw,88px);font-weight:900;letter-spacing:-.02em;color:var(--cream);line-height:.9;margin-bottom:6px;flex-shrink:0;white-space:nowrap}
+.nav-icon{width:17px;height:17px;opacity:.38;transition:opacity .2s;flex-shrink:0}
+.nav-icon:hover{opacity:.85}
+
+/* MAIN — tight vertical packing */
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 24px;overflow:hidden;text-align:center}
+
+.stamp{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.45);padding:3px 11px;margin-bottom:7px;display:inline-block;flex-shrink:0}
+.title{font-size:clamp(38px,8vw,82px);font-weight:900;letter-spacing:-.02em;color:var(--cream);line-height:.88;margin-bottom:5px;flex-shrink:0;white-space:nowrap}
 .title span{color:var(--amber)}
-.subtitle{font-size:clamp(10px,1.7vw,13px);color:var(--muted);margin-bottom:9px;flex-shrink:0}
-.rule{width:34px;height:2px;background:var(--amber);margin:0 auto 9px;flex-shrink:0}
-.cta-btn{background:var(--amber);color:#000;border:none;padding:13px 38px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:9px}
+.subtitle{font-size:clamp(10px,1.6vw,12px);color:var(--muted);margin-bottom:7px;flex-shrink:0}
+.rule{width:32px;height:2px;background:var(--amber);margin:0 auto 7px;flex-shrink:0}
+
+/* CTA */
+.cta-btn{background:var(--amber);color:#000;border:none;padding:12px 36px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:8px}
 .cta-btn:hover{background:var(--amber-light)}
-/* VIDEO — true 16:9, full width of container, no cropping */
-.video-wrap{width:min(36vh,290px);flex-shrink:0;margin:0 auto}
+
+/* VIDEO — maximised, true 16:9 */
+.video-wrap{width:min(52vh,460px);flex-shrink:0;margin:0 auto}
 .video-box{width:100%;aspect-ratio:16/9;position:relative;background:#000;overflow:hidden}
 .video-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(10,10,8,.5);cursor:pointer;transition:opacity .4s}
-.unmute-text{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);font-weight:600}
-.unmute-ring{width:36px;height:36px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
-.unmute-icon{font-size:15px}
-.videos-link{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,237,228,.38);text-decoration:none;margin-top:5px;display:inline-block;transition:color .2s;flex-shrink:0}
+.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(10,10,8,.48);cursor:pointer;transition:opacity .4s}
+.unmute-text{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:var(--cream);font-weight:600}
+.unmute-ring{width:40px;height:40px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
+.unmute-icon{font-size:17px}
+
+.videos-link{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,228,.35);text-decoration:none;margin-top:5px;display:inline-block;transition:color .2s;flex-shrink:0}
 .videos-link:hover{color:var(--amber)}
-.desc{font-size:clamp(9px,1.5vw,11px);letter-spacing:.06em;text-transform:uppercase;color:rgba(242,237,228,.7);max-width:380px;line-height:1.7;margin:7px 0 6px;flex-shrink:0}
-.smallprint{font-size:clamp(8px,1.3vw,10px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,228,.28);flex-shrink:0}
-footer{display:flex;justify-content:flex-start;align-items:center;padding:7px 32px;border-top:1px solid rgba(200,120,42,.15);flex-shrink:0}
-.footer-left{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.18)}
+.desc{font-size:clamp(9px,1.4vw,11px);letter-spacing:.05em;text-transform:uppercase;color:rgba(242,237,228,.68);max-width:380px;line-height:1.65;margin:6px 0 5px;flex-shrink:0}
+.smallprint{font-size:clamp(8px,1.2vw,10px);font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(242,237,228,.26);flex-shrink:0}
+
+/* FOOTER */
+footer{display:flex;justify-content:flex-start;align-items:center;padding:6px 28px;border-top:1px solid rgba(200,120,42,.14);flex-shrink:0}
+.footer-left{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(242,237,228,.17)}
+
+/* MOBILE */
 @media(max-width:600px){
   html,body{overflow:auto;height:auto}
-  nav{padding:10px 14px}
+  nav{padding:9px 13px}
   .nav-contact-email{display:none}
-  main{padding:18px 14px;overflow:visible}
-  .video-wrap{width:min(78vw,290px)}
-  footer{padding:9px 14px}
+  main{padding:16px 13px;overflow:visible}
+  .video-wrap{width:min(90vw,400px)}
+  footer{padding:8px 13px}
 }
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-left">
-    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie">
+    <!-- PHOTO SLOT: set src="data:image/jpeg;base64,YOUR_BASE64_HERE" to activate -->
+    <img class="nav-photo" id="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
     <div class="nav-logo">DOGGY HR</div>
   </div>
   <div class="nav-right">
@@ -107,10 +123,20 @@ footer{display:flex;justify-content:flex-start;align-items:center;padding:7px 32
 function unmute(){
   const iframe=document.getElementById('chopper-iframe');
   iframe.src=iframe.src.replace('mute=1','mute=0');
-  const overlay=document.getElementById('unmute-overlay');
-  overlay.style.opacity='0';
-  setTimeout(()=>overlay.style.display='none',400);
+  const o=document.getElementById('unmute-overlay');
+  o.style.opacity='0';setTimeout(()=>o.style.display='none',400);
 }
 </script>
+
+<!-- SEO content block — visible to search engines, hidden visually -->
+<div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;left:-9999px" aria-hidden="true">
+<h1>Doggy HR — Dog Compatibility Test</h1>
+<h2>Find Your Perfect Dog Breed with the World's Only Dog Compatibility Test</h2>
+<p>Doggy HR is a free dog compatibility test that matches your lifestyle to the right dog breed — or tells you exactly why your dream breed would reject you. Take the dog compatibility quiz and find out which breed would actually hire you.</p>
+<p>Our dog breed compatibility test covers 12 breeds including Bull Terrier, Border Collie, Rottweiler, Beagle, English Bulldog, Standard Poodle, Labrador Retriever, French Bulldog, Siberian Husky, Chihuahua, Staffordshire Bull Terrier, and Bichon Frisé.</p>
+<p>Path 01: Answer 10 lifestyle questions and discover your top 3 breed matches. Path 02: Apply directly for a specific breed with 15 targeted questions and receive a personalised verdict from Chopper the Bull Terrier, Doggy HR's lead interviewer.</p>
+<p>This dog compatibility quiz is free, takes under 5 minutes, and is conducted by the dogs themselves. Find your perfect dog breed today at doggyhr.com.</p>
+<p>Dog compatibility test. Dog breed quiz. Which dog breed suits me. Dog breed selector. Dog breed match. Find the right dog breed. Dog personality test. Dog owner quiz. Dog lifestyle compatibility. Best dog breed for me.</p>
+</div>
 </body>
 </html>

@@ -10,60 +10,60 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558;--bone:#e8e0d0}
 body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;min-height:100vh}
-nav{display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:1px solid rgba(200,120,42,0.2);gap:12px}
-.nav-left{display:flex;align-items:center;gap:12px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:10px 28px;border-bottom:1px solid rgba(200,120,42,0.2);gap:12px}
+.nav-left{display:flex;align-items:center;gap:10px}
 .nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
 .nav-logo{font-size:22px;font-weight:900;color:var(--amber);text-decoration:none;letter-spacing:-.01em}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-link{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-link{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600}
 .nav-link:hover{color:var(--amber)}
-.nav-icon{width:18px;height:18px;opacity:.4;transition:opacity .2s}
-.nav-icon:hover{opacity:.9}
-.page-header{text-align:center;padding:52px 24px 40px}
-.page-eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-.page-title{font-size:clamp(32px,7vw,72px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:12px}
+.nav-icon{width:17px;height:17px;opacity:.38;transition:opacity .2s}
+.nav-icon:hover{opacity:.85}
+.page-header{text-align:center;padding:48px 24px 36px}
+.page-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.page-title{font-size:clamp(30px,7vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:10px}
 .page-title span{color:var(--amber)}
-.page-sub{font-size:14px;color:var(--muted);max-width:480px;margin:0 auto 28px;line-height:1.7}
-.path2-callout{display:inline-block;background:rgba(200,120,42,.12);border:1px solid rgba(200,120,42,.3);padding:12px 24px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);text-decoration:none;transition:all .2s;margin-bottom:0}
+.page-sub{font-size:13px;color:var(--muted);max-width:460px;margin:0 auto 24px;line-height:1.7}
+.path2-callout{display:inline-block;background:rgba(200,120,42,.12);border:1px solid rgba(200,120,42,.3);padding:11px 22px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);text-decoration:none;transition:all .2s}
 .path2-callout:hover{background:var(--amber);color:#000}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;padding:2px;max-width:1200px;margin:0 auto 60px}
-.video-card{background:#111;position:relative;overflow:hidden;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;padding:2px;max-width:1200px;margin:0 auto 60px}
+.video-card{background:#111;position:relative;overflow:hidden}
+.video-thumb{width:100%;aspect-ratio:16/9;position:relative;background:#0a0a08;overflow:hidden;cursor:pointer}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.video-card:hover .video-thumb img{transform:scale(1.03)}
+.video-overlay{position:absolute;inset:0;background:rgba(10,10,8,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
 .video-card:hover .video-overlay{opacity:1}
-.video-thumb{width:100%;aspect-ratio:16/9;position:relative;background:#0a0a08}
-.video-thumb iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none}
-.video-overlay{position:absolute;inset:0;background:rgba(10,10,8,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
-.play-ring{width:52px;height:52px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.play-icon{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid var(--amber);margin-left:4px}
-.video-info{padding:16px 18px}
-.video-breed{font-size:16px;font-weight:900;color:var(--cream);margin-bottom:3px}
-.video-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
-.video-summary{font-size:12px;color:var(--muted);line-height:1.6}
-.apply-link{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
+.play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
+.video-info{padding:14px 16px}
+.video-breed{font-size:15px;font-weight:900;color:var(--cream);margin-bottom:2px}
+.video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.video-summary{font-size:11px;color:var(--muted);line-height:1.6}
+.apply-link{display:inline-block;margin-top:9px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
 .apply-link:hover{color:var(--amber-light)}
-/* Lightbox */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;align-items:center;justify-content:center;padding:20px}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:100;align-items:center;justify-content:center;padding:20px}
 .lightbox.open{display:flex}
-.lightbox-inner{width:100%;max-width:900px;position:relative}
+.lightbox-inner{width:100%;max-width:880px;position:relative}
 .lightbox-video{width:100%;aspect-ratio:16/9;background:#000}
 .lightbox-video iframe{width:100%;height:100%;border:none}
-.lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:var(--cream);font-size:28px;cursor:pointer;font-family:'Montserrat',sans-serif;opacity:.7;line-height:1}
+.lightbox-close{position:absolute;top:-38px;right:0;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;opacity:.7;line-height:1;font-family:'Montserrat',sans-serif}
 .lightbox-close:hover{opacity:1}
-.lightbox-title{margin-top:14px;font-size:14px;font-weight:700;color:var(--cream);letter-spacing:.05em}
-footer{border-top:1px solid rgba(200,120,42,.15);padding:16px 32px}
-.footer-left{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.18)}
+.lightbox-title{margin-top:12px;font-size:13px;font-weight:700;color:var(--cream);letter-spacing:.04em}
+footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
+.footer-left{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(242,237,228,.17)}
 @media(max-width:600px){
-  nav{padding:10px 14px}
-  .page-header{padding:36px 16px 28px}
+  nav{padding:9px 13px}
+  .page-header{padding:32px 14px 24px}
   .grid{grid-template-columns:1fr;gap:1px;padding:1px}
-  footer{padding:12px 14px}
+  footer{padding:11px 13px}
 }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-left">
-    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie">
+    <!-- PHOTO SLOT: set src="data:image/jpeg;base64,YOUR_BASE64_HERE" to activate -->
+    <img class="nav-photo" id="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
     <a class="nav-logo" href="index.html">DOGGY HR</a>
   </div>
   <div class="nav-right">
@@ -77,16 +77,13 @@ footer{border-top:1px solid rgba(200,120,42,.15);padding:16px 32px}
     <a class="nav-link" href="mailto:doggydoggyhr@gmail.com">Contact</a>
   </div>
 </nav>
-
 <div class="page-header">
   <div class="page-eyebrow">Doggy HR — Breed Intelligence</div>
   <div class="page-title">THE <span>VIDEOS</span></div>
   <div class="page-sub">Before you apply for a specific breed in Path 02, watch the episode. Chopper will tell you what the breed actually needs. Then decide if you're ready.</div>
   <a class="path2-callout" href="quiz.html">Ready? Apply for a Specific Breed — Path 02 →</a>
 </div>
-
 <div class="grid" id="video-grid"></div>
-
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <div class="lightbox-inner">
     <button class="lightbox-close" onclick="closeLightbox()">×</button>
@@ -96,11 +93,7 @@ footer{border-top:1px solid rgba(200,120,42,.15);padding:16px 32px}
     <div class="lightbox-title" id="lightbox-title"></div>
   </div>
 </div>
-
-<footer>
-  <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
-</footer>
-
+<footer><div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div></footer>
 <script>
 const BREEDS=[
   {key:'bullterrier',name:'Bull Terrier',tag:'Chopper\'s Breed',vid:'P2cvqHUvCx0',summary:'Egg-shaped head. Roman nose. Zero concept of personal space. Fully loyal. Will destroy everything you own with love.'},
@@ -116,7 +109,6 @@ const BREEDS=[
   {key:'staffie',name:'Staffordshire Bull Terrier',tag:'The People Dog',vid:'XxYHTh_p-M4',summary:'Called the nanny dog historically for good reason. Utterly devoted to people. Needs company, structure, and someone who shows up.'},
   {key:'bichon',name:'Bichon Frisé',tag:'The Cloud With Opinions',vid:'TQ0iyTmeXCA',summary:'White, fluffy, deeply convinced of their own importance. Surprisingly robust in personality for something that looks like a bath toy.'}
 ];
-
 function buildGrid(){
   const grid=document.getElementById('video-grid');
   BREEDS.forEach(b=>{
@@ -124,10 +116,8 @@ function buildGrid(){
     card.className='video-card';
     card.innerHTML=`
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
-        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover;display:block" alt="${b.name} episode" loading="lazy">
-        <div class="video-overlay">
-          <div class="play-ring"><div class="play-icon"></div></div>
-        </div>
+        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} episode" loading="lazy">
+        <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
       </div>
       <div class="video-info">
         <div class="video-breed">${b.name}</div>
@@ -138,29 +128,24 @@ function buildGrid(){
     grid.appendChild(card);
   });
 }
-
 function openLightbox(vid,name){
   document.getElementById('lightbox-iframe').src=`https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1`;
   document.getElementById('lightbox-title').textContent='Doggy HR Episode — '+name;
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow='hidden';
 }
-
 function closeLightbox(e){
   if(e&&e.target!==document.getElementById('lightbox')&&!e.target.closest('.lightbox-close'))return;
   document.getElementById('lightbox-iframe').src='';
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow='';
 }
-
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox({target:document.getElementById('lightbox')});});
-
 (function(){
   const img=document.getElementById('nav-photo');
   if(!img.src||img.src===window.location.href){img.style.display='none';}
   img.onerror=function(){this.style.display='none';};
 })();
-
 buildGrid();
 </script>
 </body>
