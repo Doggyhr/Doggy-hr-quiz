@@ -43,8 +43,8 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .breed-btn-name{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
 .breed-btn-tag{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.1em}
 
-/* QUIZ — mobile-first critical fixes */
-#screen-quiz{background:var(--black);align-items:center;padding:24px 16px 100px}
+/* QUIZ — mobile-first, buttons always reachable */
+#screen-quiz{background:var(--black);align-items:center;padding:24px 16px 120px}
 .quiz-inner{max-width:680px;width:100%}
 .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .quiz-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:500}
@@ -55,22 +55,18 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .question-phase{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.8;font-weight:500}
 .question-text{font-size:clamp(19px,3.5vw,27px);font-weight:700;line-height:1.35;color:var(--cream)}
 .answers{display:flex;flex-direction:column;gap:8px}
-.answer-btn{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--cream);padding:14px 16px;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:13px;line-height:1.45;transition:all .2s;display:flex;align-items:flex-start;gap:12px;width:100%;-webkit-tap-highlight-color:transparent}
+.answer-btn{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--cream);padding:16px;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.5;transition:all .2s;display:flex;align-items:flex-start;gap:12px;width:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .answer-btn:hover{border-color:var(--amber);background:rgba(200,120,42,.1)}
 .answer-btn.selected{border-color:var(--amber);background:var(--amber);color:var(--black)}
 .answer-letter{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5;min-width:14px;padding-top:2px;flex-shrink:0;font-weight:700}
 .answer-btn.selected .answer-letter{opacity:.7}
 .response-flash{background:rgba(200,120,42,.12);border-left:3px solid var(--amber);padding:12px 16px;margin-top:10px;font-size:14px;font-weight:500;color:var(--amber-light);display:none}
 .response-flash.visible{display:block}
-/* Nav bar fixed to bottom on mobile so buttons always reachable */
-.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:16px}
-@media(max-width:600px){
-  #screen-quiz{padding:20px 14px 90px}
-  .quiz-nav{position:fixed;bottom:0;left:0;right:0;background:var(--black);border-top:1px solid rgba(200,120,42,.2);padding:12px 16px;margin:0;z-index:50}
-}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--cream);padding:13px 24px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;font-weight:600;min-height:48px}
+/* Nav bar — fixed to bottom always, both desktop and mobile */
+.quiz-nav{position:fixed;bottom:0;left:0;right:0;background:var(--black);border-top:1px solid rgba(200,120,42,.25);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-sizing:border-box}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--cream);padding:16px 28px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;font-weight:600;min-height:52px;touch-action:manipulation}
 .btn-ghost:hover{border-color:var(--cream)}
-.btn-primary{background:var(--amber);border:none;color:var(--black);padding:13px 28px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .2s;min-height:48px}
+.btn-primary{background:var(--amber);border:none;color:var(--black);padding:16px 32px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .2s;min-height:52px;touch-action:manipulation}
 .btn-primary:hover{background:var(--amber-light)}
 .btn-primary:disabled{opacity:.3;cursor:not-allowed}
 
@@ -185,11 +181,12 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 </div>
 
 <div id="screen-breed-select" class="screen">
-  <div style="text-align:center;width:100%;max-width:900px;margin:0 auto;padding:60px 20px">
+  <div style="text-align:center;width:100%;max-width:900px;margin:0 auto;padding:60px 20px;display:flex;flex-direction:column;align-items:center">
     <button class="back-btn" onclick="showScreen('screen-landing')" style="margin:0 auto 32px">← Back</button>
     <div class="section-eyebrow">Path 02 — Specific Breed Test</div>
     <div class="section-title">Select Your Breed</div>
-    <div class="section-sub">Watch the breed episode first. Then apply. <a href="videos.html" style="color:var(--amber);text-decoration:none">Doggy HR Videos →</a></div>
+    <div class="section-sub" style="margin:0 auto 24px;text-align:center">Watch the breed episode first. Then apply. <a href="videos.html" style="color:var(--amber);text-decoration:none">Doggy HR Videos →</a></div>
+    <div id="carryover-notice" style="display:none;background:rgba(200,120,42,.12);border:1px solid rgba(200,120,42,.3);padding:12px 20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:28px;text-align:center">Your 10 core answers have been carried over — you only need to answer 5 breed-specific questions</div>
     <div class="breed-grid" id="breed-grid"></div>
   </div>
 </div>
@@ -465,6 +462,7 @@ const VERDICTS=[
 ];
 
 const TRAIT_LABELS={Discipline:'Discipline',TimeCommitment:'Time',EnergyMatch:'Energy',EmotionalStability:'Emotional',Responsibility:'Responsibility'};
+let savedCoreAnswers={};
 let state={path:null,selectedBreed:null,questions:[],currentQ:0,answers:{}};
 
 function showScreen(id){
@@ -474,6 +472,7 @@ function showScreen(id){
 }
 
 function startPath(path){
+  savedCoreAnswers={};
   state={path,selectedBreed:null,questions:CORE_QUESTIONS,currentQ:0,answers:{}};
   document.getElementById('quiz-mode-label').textContent='Dog Compatibility Test';
   renderQuestion();showScreen('screen-quiz');
@@ -481,6 +480,7 @@ function startPath(path){
 
 function showBreedSelect(){
   const grid=document.getElementById('breed-grid');grid.innerHTML='';
+  const hasCoreAnswers=Object.keys(savedCoreAnswers).length===CORE_QUESTIONS.length;
   Object.entries(BREEDS).forEach(([key,breed])=>{
     const btn=document.createElement('button');
     btn.className='breed-btn';
@@ -488,12 +488,20 @@ function showBreedSelect(){
     btn.onclick=()=>startBreedTest(key);
     grid.appendChild(btn);
   });
+  const notice=document.getElementById('carryover-notice');
+  if(notice){notice.style.display=hasCoreAnswers?'block':'none';}
   showScreen('screen-breed-select');
 }
 
 function startBreedTest(key){
-  state={path:'specific',selectedBreed:key,questions:[...CORE_QUESTIONS,...BREEDS[key].questions],currentQ:0,answers:{}};
-  document.getElementById('quiz-mode-label').textContent=BREEDS[key].name+' Test';
+  const hasCoreAnswers=Object.keys(savedCoreAnswers).length===CORE_QUESTIONS.length;
+  if(hasCoreAnswers){
+    state={path:'specific',selectedBreed:key,questions:BREEDS[key].questions,currentQ:0,answers:{...savedCoreAnswers}};
+    document.getElementById('quiz-mode-label').textContent=BREEDS[key].name+' Test — 5 Questions';
+  } else {
+    state={path:'specific',selectedBreed:key,questions:[...CORE_QUESTIONS,...BREEDS[key].questions],currentQ:0,answers:{}};
+    document.getElementById('quiz-mode-label').textContent=BREEDS[key].name+' Test';
+  }
   renderQuestion();showScreen('screen-quiz');
 }
 
@@ -598,6 +606,11 @@ function renderVideoSlot(breedKey,breedName){
 }
 
 function showResults(){
+  // Save core answers when Path 01 finishes so Path 02 can skip them
+  if(state.path==='discover'){
+    const coreIds=CORE_QUESTIONS.map(q=>q.id);
+    coreIds.forEach(id=>{if(id in state.answers)savedCoreAnswers[id]=state.answers[id];});
+  }
   const content=document.getElementById('results-content');
   state.path==='discover'?renderDiscoverResults(content):renderSpecificResults(content);
   showScreen('screen-results');
@@ -643,7 +656,7 @@ function renderDiscoverResults(container){
   const displayBreeds=isTied?tiedWithFirst.slice(0,5):top3;
   const similar=SIMILAR[scores[0].key]||[];
 
-  // Bug fix: non-#1 ties shown correctly as #2
+  // Tie message for #1 ties
   let tieMessage='';
   if(isTied){
     const msg=tiedWithFirst.length===2
@@ -652,8 +665,17 @@ function renderDiscoverResults(container){
     tieMessage=`<div style="background:var(--black);color:var(--cream);padding:18px 22px;margin-bottom:24px;font-size:13px;font-weight:600;line-height:1.7">${msg}</div>`;
   }
 
-  // Bug fix: show correct rank numbers for non-tied results — #2 and #3 shown when not tied
-  const rankLabel=(i)=>isTied?'#1':`#${i+1}`;
+  // Rank label: tied breeds all get #1; non-tied #2/#3 show correctly
+  // Also handle secondary ties: e.g. if #2 and #3 have same score, show "#2 (tied)"
+  const rankLabel=(i,arr)=>{
+    if(isTied)return'#1';
+    if(i===0)return'#1';
+    // Check if this item ties with any other non-#1 item
+    const thisPct=arr[i].pct;
+    const othersAtSamePct=arr.slice(1).filter(x=>x.pct===thisPct);
+    if(othersAtSamePct.length>1)return`#${i+1} (tied)`;
+    return`#${i+1}`;
+  };
 
   container.innerHTML=`
     <div class="section-eyebrow">Dog Compatibility Test — Results</div>
@@ -664,7 +686,7 @@ function renderDiscoverResults(container){
     <div class="breed-results">
       ${displayBreeds.map((item,i)=>`
         <div class="breed-result-card rank-${isTied?1:i+1}">
-          <div class="breed-result-rank">${rankLabel(i)}</div>
+          <div class="breed-result-rank">${rankLabel(i,displayBreeds)}</div>
           <div class="breed-result-info">
             <div class="breed-result-name">${item.breed.name}</div>
             <div class="breed-result-summary">${item.breed.summary}</div>
