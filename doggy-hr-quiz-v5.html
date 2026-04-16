@@ -9,7 +9,7 @@
 <style>
 :root{--black:#0a0a08;--cream:#f2ede4;--bone:#e8e0d0;--amber:#c8782a;--amber-light:#e8973e;--red:#c23b2e;--green:#2d6a4a;--text:#1a1a16;--muted:#6b6558}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden}
+body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden;overflow-y:auto}
 .screen{display:none;min-height:100vh}
 .screen.active{display:flex;flex-direction:column}
 
@@ -43,8 +43,8 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .breed-btn-name{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
 .breed-btn-tag{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.1em}
 
-/* QUIZ — mobile-first, buttons always reachable */
-#screen-quiz{background:var(--black);align-items:center;padding:24px 16px 120px}
+/* QUIZ — scrollable, buttons always inline and reachable */
+#screen-quiz{background:var(--black);align-items:center;padding:24px 16px 40px;min-height:100vh}
 .quiz-inner{max-width:680px;width:100%}
 .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .quiz-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:500}
@@ -62,11 +62,11 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .answer-btn.selected .answer-letter{opacity:.7}
 .response-flash{background:rgba(200,120,42,.12);border-left:3px solid var(--amber);padding:12px 16px;margin-top:10px;font-size:14px;font-weight:500;color:var(--amber-light);display:none}
 .response-flash.visible{display:block}
-/* Nav bar — fixed to bottom always, both desktop and mobile */
-.quiz-nav{position:fixed;bottom:0;left:0;right:0;background:var(--black);border-top:1px solid rgba(200,120,42,.25);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-sizing:border-box}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--cream);padding:16px 28px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;font-weight:600;min-height:52px;touch-action:manipulation}
+/* Buttons inline — no fixed positioning, works inside iframes on all devices */
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(200,120,42,.2);gap:12px}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--cream);padding:18px 28px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;font-weight:600;min-height:56px;min-width:100px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .btn-ghost:hover{border-color:var(--cream)}
-.btn-primary{background:var(--amber);border:none;color:var(--black);padding:16px 32px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .2s;min-height:52px;touch-action:manipulation}
+.btn-primary{background:var(--amber);border:none;color:var(--black);padding:18px 32px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .2s;min-height:56px;min-width:120px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .btn-primary:hover{background:var(--amber-light)}
 .btn-primary:disabled{opacity:.3;cursor:not-allowed}
 
@@ -537,6 +537,11 @@ function selectAnswer(qId,idx,response){
   const flash=document.getElementById('response-flash');
   flash.textContent=`"${response}"`;flash.classList.add('visible');
   document.getElementById('btn-next-q').disabled=false;
+  // Scroll Continue button into view on mobile after selecting answer
+  setTimeout(()=>{
+    const nav=document.getElementById('btn-next-q');
+    if(nav){nav.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  },150);
 }
 
 function nextQuestion(){
