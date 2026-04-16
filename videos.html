@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doggy HR Videos — All 12 Breed Episodes</title>
+<meta name="description" content="Watch all 12 Doggy HR breed episodes. Learn about each breed before applying. Bull Terrier, Border Collie, Rottweiler and more.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558;--bone:#e8e0d0}
+body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;min-height:100vh}
+nav{display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:1px solid rgba(200,120,42,0.2);gap:12px}
+.nav-left{display:flex;align-items:center;gap:12px}
+.nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
+.nav-logo{font-size:22px;font-weight:900;color:var(--amber);text-decoration:none;letter-spacing:-.01em}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-link{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600}
+.nav-link:hover{color:var(--amber)}
+.nav-icon{width:18px;height:18px;opacity:.4;transition:opacity .2s}
+.nav-icon:hover{opacity:.9}
+.page-header{text-align:center;padding:52px 24px 40px}
+.page-eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-title{font-size:clamp(32px,7vw,72px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:12px}
+.page-title span{color:var(--amber)}
+.page-sub{font-size:14px;color:var(--muted);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.path2-callout{display:inline-block;background:rgba(200,120,42,.12);border:1px solid rgba(200,120,42,.3);padding:12px 24px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);text-decoration:none;transition:all .2s;margin-bottom:0}
+.path2-callout:hover{background:var(--amber);color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;padding:2px;max-width:1200px;margin:0 auto 60px}
+.video-card{background:#111;position:relative;overflow:hidden;cursor:pointer}
+.video-card:hover .video-overlay{opacity:1}
+.video-thumb{width:100%;aspect-ratio:16/9;position:relative;background:#0a0a08}
+.video-thumb iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none}
+.video-overlay{position:absolute;inset:0;background:rgba(10,10,8,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
+.play-ring{width:52px;height:52px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.play-icon{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid var(--amber);margin-left:4px}
+.video-info{padding:16px 18px}
+.video-breed{font-size:16px;font-weight:900;color:var(--cream);margin-bottom:3px}
+.video-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.video-summary{font-size:12px;color:var(--muted);line-height:1.6}
+.apply-link{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
+.apply-link:hover{color:var(--amber-light)}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox-inner{width:100%;max-width:900px;position:relative}
+.lightbox-video{width:100%;aspect-ratio:16/9;background:#000}
+.lightbox-video iframe{width:100%;height:100%;border:none}
+.lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:var(--cream);font-size:28px;cursor:pointer;font-family:'Montserrat',sans-serif;opacity:.7;line-height:1}
+.lightbox-close:hover{opacity:1}
+.lightbox-title{margin-top:14px;font-size:14px;font-weight:700;color:var(--cream);letter-spacing:.05em}
+footer{border-top:1px solid rgba(200,120,42,.15);padding:16px 32px}
+.footer-left{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.18)}
+@media(max-width:600px){
+  nav{padding:10px 14px}
+  .page-header{padding:36px 16px 28px}
+  .grid{grid-template-columns:1fr;gap:1px;padding:1px}
+  footer{padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie">
+    <a class="nav-logo" href="index.html">DOGGY HR</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" href="quiz.html">Take the Test</a>
+    <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@doggyhr" target="_blank" aria-label="TikTok">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+    <a class="nav-link" href="mailto:doggydoggyhr@gmail.com">Contact</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-eyebrow">Doggy HR — Breed Intelligence</div>
+  <div class="page-title">THE <span>VIDEOS</span></div>
+  <div class="page-sub">Before you apply for a specific breed in Path 02, watch the episode. Chopper will tell you what the breed actually needs. Then decide if you're ready.</div>
+  <a class="path2-callout" href="quiz.html">Ready? Apply for a Specific Breed — Path 02 →</a>
+</div>
+
+<div class="grid" id="video-grid"></div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <div class="lightbox-video">
+      <iframe id="lightbox-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+    <div class="lightbox-title" id="lightbox-title"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
+</footer>
+
+<script>
+const BREEDS=[
+  {key:'bullterrier',name:'Bull Terrier',tag:'Chopper\'s Breed',vid:'P2cvqHUvCx0',summary:'Egg-shaped head. Roman nose. Zero concept of personal space. Fully loyal. Will destroy everything you own with love.'},
+  {key:'bordercollie',name:'Border Collie',tag:'The Overachiever',vid:'AjFI_GSgOX0',summary:'The most intelligent breed. Also the most demanding. Requires a full-time job, a training partner, and someone who understands what they signed up for.'},
+  {key:'rottweiler',name:'Rottweiler',tag:'The Calm Powerhouse',vid:'mauOpDmwmz0',summary:'Confident, loyal, deeply loving with their family. Powerful beyond what most people are prepared for.'},
+  {key:'beagle',name:'Beagle',tag:'The Nose With a Dog Attached',vid:'0rJ0zmLC6Xg',summary:'Friendly, curious, constitutionally driven by their nose. Will follow a scent off a cliff without a second thought.'},
+  {key:'bulldog',name:'English Bulldog',tag:'The Stubborn Charmer',vid:'kFlACAoL2cU',summary:'Unmistakable face. Immovable opinions. Snores like a chainsaw. Will occupy your sofa for the duration of their natural life.'},
+  {key:'poodle',name:'Standard Poodle',tag:'The Brilliant One',vid:'AkJ3qo1T5k4',summary:'Among the most intelligent breeds. Not as fussy as the haircut suggests. Significantly smarter than the haircut suggests.'},
+  {key:'labrador',name:'Labrador Retriever',tag:'The Classic',vid:'N0D3fwryn8w',summary:'Enthusiastic, food-obsessed, constitutionally optimistic. Will love everyone you have ever met, including people you don\'t like.'},
+  {key:'frenchbulldog',name:'French Bulldog',tag:'The High Maintenance Charmer',vid:'zy4xTWGz31k',summary:'Compact. Opinionated. Expensive. Will sit on your laptop, your lap, and your life plans.'},
+  {key:'husky',name:'Siberian Husky',tag:'The Escape Artist',vid:'lbTPI2gqt7E',summary:'Beautiful. Loud. Defiant. Requires full-time commitment or they will inform you of this constantly and at volume.'},
+  {key:'chihuahua',name:'Chihuahua',tag:'The Tiny Tyrant',vid:'4pl6y6y8Us8',summary:'Smallest breed. Largest opinion of themselves. Convinced they are 40kg and in charge. Correct about the second part.'},
+  {key:'staffie',name:'Staffordshire Bull Terrier',tag:'The People Dog',vid:'XxYHTh_p-M4',summary:'Called the nanny dog historically for good reason. Utterly devoted to people. Needs company, structure, and someone who shows up.'},
+  {key:'bichon',name:'Bichon Frisé',tag:'The Cloud With Opinions',vid:'TQ0iyTmeXCA',summary:'White, fluffy, deeply convinced of their own importance. Surprisingly robust in personality for something that looks like a bath toy.'}
+];
+
+function buildGrid(){
+  const grid=document.getElementById('video-grid');
+  BREEDS.forEach(b=>{
+    const card=document.createElement('div');
+    card.className='video-card';
+    card.innerHTML=`
+      <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
+        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover;display:block" alt="${b.name} episode" loading="lazy">
+        <div class="video-overlay">
+          <div class="play-ring"><div class="play-icon"></div></div>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-breed">${b.name}</div>
+        <div class="video-tag">${b.tag}</div>
+        <div class="video-summary">${b.summary}</div>
+        <a class="apply-link" href="quiz.html">Apply for this breed →</a>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function openLightbox(vid,name){
+  document.getElementById('lightbox-iframe').src=`https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1`;
+  document.getElementById('lightbox-title').textContent='Doggy HR Episode — '+name;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeLightbox(e){
+  if(e&&e.target!==document.getElementById('lightbox')&&!e.target.closest('.lightbox-close'))return;
+  document.getElementById('lightbox-iframe').src='';
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox({target:document.getElementById('lightbox')});});
+
+(function(){
+  const img=document.getElementById('nav-photo');
+  if(!img.src||img.src===window.location.href){img.style.display='none';}
+  img.onerror=function(){this.style.display='none';};
+})();
+
+buildGrid();
+</script>
+</body>
+</html>

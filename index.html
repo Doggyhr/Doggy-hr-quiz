@@ -11,95 +11,79 @@
 :root{--black:#0a0a08;--cream:#f2ede4;--amber:#c8782a;--amber-light:#e8973e;--muted:#6b6558}
 html,body{height:100%;overflow:hidden}
 body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;display:flex;flex-direction:column}
-
-/* NAV */
-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
-.nav-left{display:flex;align-items:center;gap:14px}
-.nav-photo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
-.nav-logo{font-size:clamp(20px,3.5vw,28px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
-.nav-right{display:flex;align-items:center;gap:20px;flex-shrink:0}
-.nav-link{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600;white-space:nowrap}
+nav{display:flex;justify-content:space-between;align-items:center;padding:11px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
+.nav-left{display:flex;align-items:center;gap:12px}
+.nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
+.nav-logo{font-size:clamp(18px,3vw,25px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.nav-link{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600;white-space:nowrap}
 .nav-link:hover{color:var(--amber)}
-.nav-contact{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,0.4);font-weight:600;white-space:nowrap}
-.nav-icon{width:20px;height:20px;opacity:.4;transition:opacity .2s;flex-shrink:0}
+.nav-contact-email{font-size:10px;letter-spacing:.04em;color:rgba(242,237,228,0.35);text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-contact-email:hover{color:var(--amber)}
+.nav-icon{width:18px;height:18px;opacity:.4;transition:opacity .2s;flex-shrink:0}
 .nav-icon:hover{opacity:.9}
-
-/* MAIN */
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;overflow:hidden;text-align:center;gap:0}
-
-.stamp{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.5);padding:5px 14px;margin-bottom:14px;display:inline-block;flex-shrink:0}
-.title{font-size:clamp(48px,10vw,100px);font-weight:900;letter-spacing:-.02em;color:var(--cream);line-height:.9;margin-bottom:8px;flex-shrink:0;white-space:nowrap}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 24px;overflow:hidden;text-align:center;gap:0}
+.stamp{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.5);padding:4px 12px;margin-bottom:9px;display:inline-block;flex-shrink:0}
+.title{font-size:clamp(40px,8.5vw,88px);font-weight:900;letter-spacing:-.02em;color:var(--cream);line-height:.9;margin-bottom:6px;flex-shrink:0;white-space:nowrap}
 .title span{color:var(--amber)}
-.subtitle{font-size:clamp(12px,2vw,15px);color:var(--muted);margin-bottom:14px;flex-shrink:0}
-.rule{width:40px;height:2px;background:var(--amber);margin:0 auto 14px;flex-shrink:0}
-
-/* CTA BUTTON — dominant, amber, large */
-.cta-btn{background:var(--amber);color:#000;border:none;padding:16px 44px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:12px}
+.subtitle{font-size:clamp(10px,1.7vw,13px);color:var(--muted);margin-bottom:9px;flex-shrink:0}
+.rule{width:34px;height:2px;background:var(--amber);margin:0 auto 9px;flex-shrink:0}
+.cta-btn{background:var(--amber);color:#000;border:none;padding:13px 38px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:9px}
 .cta-btn:hover{background:var(--amber-light)}
-
-/* VIDEO — square 1:1 container */
-.video-wrap{width:200px;flex-shrink:0;margin:0 auto;position:relative}
-.video-box{width:200px;height:200px;position:relative;overflow:hidden;background:#000}
-.video-box iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:356px;height:200px;border:none}
-.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(10,10,8,.5);cursor:pointer;transition:opacity .4s}
-.unmute-text{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);font-weight:600}
-.unmute-ring{width:44px;height:44px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
-.unmute-icon{font-size:18px}
-
-/* DESCRIPTION — white and legible */
-.desc{font-size:clamp(11px,1.8vw,13px);letter-spacing:.06em;text-transform:uppercase;color:rgba(242,237,228,.75);max-width:440px;line-height:1.7;margin-bottom:10px;flex-shrink:0;margin-top:12px}
-
-/* SMALLPRINT */
-.smallprint{font-size:clamp(11px,1.8vw,13px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,228,.35);flex-shrink:0}
-
-/* FOOTER — left side only, no duplicate links */
-footer{display:flex;justify-content:flex-start;align-items:center;padding:10px 32px;border-top:1px solid rgba(200,120,42,.15);flex-shrink:0}
-.footer-left{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.2)}
-
-/* MOBILE */
-@media(max-width:480px){
+/* VIDEO — true 16:9, full width of container, no cropping */
+.video-wrap{width:min(36vh,290px);flex-shrink:0;margin:0 auto}
+.video-box{width:100%;aspect-ratio:16/9;position:relative;background:#000;overflow:hidden}
+.video-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(10,10,8,.5);cursor:pointer;transition:opacity .4s}
+.unmute-text{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);font-weight:600}
+.unmute-ring{width:36px;height:36px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
+.unmute-icon{font-size:15px}
+.videos-link{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,237,228,.38);text-decoration:none;margin-top:5px;display:inline-block;transition:color .2s;flex-shrink:0}
+.videos-link:hover{color:var(--amber)}
+.desc{font-size:clamp(9px,1.5vw,11px);letter-spacing:.06em;text-transform:uppercase;color:rgba(242,237,228,.7);max-width:380px;line-height:1.7;margin:7px 0 6px;flex-shrink:0}
+.smallprint{font-size:clamp(8px,1.3vw,10px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,228,.28);flex-shrink:0}
+footer{display:flex;justify-content:flex-start;align-items:center;padding:7px 32px;border-top:1px solid rgba(200,120,42,.15);flex-shrink:0}
+.footer-left{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.18)}
+@media(max-width:600px){
   html,body{overflow:auto;height:auto}
-  nav{padding:12px 16px}
-  main{padding:24px 16px;overflow:visible;gap:0}
-  .video-wrap,.video-box{width:min(72vw,200px);height:min(72vw,200px)}
-  footer{padding:12px 16px}
+  nav{padding:10px 14px}
+  .nav-contact-email{display:none}
+  main{padding:18px 14px;overflow:visible}
+  .video-wrap{width:min(78vw,290px)}
+  footer{padding:9px 14px}
 }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-left">
-    <!-- BASE64 PHOTO: replace the src value below with your base64 string: data:image/jpeg;base64,/9j/... -->
-    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie — Doggy HR interviewers">
+    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie">
     <div class="nav-logo">DOGGY HR</div>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="quiz.html">Take the Test</a>
+    <a class="nav-link" href="videos.html">Breed Videos</a>
     <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </a>
     <a href="https://www.tiktok.com/@doggyhr" target="_blank" aria-label="TikTok">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
     </a>
-    <span class="nav-contact">doggydoggyhr@gmail.com</span>
+    <a class="nav-link" href="mailto:doggydoggyhr@gmail.com">Contact</a>
+    <a class="nav-contact-email" href="mailto:doggydoggyhr@gmail.com">doggydoggyhr@gmail.com</a>
   </div>
 </nav>
-
 <main>
   <div class="stamp">Dogs Hiring Humans</div>
   <div class="title">DOGGY <span>HR</span></div>
   <div class="subtitle">The world's only dog compatibility test — conducted by the dogs.</div>
   <div class="rule"></div>
-
   <a class="cta-btn" href="quiz.html">Submit Your Application →</a>
-
   <div class="video-wrap">
     <div class="video-box">
       <iframe id="chopper-iframe"
         src="https://www.youtube.com/embed/hXzEyFdWZ3s?autoplay=1&mute=1&controls=0&loop=1&playlist=hXzEyFdWZ3s&rel=0&modestbranding=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
+        allow="autoplay; encrypted-media" allowfullscreen>
       </iframe>
       <div class="unmute-overlay" id="unmute-overlay" onclick="unmute()">
         <div class="unmute-ring"><div class="unmute-icon">🔇</div></div>
@@ -107,28 +91,23 @@ footer{display:flex;justify-content:flex-start;align-items:center;padding:10px 3
       </div>
     </div>
   </div>
-
+  <a class="videos-link" href="videos.html">Watch all 12 breed episodes — Doggy HR Videos →</a>
   <div class="desc">The dog compatibility test that tells you which breed would actually hire you — or reject you on the spot.</div>
   <div class="smallprint">All candidates assessed without mercy · Results are final · No appeals</div>
 </main>
-
 <footer>
   <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
 </footer>
-
 <script>
-// BASE64 PHOTO FALLBACK — if base64 src is empty, hide the img element gracefully
 (function(){
   const img=document.getElementById('nav-photo');
   if(!img.src||img.src===window.location.href){img.style.display='none';}
   img.onerror=function(){this.style.display='none';};
 })();
-
 function unmute(){
   const iframe=document.getElementById('chopper-iframe');
   iframe.src=iframe.src.replace('mute=1','mute=0');
   const overlay=document.getElementById('unmute-overlay');
-  overlay.style.transition='opacity 0.4s';
   overlay.style.opacity='0';
   setTimeout(()=>overlay.style.display='none',400);
 }
