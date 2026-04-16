@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-67LTBW3GY6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-67LTBW3GY6');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dog Compatibility Test — Find Your Perfect Breed | Doggy HR</title>
@@ -475,6 +483,7 @@ function startPath(path){
   savedCoreAnswers={};
   state={path,selectedBreed:null,questions:CORE_QUESTIONS,currentQ:0,answers:{}};
   document.getElementById('quiz-mode-label').textContent='Dog Compatibility Test';
+  if(typeof gtag!=='undefined')gtag('event','quiz_start',{quiz_path:'path_01'});
   renderQuestion();showScreen('screen-quiz');
 }
 
@@ -502,6 +511,7 @@ function startBreedTest(key){
     state={path:'specific',selectedBreed:key,questions:[...CORE_QUESTIONS,...BREEDS[key].questions],currentQ:0,answers:{}};
     document.getElementById('quiz-mode-label').textContent=BREEDS[key].name+' Test';
   }
+  if(typeof gtag!=='undefined')gtag('event','quiz_start',{quiz_path:'path_02',breed:key});
   renderQuestion();showScreen('screen-quiz');
 }
 
@@ -616,6 +626,7 @@ function showResults(){
     const coreIds=CORE_QUESTIONS.map(q=>q.id);
     coreIds.forEach(id=>{if(id in state.answers)savedCoreAnswers[id]=state.answers[id];});
   }
+  if(typeof gtag!=='undefined')gtag('event','quiz_complete',{quiz_path:state.path==='discover'?'path_01':'path_02',breed:state.selectedBreed||'none'});
   const content=document.getElementById('results-content');
   state.path==='discover'?renderDiscoverResults(content):renderSpecificResults(content);
   showScreen('screen-results');
