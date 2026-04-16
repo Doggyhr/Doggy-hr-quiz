@@ -730,7 +730,12 @@ function renderDiscoverResults(container){
 // ── PATH 02 ──────────────────────────────────────────────────────────────────
 function renderSpecificResults(container){
   const breedKey=state.selectedBreed,breed=BREEDS[breedKey];
-  const userTraits=computeTraits(state.questions);
+  // When carry-over is active, state.questions only has 5 breed questions.
+  // We must pass all 15 (core + breed) so core answers are scored correctly.
+  const allQuestions=state.questions.length===BREEDS[breedKey].questions.length
+    ?[...CORE_QUESTIONS,...BREEDS[breedKey].questions]
+    :state.questions;
+  const userTraits=computeTraits(allQuestions);
   const{pct,traitScores}=computeBreedScore(userTraits,breed);
 
   let scoreClass,badgeClass,badgeText,isRejected=false,isSoftFail=false;
