@@ -9,7 +9,9 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a08;font-family:'Montserrat',sans-serif;margin:0;padding:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0}
+nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-photo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
 .nav-logo{font-size:24px;font-weight:900;color:#c8782a;text-decoration:none;letter-spacing:-.01em}
 .nav-back{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,228,.4);text-decoration:none;transition:color .2s;font-weight:600}
 .nav-back:hover{color:#c8782a}
@@ -19,9 +21,20 @@ iframe{display:block;width:100%;flex:1;border:none}
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="index.html">DOGGY HR</a>
+  <div class="nav-left">
+    <!-- BASE64 PHOTO: replace src with data:image/jpeg;base64,/9j/... -->
+    <img class="nav-photo" id="nav-photo" src="" alt="Chopper and Cherie">
+    <a class="nav-logo" href="index.html">DOGGY HR</a>
+  </div>
   <a class="nav-back" href="index.html">← Back to Home</a>
 </nav>
-<iframe src="doggy-hr-quiz-v4.html" title="Doggy HR Dog Compatibility Test"></iframe>
+<iframe src="doggy-hr-quiz-v5.html" title="Doggy HR Dog Compatibility Test"></iframe>
+<script>
+(function(){
+  const img=document.getElementById('nav-photo');
+  if(!img.src||img.src===window.location.href){img.style.display='none';}
+  img.onerror=function(){this.style.display='none';};
+})();
+</script>
 </body>
 </html>
