@@ -11,8 +11,12 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dog Compatibility Test — Find Your Perfect Breed | Doggy HR</title>
-<meta name="description" content="Take the dog compatibility test. Find out which breed suits your lifestyle — or whether your dream breed would actually hire you. Dogs hiring humans since forever.">
+<title>Dog Breed Compatibility Test — Which Dog Breed Is Right for You? | Doggy HR</title>
+<meta name="description" content="The dog breed compatibility test that tells you which breed would actually hire you — or reject you on the spot. Find your perfect dog breed match in under 5 minutes. Free dog breed selector quiz conducted by the dogs.">
+<meta property="og:title" content="Dog Breed Compatibility Test — Find Your Perfect Match | Doggy HR">
+<meta property="og:description" content="Which dog breed is right for you? Take the free dog breed quiz and get a personalised verdict from Chopper the Bull Terrier. 12 breeds. Brutal honesty.">
+<meta property="og:url" content="https://doggyhr.com">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -23,8 +27,6 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 /* NAV */
 nav{display:flex;justify-content:space-between;align-items:center;padding:10px 28px;border-bottom:1px solid rgba(200,120,42,0.2);flex-shrink:0;gap:12px}
 .nav-left{display:flex;align-items:center;gap:10px}
-/* PHOTO: replace the src below with your base64 string to activate */
-/* data:image/jpeg;base64,/9j/4AAQ... */
 .nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
 .nav-logo{font-size:clamp(17px,2.8vw,24px);font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
 .nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
@@ -35,7 +37,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .nav-icon{width:17px;height:17px;opacity:.38;transition:opacity .2s;flex-shrink:0}
 .nav-icon:hover{opacity:.85}
 
-/* MAIN — tight vertical packing */
+/* MAIN */
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 24px;overflow:hidden;text-align:center}
 
 .stamp{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(200,120,42,.45);padding:3px 11px;margin-bottom:7px;display:inline-block;flex-shrink:0}
@@ -48,7 +50,7 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .cta-btn{background:var(--amber);color:#000;border:none;padding:12px 36px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;flex-shrink:0;margin-bottom:8px}
 .cta-btn:hover{background:var(--amber-light)}
 
-/* VIDEO — maximised, true 16:9 */
+/* VIDEO */
 .video-wrap{width:min(72vh,640px);flex-shrink:0;margin:0 auto}
 .video-box{width:100%;aspect-ratio:16/9;position:relative;background:#000;overflow:hidden}
 .video-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
@@ -80,7 +82,6 @@ footer{display:flex;justify-content:flex-start;align-items:center;padding:6px 28
 <body>
 <nav>
   <div class="nav-left">
-    <!-- PHOTO SLOT: set src="data:image/jpeg;base64,YOUR_BASE64_HERE" to activate -->
     <img class="nav-photo" id="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
     <div class="nav-logo">DOGGY HR</div>
   </div>
@@ -135,16 +136,5 @@ function unmute(){
   o.style.opacity='0';setTimeout(()=>o.style.display='none',400);
 }
 </script>
-
-<!-- SEO content block — visible to search engines, hidden visually -->
-<div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;left:-9999px" aria-hidden="true">
-<h1>Doggy HR — Dog Compatibility Test</h1>
-<h2>Find Your Perfect Dog Breed with the World's Only Dog Compatibility Test</h2>
-<p>Doggy HR is a free dog compatibility test that matches your lifestyle to the right dog breed — or tells you exactly why your dream breed would reject you. Take the dog compatibility quiz and find out which breed would actually hire you.</p>
-<p>Our dog breed compatibility test covers 12 breeds including Bull Terrier, Border Collie, Rottweiler, Beagle, English Bulldog, Standard Poodle, Labrador Retriever, French Bulldog, Siberian Husky, Chihuahua, Staffordshire Bull Terrier, and Bichon Frisé.</p>
-<p>Path 01: Answer 10 lifestyle questions and discover your top 3 breed matches. Path 02: Apply directly for a specific breed with 15 targeted questions and receive a personalised verdict from Chopper the Bull Terrier, Doggy HR's lead interviewer.</p>
-<p>This dog compatibility quiz is free, takes under 5 minutes, and is conducted by the dogs themselves. Find your perfect dog breed today at doggyhr.com.</p>
-<p>Dog compatibility test. Dog breed quiz. Which dog breed suits me. Dog breed selector. Dog breed match. Find the right dog breed. Dog personality test. Dog owner quiz. Dog lifestyle compatibility. Best dog breed for me.</p>
-</div>
 </body>
 </html>
