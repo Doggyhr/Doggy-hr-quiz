@@ -42,25 +42,26 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .landing-footer{margin-top:48px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.35)}
 
 #screen-breed-select{background:var(--cream);color:var(--text);align-items:center;padding:60px 20px}
-.section-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.section-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;font-weight:700}
 .section-title{font-size:clamp(32px,6vw,64px);font-weight:900;color:var(--black);margin-bottom:8px}
 .section-sub{font-size:16px;color:var(--muted);margin-bottom:40px;max-width:480px;text-align:center}
-.breed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;max-width:900px;width:100%}
-.breed-btn{background:white;border:1.5px solid var(--bone);color:var(--text);padding:18px 20px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Montserrat',sans-serif}
-.breed-btn:hover{border-color:var(--amber);background:var(--amber);color:white}
-.breed-btn-name{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
-.breed-btn-tag{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.1em}
+.breed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:960px;width:100%}
+.breed-btn{background:white;border:1.5px solid var(--bone);color:var(--text);cursor:pointer;text-align:left;transition:all .2s;font-family:'Montserrat',sans-serif;overflow:hidden;display:flex;flex-direction:column}
+.breed-btn:hover{border-color:var(--amber)}
+.breed-btn-thumb{width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;background-color:#ddd;flex-shrink:0}
+.breed-btn-name{font-size:14px;font-weight:700;display:block;margin-bottom:4px;padding:12px 16px 0}
+.breed-btn-tag{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.1em;display:block;padding:0 16px 12px}
 
 /* QUIZ — scrollable, buttons always inline and reachable */
 #screen-quiz{background:var(--black);align-items:center;padding:24px 16px 40px;min-height:100vh}
 .quiz-inner{max-width:680px;width:100%}
 .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.quiz-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.quiz-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700}
 .quiz-progress-bar{width:100px;height:2px;background:rgba(255,255,255,.1)}
 .quiz-progress-fill{height:100%;background:var(--amber);transition:width .4s ease}
 .question-block{position:relative;margin-bottom:24px}
 .question-number-bg{font-size:clamp(80px,20vw,140px);font-weight:900;line-height:1;color:rgba(255,255,255,.03);position:absolute;right:-10px;top:-16px;pointer-events:none;user-select:none}
-.question-phase{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.8;font-weight:500}
+.question-phase{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:1;font-weight:700}
 .question-text{font-size:clamp(19px,3.5vw,27px);font-weight:700;line-height:1.35;color:var(--cream)}
 .answers{display:flex;flex-direction:column;gap:8px}
 .answer-btn{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--cream);padding:16px;cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.5;transition:all .2s;display:flex;align-items:flex-start;gap:12px;width:100%;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -82,7 +83,7 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .results-inner{max-width:760px;width:100%}
 .verdict-block{background:var(--black);color:var(--cream);padding:32px 36px;margin-bottom:24px;position:relative;overflow:hidden}
 .verdict-block::before{content:'"';font-size:180px;font-weight:900;line-height:1;color:rgba(255,255,255,.04);position:absolute;top:-24px;left:8px;pointer-events:none}
-.verdict-from{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;font-weight:600}
+.verdict-from{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;font-weight:700}
 .verdict-quote{font-size:clamp(15px,2.8vw,20px);line-height:1.6;position:relative}
 .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .score-main{grid-column:1/-1;background:white;border:1.5px solid var(--bone);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
@@ -114,17 +115,17 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .proximity-note{grid-column:1/-1;background:rgba(200,120,42,.08);border-left:3px solid var(--amber);padding:14px 18px;font-size:12px;line-height:1.75;color:var(--text)}
 .section-divider{display:flex;align-items:center;gap:14px;margin:28px 0 18px}
 .section-divider-line{flex:1;height:1px;background:var(--bone)}
-.section-divider-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.section-divider-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .weakness-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
 .weakness-item{background:white;border:1.5px solid var(--bone);border-left:4px solid var(--amber);padding:14px 18px}
 .weakness-title{font-size:13px;font-weight:700;color:var(--black);margin-bottom:4px}
 .weakness-text{font-size:12px;line-height:1.7;color:var(--muted)}
 .similar-block{background:white;border:1.5px solid var(--bone);border-left:4px solid var(--amber);padding:16px 20px;margin-bottom:24px}
-.similar-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:600}
+.similar-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:700}
 .similar-breeds{font-size:13px;color:var(--muted);line-height:1.9}
 .rejection-prep{background:white;border:1.5px solid var(--bone);border-left:4px solid var(--muted);padding:16px 20px;margin-bottom:24px;font-size:13px;line-height:1.8;color:var(--muted)}
 .video-slot{background:var(--black);padding:24px;margin-bottom:24px;text-align:center}
-.video-slot-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:600}
+.video-slot-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:700}
 .video-cta{font-size:12px;color:rgba(242,237,228,.5);margin-bottom:12px}
 .video-cta a{color:var(--amber);text-decoration:none}
 .video-slot iframe{width:100%;max-width:560px;height:315px;border:none}
@@ -192,8 +193,8 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
   <div style="text-align:center;width:100%;max-width:900px;margin:0 auto;padding:60px 20px;display:flex;flex-direction:column;align-items:center">
     <button class="back-btn" onclick="showScreen('screen-landing')" style="margin:0 auto 32px">← Back</button>
     <div class="section-eyebrow">Path 02 — Specific Breed Test</div>
-    <div class="section-title">Select Your Breed</div>
-    <div class="section-sub" style="margin:0 auto 24px;text-align:center">Watch the breed episode first. Then apply. <a href="videos.html" style="color:var(--amber);text-decoration:none">Doggy HR Videos →</a></div>
+    <div class="section-title">Select Your Interviewer</div>
+    <div class="section-sub" style="margin:0 auto 24px;text-align:center">Prepare for your interview. <a href="videos.html" style="color:var(--amber);text-decoration:none">Meet the Interview Panel →</a></div>
     <div id="carryover-notice" style="display:none;background:rgba(200,120,42,.12);border:1px solid rgba(200,120,42,.3);padding:12px 20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:28px;text-align:center">Your 10 core answers have been carried over — you only need to answer 5 breed-specific questions</div>
     <div class="breed-grid" id="breed-grid"></div>
   </div>
@@ -491,9 +492,14 @@ function showBreedSelect(){
   const grid=document.getElementById('breed-grid');grid.innerHTML='';
   const hasCoreAnswers=Object.keys(savedCoreAnswers).length===CORE_QUESTIONS.length;
   Object.entries(BREEDS).forEach(([key,breed])=>{
+    const vid=VIDEOS[key];
+    const thumbUrl=vid?`https://img.youtube.com/vi/${vid}/mqdefault.jpg`:'';
     const btn=document.createElement('button');
     btn.className='breed-btn';
-    btn.innerHTML=`<span class="breed-btn-name">${breed.name}</span><span class="breed-btn-tag">${breed.tag}</span>`;
+    btn.innerHTML=`
+      ${thumbUrl?`<div class="breed-btn-thumb" style="background-image:url('${thumbUrl}')"></div>`:''}
+      <span class="breed-btn-name">${breed.name}</span>
+      <span class="breed-btn-tag">${breed.tag}</span>`;
     btn.onclick=()=>startBreedTest(key);
     grid.appendChild(btn);
   });
@@ -654,9 +660,11 @@ function renderDiscoverResults(container){
     return;
   }
 
-  // L2 — top 3 all 92%+
+  // L2 — genuinely exceptional: even the LOWEST-scoring breed hits 88%+
+  // (Prevents all-middle answers from triggering this — that scores ~73% on hardest breeds)
   const top3=scores.slice(0,3);
-  if(top3.every(s=>s.pct>=92)){
+  const lowestPct=scores[scores.length-1].pct;
+  if(lowestPct>=88){
     container.innerHTML=`
       <div class="section-eyebrow">Dog Compatibility Test — Results</div>
       <div class="verdict-block"><div class="verdict-from">Chopper · Bull Terrier · Lead Interviewer</div><div class="verdict-quote">You are compatible with every breed in our programme. That is rare. Take Path 02 to find your specific best match — because compatible with all is not the same as perfect for one.</div></div>

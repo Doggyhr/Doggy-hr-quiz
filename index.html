@@ -51,13 +51,13 @@ main{flex:1;display:flex;flex-direction:column;align-items:center;justify-conten
 .cta-btn:hover{background:var(--amber-light)}
 
 /* VIDEO */
-.video-wrap{width:min(72vh,640px);flex-shrink:0;margin:0 auto}
+.video-wrap{width:100%;max-width:680px;flex-shrink:0;margin:0 auto}
 .video-box{width:100%;aspect-ratio:16/9;position:relative;background:#000;overflow:hidden}
 .video-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 .unmute-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(10,10,8,.48);cursor:pointer;transition:opacity .4s}
-.unmute-text{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:var(--cream);font-weight:600}
-.unmute-ring{width:40px;height:40px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
-.unmute-icon{font-size:17px}
+.unmute-text{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--cream);font-weight:800}
+.unmute-ring{width:44px;height:44px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
+.unmute-icon{font-size:19px}
 
 .videos-link{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,228,.35);text-decoration:none;margin-top:5px;display:inline-block;transition:color .2s;flex-shrink:0}
 .videos-link:hover{color:var(--amber)}
@@ -87,7 +87,7 @@ footer{display:flex;justify-content:flex-start;align-items:center;padding:6px 28
   </div>
   <div class="nav-right">
     <a class="nav-link" href="quiz.html">Take the Test</a>
-    <a class="nav-link" href="videos.html">Breed Videos</a>
+    <a class="nav-link" href="videos.html">Prepare for Interview</a>
     <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </a>
@@ -116,7 +116,7 @@ footer{display:flex;justify-content:flex-start;align-items:center;padding:6px 28
       </div>
     </div>
   </div>
-  <a class="videos-link" href="videos.html">Watch all 12 breed episodes — Doggy HR Videos →</a>
+  <a class="videos-link" href="videos.html">Meet the interview panel — all 12 breed episodes →</a>
   <div class="desc">The dog compatibility test that tells you which breed would actually hire you — or reject you on the spot.</div>
   <div class="smallprint">All candidates assessed without mercy · Results are final · No appeals</div>
 </main>

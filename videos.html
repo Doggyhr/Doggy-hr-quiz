@@ -32,7 +32,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .nav-icon{width:17px;height:17px;opacity:.38;transition:opacity .2s}
 .nav-icon:hover{opacity:.85}
 .page-header{text-align:center;padding:48px 24px 36px}
-.page-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.page-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;font-weight:800}
 .page-title{font-size:clamp(30px,7vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:10px}
 .page-title span{color:var(--amber)}
 .page-sub{font-size:13px;color:var(--muted);max-width:460px;margin:0 auto 24px;line-height:1.7}
@@ -45,11 +45,12 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .video-card:hover .video-thumb img{transform:scale(1.03)}
 .video-overlay{position:absolute;inset:0;background:rgba(10,10,8,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
 .video-card:hover .video-overlay{opacity:1}
+.interviewer-badge{position:absolute;top:10px;left:10px;background:var(--amber);color:#000;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;pointer-events:none}
 .play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
 .video-info{padding:14px 16px}
 .video-breed{font-size:15px;font-weight:900;color:var(--cream);margin-bottom:2px}
-.video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:800}
 .video-summary{font-size:11px;color:var(--muted);line-height:1.6}
 .apply-link{display:inline-block;margin-top:9px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
 .apply-link:hover{color:var(--amber-light)}
@@ -89,10 +90,10 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
   </div>
 </nav>
 <div class="page-header">
-  <div class="page-eyebrow">Doggy HR — Breed Intelligence</div>
-  <div class="page-title">THE <span>VIDEOS</span></div>
-  <div class="page-sub">Before you apply for a specific breed in Path 02, watch the episode. Chopper will tell you what the breed actually needs. Then decide if you're ready.</div>
-  <a class="path2-callout" href="quiz.html">Ready? Apply for a Specific Breed — Path 02 →</a>
+  <div class="page-eyebrow">Doggy HR — Interview Panel</div>
+  <div class="page-title">PREPARE FOR YOUR <span>INTERVIEW</span></div>
+  <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready. Watch first. Apply second.</div>
+  <a class="path2-callout" href="quiz.html">Ready? Select Your Interviewer — Path 02 →</a>
 </div>
 <div class="grid" id="video-grid"></div>
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -127,14 +128,15 @@ function buildGrid(){
     card.className='video-card';
     card.innerHTML=`
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
-        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} dog breed episode" loading="lazy">
+        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} interviewer episode" loading="lazy">
         <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
+        <div class="interviewer-badge">Meet Your Interviewer</div>
       </div>
       <div class="video-info">
         <div class="video-breed">${b.name}</div>
         <div class="video-tag">${b.tag}</div>
         <div class="video-summary">${b.summary}</div>
-        <a class="apply-link" href="quiz.html">Apply for this breed →</a>
+        <a class="apply-link" href="quiz.html">Apply for this position →</a>
       </div>`;
     grid.appendChild(card);
   });
