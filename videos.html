@@ -49,8 +49,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
 .video-info{padding:14px 16px}
-.video-breed{font-size:15px;font-weight:900;color:var(--cream);margin-bottom:2px}
-.video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:800}
+.video-breed{font-size:19px;font-weight:900;color:var(--cream);margin-bottom:4px}
+.video-tag{font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:800}
 .video-summary{font-size:11px;color:var(--muted);line-height:1.6}
 .apply-link{display:inline-block;margin-top:9px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
 .apply-link:hover{color:var(--amber-light)}
@@ -79,7 +79,7 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
     <a class="nav-logo" href="index.html">DOGGY HR</a>
   </div>
   <div class="nav-right">
-    <a class="nav-link" href="quiz.html">Take the Test</a>
+    <a class="nav-link" href="quiz.html">Take the Quiz</a>
     <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </a>
@@ -93,7 +93,7 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
   <div class="page-eyebrow">Doggy HR — Interview Panel</div>
   <div class="page-title">PREPARE FOR YOUR <span>INTERVIEW</span></div>
   <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready. Watch first. Apply second.</div>
-  <a class="path2-callout" href="quiz.html">Ready? Select Your Interviewer — Path 02 →</a>
+  <a class="path2-callout" href="quiz.html?path=2">Ready? Select Your Interviewer — Path 02 →</a>
 </div>
 <div class="grid" id="video-grid"></div>
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -130,13 +130,12 @@ function buildGrid(){
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
         <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} interviewer episode" loading="lazy">
         <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
-        <div class="interviewer-badge">Meet Your Interviewer</div>
       </div>
       <div class="video-info">
         <div class="video-breed">${b.name}</div>
         <div class="video-tag">${b.tag}</div>
         <div class="video-summary">${b.summary}</div>
-        <a class="apply-link" href="quiz.html">Apply for this position →</a>
+        <a class="apply-link" href="quiz.html?breed=${b.key}">Apply for this position →</a>
       </div>`;
     grid.appendChild(card);
   });
