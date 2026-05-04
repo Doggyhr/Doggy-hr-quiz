@@ -11,9 +11,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dog Breed Compatibility Quiz — Which Dog Breed Is Right for You? | Doggy HR</title>
-<meta name="description" content="The dog breed compatibility quiz that tells you which breed would actually hire you — or reject you on the spot. Find your perfect dog breed match in under 5 minutes. Free quiz conducted by the dogs.">
+<meta name="description" content="The dog breed compatibility quiz that tells you which breed would actually hire you — or reject you on the spot. Free. Conducted by the dogs.">
 <meta property="og:title" content="Dog Breed Compatibility Quiz — Find Your Perfect Match | Doggy HR">
-<meta property="og:description" content="Which dog breed is right for you? Take the free dog breed quiz and get a personalised verdict from Chopper the Bull Terrier. 12 breeds. Brutal honesty.">
+<meta property="og:description" content="Which dog breed is right for you? Free quiz. Personalised verdict from Chopper the Bull Terrier. 16 breeds. Brutal honesty.">
 <meta property="og:url" content="https://doggyhr.com">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -25,14 +25,12 @@
   --amber:#c8782a;
   --amber-light:#e8973e;
 }
-
-/* ── BASE ── */
 html,body{
   height:100%;
-  overflow:hidden;
   background:var(--black);
   color:var(--cream);
   font-family:'Montserrat',sans-serif;
+  overflow:hidden;
 }
 
 /* ── NAV ── */
@@ -40,36 +38,32 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:8px 20px;
-  border-bottom:1px solid rgba(200,120,42,0.2);
+  padding:0 24px;
   height:52px;
-}
-.nav-left{display:flex;align-items:center;gap:10px}
-.nav-photo{
-  width:34px;height:34px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid rgba(200,120,42,0.7);
+  border-bottom:1px solid rgba(200,120,42,0.2);
   flex-shrink:0;
 }
-.nav-logo{font-size:20px;font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-link{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,228,0.5);text-decoration:none;transition:color .2s;font-weight:700;white-space:nowrap}
-.nav-link:hover{color:var(--amber)}
-.nav-icon{width:17px;height:17px;opacity:.4;transition:opacity .2s;flex-shrink:0;color:var(--cream)}
-.nav-icon:hover{opacity:.9}
+.nav-left{display:flex;align-items:center;gap:10px;}
+.nav-photo{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(200,120,42,0.7);flex-shrink:0;}
+.nav-logo{font-size:20px;font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-link{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,228,0.55);text-decoration:none;transition:color .2s;font-weight:700;white-space:nowrap;}
+.nav-link:hover{color:var(--amber);}
+.nav-icon{width:17px;height:17px;opacity:.4;transition:opacity .2s;flex-shrink:0;color:var(--cream);}
+.nav-icon:hover{opacity:.9;}
 
-/* ── PAGE: flex column, fills screen exactly ── */
+/* ── PAGE ──
+   Use a fixed layout: nav=52px, footer=28px, page fills the rest.
+   No overflow:hidden on page — let flex handle it. */
 .page{
+  height:calc(100vh - 80px);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:8px 20px 6px;
-  gap:8px;
-  height:calc(100vh - 52px);
-  overflow:hidden;
+  padding:12px 24px 8px;
+  gap:9px;
 }
 
 /* STAMP */
@@ -79,152 +73,159 @@ nav{
   color:var(--amber);
   border:1.5px solid rgba(200,120,42,.5);
   padding:5px 16px;
-  display:inline-block;flex-shrink:0;
+  flex-shrink:0;
 }
 
 /* TITLE */
 .title{
-  font-size:clamp(54px,12vw,100px);
+  font-size:clamp(56px,10vw,100px);
   font-weight:900;letter-spacing:-.03em;
-  color:var(--cream);line-height:.9;flex-shrink:0;
+  color:var(--cream);line-height:.9;
+  flex-shrink:0;
 }
-.title span{color:var(--amber)}
+.title span{color:var(--amber);}
 
-/* SUBTITLE */
+/* SUBTITLE — one line on desktop, two max on mobile */
 .subtitle{
-  font-size:clamp(15px,2.4vw,20px);
-  color:var(--cream);opacity:.88;
-  max-width:500px;line-height:1.4;
-  font-weight:600;flex-shrink:0;
+  font-size:clamp(14px,1.6vw,18px);
+  color:var(--cream);
+  opacity:.85;
+  line-height:1.45;
+  font-weight:600;
+  flex-shrink:0;
+  /* prevent 3-line wrap on desktop */
+  max-width:680px;
+  white-space:normal;
 }
 
-.rule{width:36px;height:2px;background:var(--amber);margin:0 auto;flex-shrink:0}
+.rule{width:36px;height:2px;background:var(--amber);flex-shrink:0;}
 
 /* ── CTA BUTTON ── */
 .cta-btn{
   background:var(--amber);
-  color:#000;border:none;
-  padding:18px 48px 16px;
+  color:#000;
+  border:none;
+  border-bottom:4px solid rgba(0,0,0,0.25);
+  padding:16px 0 14px;
   font-family:'Montserrat',sans-serif;
   text-transform:uppercase;
   cursor:pointer;text-decoration:none;
-  display:inline-flex;flex-direction:column;
+  display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  gap:5px;
-  transition:background .2s, transform .15s;
+  gap:4px;
+  transition:background .2s,transform .15s;
   flex-shrink:0;
-  width:min(420px, 88vw);
-  /* visible border so it reads unmistakably as a button */
-  border-bottom:4px solid rgba(0,0,0,0.25);
+  /* match video width exactly */
+  width:min(560px,88vw);
 }
-.cta-btn:hover{background:var(--amber-light);transform:translateY(-2px)}
-.cta-btn:active{transform:translateY(2px);border-bottom-width:1px}
+.cta-btn:hover{background:var(--amber-light);transform:translateY(-2px);}
+.cta-btn:active{transform:translateY(2px);border-bottom-width:1px;}
 .btn-main{
-  font-size:clamp(22px,5.5vw,32px);
+  font-size:clamp(22px,3.2vw,30px);
   font-weight:900;letter-spacing:.13em;
   line-height:1;color:#000;
-  /* big solid arrow, not a text dash */
   display:flex;align-items:center;gap:10px;
 }
-.btn-arrow{
-  font-size:clamp(26px,6vw,36px);
-  font-weight:900;line-height:1;
-  /* use a heavier unicode arrow */
-  font-style:normal;
-}
+.btn-arrow{font-size:1.2em;line-height:1;}
 .btn-sub{
-  font-size:clamp(12px,2.2vw,15px);
-  font-weight:800;letter-spacing:.2em;
-  line-height:1;color:rgba(0,0,0,0.55);
+  font-size:clamp(11px,1.2vw,13px);
+  font-weight:800;letter-spacing:.22em;
+  line-height:1;color:rgba(0,0,0,0.5);
 }
 
-/* ── VIDEO ── */
+/* ── VIDEO ── 
+   Key insight: YouTube embeds render their player offset to the right internally.
+   Fix: make iframe 110% wide/tall, shift left 5% to recentre, clip overflow. */
 .video-wrap{
-  width:100%;
-  max-width:min(640px,88vw);
-  flex-shrink:1;min-height:0;
+  width:min(560px,88vw);
+  flex-shrink:1;
+  min-height:0;
 }
 .video-box{
-  width:100%;aspect-ratio:16/9;
-  position:relative;background:#000;
+  width:100%;
+  aspect-ratio:16/9;
+  position:relative;
+  background:#000;
   overflow:hidden;
 }
-/* VIDEO FIX: scale+center iframe to kill YouTube's internal offset on mobile */
 .video-box iframe{
   position:absolute;
-  top:50%;left:50%;
-  width:100%;height:100%;
-  transform:translate(-50%,-50%);
+  /* overscan slightly to crop YouTube's internal offset chrome */
+  top:-5%;left:-5%;
+  width:110%;height:110%;
   border:none;display:block;
 }
 .unmute-overlay{
-  position:absolute;inset:0;
+  position:absolute;inset:0;z-index:2;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:8px;
   background:rgba(10,10,8,.5);
-  cursor:pointer;transition:opacity .4s;z-index:2;
+  cursor:pointer;transition:opacity .4s;
 }
-.unmute-text{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--cream);font-weight:800}
-.unmute-ring{width:46px;height:46px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
-.unmute-icon{font-size:21px}
+.unmute-text{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--cream);font-weight:800;}
+.unmute-ring{width:46px;height:46px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center;}
+.unmute-icon{font-size:21px;}
 
 /* ── BOTTOM ── */
 .bottom{
   display:flex;flex-direction:column;
-  align-items:center;gap:4px;flex-shrink:0;
+  align-items:center;gap:4px;
+  flex-shrink:0;
 }
 .videos-link{
-  font-size:13px;font-weight:700;
+  font-size:12px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;
-  color:var(--cream);opacity:.7;
+  color:var(--cream);opacity:.65;
   text-decoration:none;transition:opacity .2s;
 }
-.videos-link:hover{opacity:1;color:var(--amber)}
+.videos-link:hover{opacity:1;color:var(--amber);}
 .smallprint{
-  font-size:11px;font-weight:700;
+  font-size:10px;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;
-  color:rgba(242,237,228,.4);
+  color:rgba(242,237,228,.35);
 }
 
 /* ── FOOTER ── */
 footer{
-  text-align:center;padding:5px 20px;
+  height:28px;
+  display:flex;align-items:center;justify-content:center;
   border-top:1px solid rgba(200,120,42,.1);
+  flex-shrink:0;
 }
-.footer-left{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(242,237,228,.18)}
+.footer-left{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(242,237,228,.18);}
 
-/* ── MOBILE ── */
+/* ── MOBILE ≤600px ──
+   Keep nav links visible but smaller. Shrink gaps. */
 @media(max-width:600px){
-  nav{padding:7px 14px;height:50px}
-  /* photo + logo always visible; hide nav links + icons on mobile */
-  .nav-link{display:none}
-  .nav-icon{display:none}
+  nav{padding:0 14px;height:48px;}
+  /* Show Take the Quiz only, hide others to save space */
+  .nav-link:nth-child(2),
+  .nav-link:nth-child(3){display:none;}
+  .nav-icon{display:none;}
 
   .page{
-    padding:6px 14px 4px;
-    gap:6px;
-    height:calc(100vh - 50px);
+    height:calc(100vh - 76px);
+    padding:8px 14px 6px;
+    gap:7px;
   }
-  .stamp{font-size:11px;padding:4px 12px}
-  .title{font-size:clamp(48px,14vw,72px)}
-  .subtitle{font-size:clamp(14px,4vw,17px);max-width:100%}
-  .cta-btn{padding:16px 0 14px;width:88vw}
-  .btn-main{font-size:clamp(20px,6.5vw,26px)}
-  .btn-arrow{font-size:clamp(24px,7vw,30px)}
-  .btn-sub{font-size:clamp(11px,3.2vw,13px)}
-  .video-wrap{max-width:100%;width:100%}
-  .videos-link{font-size:12px}
-  .smallprint{font-size:10px}
-  footer{padding:4px 13px}
+  .stamp{font-size:11px;padding:4px 11px;}
+  .title{font-size:clamp(46px,13vw,68px);}
+  .subtitle{font-size:clamp(13px,3.8vw,16px);max-width:100%;}
+  .cta-btn{width:92vw;padding:15px 0 13px;}
+  .btn-main{font-size:clamp(20px,6vw,26px);}
+  .btn-sub{font-size:clamp(10px,2.8vw,12px);}
+  .video-wrap{width:92vw;}
+  .videos-link{font-size:11px;}
+  .smallprint{font-size:9px;}
+  footer{height:24px;}
 }
 
-@media(max-width:380px){
-  .page{gap:5px}
-  .stamp{font-size:10px}
-  .title{font-size:46px}
-  .subtitle{font-size:13px}
-  .btn-main{font-size:19px}
-  .btn-sub{font-size:10px}
+/* Very small (iPhone SE) */
+@media(max-width:375px){
+  .page{gap:5px;}
+  .title{font-size:44px;}
+  .subtitle{font-size:12px;}
+  .btn-main{font-size:19px;}
 }
 </style>
 </head>
