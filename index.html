@@ -25,6 +25,8 @@
   --amber:#c8782a;
   --amber-light:#e8973e;
 }
+
+/* USE dvh (dynamic viewport height) — fixes iOS Safari toolbar gap permanently */
 html,body{
   height:100%;
   background:var(--black);
@@ -33,7 +35,7 @@ html,body{
   overflow:hidden;
 }
 
-/* NAV — fixed height, no wrap */
+/* NAV */
 nav{
   display:flex;
   justify-content:space-between;
@@ -41,8 +43,9 @@ nav{
   padding:0 24px;
   height:48px;
   border-bottom:1px solid rgba(200,120,42,0.2);
+  flex-shrink:0;
 }
-.nav-left{display:flex;align-items:center;gap:10px;min-width:0;}
+.nav-left{display:flex;align-items:center;gap:10px;}
 .nav-photo{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(200,120,42,0.7);flex-shrink:0;}
 .nav-logo{font-size:18px;font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap;}
 .nav-right{display:flex;align-items:center;gap:18px;flex-shrink:0;}
@@ -51,17 +54,21 @@ nav{
 .nav-icon{width:15px;height:15px;opacity:.4;transition:opacity .2s;flex-shrink:0;color:var(--cream);}
 .nav-icon:hover{opacity:.9;}
 
-/* FOOTER — fixed height */
+/* FOOTER */
 footer{
   height:26px;
   display:flex;align-items:center;justify-content:center;
   border-top:1px solid rgba(200,120,42,.1);
+  flex-shrink:0;
 }
 .footer-left{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,237,228,.16);}
 
-/* PAGE — fills exact remaining space, NO overflow hidden */
+/* PAGE
+   KEY FIX: use 100dvh not 100vh.
+   dvh = dynamic viewport height = accounts for iOS Safari's
+   collapsible toolbar. This is why the gap kept appearing. */
 .page{
-  height:calc(100vh - 74px);
+  height:calc(100dvh - 74px);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -90,7 +97,7 @@ footer{
 }
 .title span{color:var(--amber);}
 
-/* SUBTITLE — single line on desktop */
+/* SUBTITLE */
 .subtitle{
   font-size:clamp(13px,1.4vw,17px);
   color:var(--cream);opacity:.85;
@@ -132,7 +139,7 @@ footer{
   line-height:1;color:rgba(0,0,0,0.5);
 }
 
-/* VIDEO CONTAINER — same width as button */
+/* VIDEO — same width as button */
 .video-wrap{
   width:min(540px,90vw);
   flex-shrink:1;
@@ -145,16 +152,16 @@ footer{
   background:#000;
   overflow:hidden;
 }
-/* THE VIDEO FIX:
-   YouTube's player renders Chopper offset to the right.
-   We make the iframe 120% wide, then shift it LEFT by 20%
-   so the content (Chopper) moves left into centre frame.
-   overflow:hidden on .video-box clips the excess. */
+/* VIDEO OFFSET FIX:
+   Chopper sits slightly left of centre in the YouTube player.
+   Shift iframe RIGHT by 10%: left:-0%, width:110%, then
+   nudge left:-5% to recentre — net effect: +5% rightward shift. 
+   Adjust left value: more negative = more right. */
 .video-box iframe{
   position:absolute;
   top:0;
-  left:-20%;
-  width:120%;
+  left:-5%;
+  width:110%;
   height:100%;
   border:none;
   display:block;
@@ -170,7 +177,7 @@ footer{
 .unmute-ring{width:44px;height:44px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center;}
 .unmute-icon{font-size:20px;}
 
-/* BOTTOM LINKS */
+/* BOTTOM */
 .bottom{
   display:flex;flex-direction:column;
   align-items:center;gap:3px;
@@ -191,18 +198,17 @@ footer{
 
 /* MOBILE */
 @media(max-width:600px){
-  nav{padding:0 12px;height:46px;}
-  /* Keep logo + photo + Take the Quiz only */
-  .nav-link:not(:first-child){display:none;}
+  nav{padding:0 14px;height:46px;}
+  /* Show all links but smaller — never hide nav items again */
+  .nav-link{font-size:8px;letter-spacing:.08em;}
   .nav-icon{display:none;}
-  /* make Take the Quiz not overlap logo */
-  .nav-right{gap:0;}
-  .nav-link:first-child{font-size:9px;letter-spacing:.1em;}
+  .nav-right{gap:10px;}
 
   footer{height:22px;}
 
+  /* dvh fix for mobile too */
   .page{
-    height:calc(100vh - 68px);
+    height:calc(100dvh - 68px);
     padding:6px 12px 4px;
     gap:6px;
   }
@@ -218,6 +224,8 @@ footer{
 }
 
 @media(max-width:375px){
+  .nav-link{font-size:7px;}
+  .nav-right{gap:7px;}
   .page{gap:5px;}
   .title{font-size:42px;}
   .subtitle{font-size:12px;}
@@ -270,7 +278,7 @@ footer{
   </div>
 
   <div class="bottom">
-    <a class="videos-link" href="videos.html">Meet the interview panel &mdash; all 16 breed episodes &rarr;</a>
+    <a class="videos-link" href="videos.html">All 16 breed profiles &rarr;</a>
     <div class="smallprint">All candidates assessed without mercy &middot; Results are final &middot; No appeals</div>
   </div>
 </div>
