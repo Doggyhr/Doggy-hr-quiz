@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-67LTBW3GY6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dog Breed Compatibility Quiz — Which Dog Breed Is Right for You? | Doggy HR</title>
-<meta name="description" content="The dog breed compatibility quiz that tells you which breed would actually hire you — or reject you on the spot. Find your perfect dog breed match in under 5 minutes. Free dog breed selector quiz conducted by the dogs.">
+<meta name="description" content="The dog breed compatibility quiz that tells you which breed would actually hire you — or reject you on the spot. Find your perfect dog breed match in under 5 minutes. Free quiz conducted by the dogs.">
 <meta property="og:title" content="Dog Breed Compatibility Quiz — Find Your Perfect Match | Doggy HR">
 <meta property="og:description" content="Which dog breed is right for you? Take the free dog breed quiz and get a personalised verdict from Chopper the Bull Terrier. 12 breeds. Brutal honesty.">
 <meta property="og:url" content="https://doggyhr.com">
@@ -26,6 +25,8 @@
   --amber:#c8782a;
   --amber-light:#e8973e;
 }
+
+/* ── BASE ── */
 html,body{
   height:100%;
   overflow:hidden;
@@ -41,141 +42,125 @@ nav{
   align-items:center;
   padding:8px 20px;
   border-bottom:1px solid rgba(200,120,42,0.2);
+  height:52px;
 }
 .nav-left{display:flex;align-items:center;gap:10px}
-/* PHOTO FIX: explicit block display, no hide logic */
 .nav-photo{
-  width:36px;height:36px;
+  width:34px;height:34px;
   border-radius:50%;
   object-fit:cover;
-  border:1.5px solid rgba(200,120,42,0.6);
+  border:2px solid rgba(200,120,42,0.7);
   flex-shrink:0;
-  display:block;
 }
 .nav-logo{font-size:20px;font-weight:900;color:var(--amber);letter-spacing:-.01em;white-space:nowrap}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-link{
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(242,237,228,0.5);text-decoration:none;
-  transition:color .2s;font-weight:600;white-space:nowrap;
-}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-link{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,228,0.5);text-decoration:none;transition:color .2s;font-weight:700;white-space:nowrap}
 .nav-link:hover{color:var(--amber)}
 .nav-icon{width:17px;height:17px;opacity:.4;transition:opacity .2s;flex-shrink:0;color:var(--cream)}
 .nav-icon:hover{opacity:.9}
 
-/* ── PAGE: single flex column, fills screen below nav ── */
+/* ── PAGE: flex column, fills screen exactly ── */
 .page{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:10px 20px 6px;
-  gap:7px;
-  height:calc(100vh - 53px);
+  padding:8px 20px 6px;
+  gap:8px;
+  height:calc(100vh - 52px);
+  overflow:hidden;
 }
 
-/* STAMP — bold, bigger */
+/* STAMP */
 .stamp{
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:.22em;
-  text-transform:uppercase;
+  font-size:13px;font-weight:900;
+  letter-spacing:.22em;text-transform:uppercase;
   color:var(--amber);
-  border:1px solid rgba(200,120,42,.5);
+  border:1.5px solid rgba(200,120,42,.5);
   padding:5px 16px;
-  display:inline-block;
-  flex-shrink:0;
+  display:inline-block;flex-shrink:0;
 }
 
 /* TITLE */
 .title{
-  font-size:clamp(52px,11vw,96px);
-  font-weight:900;
-  letter-spacing:-.03em;
-  color:var(--cream);
-  line-height:.9;
-  flex-shrink:0;
+  font-size:clamp(54px,12vw,100px);
+  font-weight:900;letter-spacing:-.03em;
+  color:var(--cream);line-height:.9;flex-shrink:0;
 }
 .title span{color:var(--amber)}
 
-/* SUBTITLE — cream, fully readable */
+/* SUBTITLE */
 .subtitle{
-  font-size:clamp(15px,2.2vw,19px);
-  color:var(--cream);
-  opacity:0.85;
-  max-width:500px;
-  line-height:1.45;
-  font-weight:500;
-  flex-shrink:0;
+  font-size:clamp(15px,2.4vw,20px);
+  color:var(--cream);opacity:.88;
+  max-width:500px;line-height:1.4;
+  font-weight:600;flex-shrink:0;
 }
 
 .rule{width:36px;height:2px;background:var(--amber);margin:0 auto;flex-shrink:0}
 
-/* ── CTA BUTTON: single block, both lines centred & aligned ── */
+/* ── CTA BUTTON ── */
 .cta-btn{
   background:var(--amber);
-  color:#000;
-  border:none;
-  /* wide fixed padding so both lines are centred on same axis */
+  color:#000;border:none;
   padding:18px 48px 16px;
   font-family:'Montserrat',sans-serif;
   text-transform:uppercase;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
+  cursor:pointer;text-decoration:none;
+  display:inline-flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:5px;
   transition:background .2s, transform .15s;
   flex-shrink:0;
-  /* equal width ensures sub-line centres under main line */
-  min-width:320px;
+  width:min(420px, 88vw);
+  /* visible border so it reads unmistakably as a button */
+  border-bottom:4px solid rgba(0,0,0,0.25);
 }
 .cta-btn:hover{background:var(--amber-light);transform:translateY(-2px)}
-.cta-btn:active{transform:translateY(0)}
+.cta-btn:active{transform:translateY(2px);border-bottom-width:1px}
 .btn-main{
-  font-size:clamp(22px,5vw,32px);
-  font-weight:900;
-  letter-spacing:.13em;
-  line-height:1;
-  color:#000;
-  white-space:nowrap;
+  font-size:clamp(22px,5.5vw,32px);
+  font-weight:900;letter-spacing:.13em;
+  line-height:1;color:#000;
+  /* big solid arrow, not a text dash */
+  display:flex;align-items:center;gap:10px;
 }
-/* SUB: same letter-spacing ratio as main so optical centre aligns */
+.btn-arrow{
+  font-size:clamp(26px,6vw,36px);
+  font-weight:900;line-height:1;
+  /* use a heavier unicode arrow */
+  font-style:normal;
+}
 .btn-sub{
-  font-size:clamp(12px,2vw,15px);
-  font-weight:800;
-  letter-spacing:.22em;
-  line-height:1;
-  color:rgba(0,0,0,0.6);
-  white-space:nowrap;
+  font-size:clamp(12px,2.2vw,15px);
+  font-weight:800;letter-spacing:.2em;
+  line-height:1;color:rgba(0,0,0,0.55);
 }
 
 /* ── VIDEO ── */
 .video-wrap{
   width:100%;
-  max-width:min(640px,90vw);
-  flex-shrink:1;
-  min-height:0;
+  max-width:min(640px,88vw);
+  flex-shrink:1;min-height:0;
 }
 .video-box{
-  width:100%;
-  aspect-ratio:16/9;
-  position:relative;
-  background:#000;
+  width:100%;aspect-ratio:16/9;
+  position:relative;background:#000;
   overflow:hidden;
 }
+/* VIDEO FIX: scale+center iframe to kill YouTube's internal offset on mobile */
 .video-box iframe{
-  position:absolute;top:0;left:0;
+  position:absolute;
+  top:50%;left:50%;
   width:100%;height:100%;
+  transform:translate(-50%,-50%);
   border:none;display:block;
 }
 .unmute-overlay{
   position:absolute;inset:0;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:7px;
+  align-items:center;justify-content:center;gap:8px;
   background:rgba(10,10,8,.5);
   cursor:pointer;transition:opacity .4s;z-index:2;
 }
@@ -183,23 +168,22 @@ nav{
 .unmute-ring{width:46px;height:46px;border:1.5px solid rgba(200,120,42,.7);display:flex;align-items:center;justify-content:center}
 .unmute-icon{font-size:21px}
 
-/* ── BOTTOM — all cream, fully readable ── */
+/* ── BOTTOM ── */
 .bottom{
   display:flex;flex-direction:column;
-  align-items:center;gap:4px;
-  flex-shrink:0;
+  align-items:center;gap:4px;flex-shrink:0;
 }
 .videos-link{
   font-size:13px;font-weight:700;
-  letter-spacing:.11em;text-transform:uppercase;
-  color:var(--cream);opacity:0.65;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cream);opacity:.7;
   text-decoration:none;transition:opacity .2s;
 }
 .videos-link:hover{opacity:1;color:var(--amber)}
 .smallprint{
   font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(242,237,228,.38);
+  letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(242,237,228,.4);
 }
 
 /* ── FOOTER ── */
@@ -211,33 +195,33 @@ footer{
 
 /* ── MOBILE ── */
 @media(max-width:600px){
-  nav{padding:7px 13px}
-  /* on mobile keep only first nav link + hide social icons to save space */
-  .nav-link:not(:first-child){display:none}
+  nav{padding:7px 14px;height:50px}
+  /* photo + logo always visible; hide nav links + icons on mobile */
+  .nav-link{display:none}
   .nav-icon{display:none}
 
   .page{
-    padding:7px 13px 4px;
+    padding:6px 14px 4px;
     gap:6px;
-    height:calc(100vh - 51px);
+    height:calc(100vh - 50px);
   }
   .stamp{font-size:11px;padding:4px 12px}
-  .title{font-size:clamp(46px,13vw,68px)}
-  .subtitle{font-size:14px;max-width:100%}
-  .cta-btn{padding:16px 32px 14px;min-width:0;width:90vw}
-  .btn-main{font-size:clamp(20px,6vw,26px)}
-  .btn-sub{font-size:clamp(11px,3vw,13px)}
+  .title{font-size:clamp(48px,14vw,72px)}
+  .subtitle{font-size:clamp(14px,4vw,17px);max-width:100%}
+  .cta-btn{padding:16px 0 14px;width:88vw}
+  .btn-main{font-size:clamp(20px,6.5vw,26px)}
+  .btn-arrow{font-size:clamp(24px,7vw,30px)}
+  .btn-sub{font-size:clamp(11px,3.2vw,13px)}
   .video-wrap{max-width:100%;width:100%}
   .videos-link{font-size:12px}
   .smallprint{font-size:10px}
   footer{padding:4px 13px}
 }
 
-/* very small phones (SE etc) */
 @media(max-width:380px){
   .page{gap:5px}
   .stamp{font-size:10px}
-  .title{font-size:44px}
+  .title{font-size:46px}
   .subtitle{font-size:13px}
   .btn-main{font-size:19px}
   .btn-sub{font-size:10px}
@@ -248,7 +232,7 @@ footer{
 
 <nav>
   <div class="nav-left">
-    <img class="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
+    <img class="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
     <div class="nav-logo">DOGGY HR</div>
   </div>
   <div class="nav-right">
@@ -271,7 +255,7 @@ footer{
   <div class="rule"></div>
 
   <a class="cta-btn" href="quiz.html">
-    <span class="btn-main">APPLY NOW →</span>
+    <span class="btn-main">APPLY NOW <span class="btn-arrow">&#9658;</span></span>
     <span class="btn-sub">FREE BREED MATCH QUIZ</span>
   </a>
 
@@ -282,20 +266,20 @@ footer{
         allow="autoplay; encrypted-media" allowfullscreen>
       </iframe>
       <div class="unmute-overlay" id="unmute-overlay" onclick="unmute()">
-        <div class="unmute-ring"><div class="unmute-icon">🔇</div></div>
+        <div class="unmute-ring"><div class="unmute-icon">&#128263;</div></div>
         <div class="unmute-text">Click to hear Chopper</div>
       </div>
     </div>
   </div>
 
   <div class="bottom">
-    <a class="videos-link" href="videos.html">Meet the interview panel — all 16 breed episodes →</a>
-    <div class="smallprint">All candidates assessed without mercy · Results are final · No appeals</div>
+    <a class="videos-link" href="videos.html">Meet the interview panel &mdash; all 16 breed episodes &rarr;</a>
+    <div class="smallprint">All candidates assessed without mercy &middot; Results are final &middot; No appeals</div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-left">© Doggy HR · No humans were hired in the making of this website</div>
+  <div class="footer-left">&copy; Doggy HR &middot; No humans were hired in the making of this website</div>
 </footer>
 
 <script>
