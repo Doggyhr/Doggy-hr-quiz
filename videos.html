@@ -49,7 +49,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
 .video-info{padding:14px 16px}
-.video-breed{font-size:15px;font-weight:900;color:var(--cream);margin-bottom:2px}
+.video-breed{font-size:19px;font-weight:900;color:var(--cream);margin-bottom:5px}
 .video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:800}
 .video-summary{font-size:11px;color:var(--muted);line-height:1.6}
 .apply-link{display:inline-block;margin-top:9px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
@@ -93,7 +93,7 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
   <div class="page-eyebrow">Doggy HR — Interview Panel</div>
   <div class="page-title">PREPARE FOR YOUR <span>INTERVIEW</span></div>
   <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready. Watch first. Apply second.</div>
-  <a class="path2-callout" href="quiz.html">Ready? Select Your Interviewer — Path 02 →</a>
+  <a class="path2-callout" href="quiz.html?path=2">Ready? Select Your Interviewer — Path 02 →</a>
 </div>
 <div class="grid" id="video-grid"></div>
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -134,13 +134,12 @@ function buildGrid(){
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
         <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} interviewer episode" loading="lazy">
         <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
-        <div class="interviewer-badge">Meet Your Interviewer</div>
       </div>
       <div class="video-info">
         <div class="video-breed">${b.name}</div>
         <div class="video-tag">${b.tag}</div>
         <div class="video-summary">${b.summary}</div>
-        <a class="apply-link" href="quiz.html">Apply for this position →</a>
+        <a class="apply-link" href="quiz.html?breed=${b.key}">Apply for this position →</a>
       </div>`;
     grid.appendChild(card);
   });
