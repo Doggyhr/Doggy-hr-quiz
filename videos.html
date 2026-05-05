@@ -49,8 +49,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
 .video-info{padding:14px 16px}
-.video-breed{font-size:19px;font-weight:900;color:var(--cream);margin-bottom:4px}
-.video-tag{font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:800}
+.video-breed{font-size:15px;font-weight:900;color:var(--cream);margin-bottom:2px}
+.video-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:800}
 .video-summary{font-size:11px;color:var(--muted);line-height:1.6}
 .apply-link{display:inline-block;margin-top:9px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);text-decoration:none;font-weight:700;transition:color .2s}
 .apply-link:hover{color:var(--amber-light)}
@@ -79,7 +79,7 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
     <a class="nav-logo" href="index.html">DOGGY HR</a>
   </div>
   <div class="nav-right">
-    <a class="nav-link" href="quiz.html">Take the Quiz</a>
+    <a class="nav-link" href="quiz.html">Take the Test</a>
     <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </a>
@@ -93,7 +93,7 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
   <div class="page-eyebrow">Doggy HR — Interview Panel</div>
   <div class="page-title">PREPARE FOR YOUR <span>INTERVIEW</span></div>
   <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready. Watch first. Apply second.</div>
-  <a class="path2-callout" href="quiz.html?path=2">Ready? Select Your Interviewer — Path 02 →</a>
+  <a class="path2-callout" href="quiz.html">Ready? Select Your Interviewer — Path 02 →</a>
 </div>
 <div class="grid" id="video-grid"></div>
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -119,7 +119,11 @@ const BREEDS=[
   {key:'husky',name:'Siberian Husky',tag:'The Escape Artist',vid:'lbTPI2gqt7E',summary:'Beautiful. Loud. Defiant. Requires full-time commitment or they will inform you of this constantly and at volume.'},
   {key:'chihuahua',name:'Chihuahua',tag:'The Tiny Tyrant',vid:'4pl6y6y8Us8',summary:'Smallest breed. Largest opinion of themselves. Convinced they are 40kg and in charge. Correct about the second part.'},
   {key:'staffie',name:'Staffordshire Bull Terrier',tag:'The People Dog',vid:'XxYHTh_p-M4',summary:'Called the nanny dog historically for good reason. Utterly devoted to people. Needs company, structure, and someone who shows up.'},
-  {key:'bichon',name:'Bichon Frisé',tag:'The Cloud With Opinions',vid:'TQ0iyTmeXCA',summary:'White, fluffy, deeply convinced of their own importance. Surprisingly robust in personality for something that looks like a bath toy.'}
+  {key:'bichon',name:'Bichon Frisé',tag:'The Cloud With Opinions',vid:'TQ0iyTmeXCA',summary:'White, fluffy, deeply convinced of their own importance. Surprisingly robust in personality for something that looks like a bath toy.'},
+  {key:'blueheeler',name:'Blue Heeler',tag:'The Working Dog',vid:'QqaFxw9vuoI',summary:'Built to work cattle for twelve hours in the Australian outback. Will apply the same energy to your sofa if you let it.'},
+  {key:'greatdane',name:'Great Dane',tag:'The Gentle Giant',vid:'l3yESSYAcmI',summary:'The largest dog in most rooms and somehow the most emotionally sensitive. Requires space, budget, and the ability to love something that will not live long enough.'},
+  {key:'dachshund',name:'Dachshund',tag:'The Stubborn Sausage',vid:'nenxru1vcLs',summary:'Fierce, opinionated, and built like a structural risk. The confidence does not scale down with the frame.'},
+  {key:'germanshepherd',name:'German Shepherd',tag:'The Working Professional',vid:'faiU_r_epAA',summary:'One of the most capable dogs ever bred. Requires leadership, engagement, and an owner who is unambiguously in charge.'}
 ];
 function buildGrid(){
   const grid=document.getElementById('video-grid');
@@ -130,12 +134,13 @@ function buildGrid(){
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
         <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} interviewer episode" loading="lazy">
         <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
+        <div class="interviewer-badge">Meet Your Interviewer</div>
       </div>
       <div class="video-info">
         <div class="video-breed">${b.name}</div>
         <div class="video-tag">${b.tag}</div>
         <div class="video-summary">${b.summary}</div>
-        <a class="apply-link" href="quiz.html?breed=${b.key}">Apply for this position →</a>
+        <a class="apply-link" href="quiz.html">Apply for this position →</a>
       </div>`;
     grid.appendChild(card);
   });
