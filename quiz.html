@@ -30,6 +30,13 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 iframe{display:block;width:100%;flex:1;border:none}
 @media(max-width:480px){nav{padding:9px 13px}}
 </style>
+<script>
+// Prevent quiz.html loading inside itself
+if(window.self!==window.top&&window.location.pathname.includes('quiz.html')){
+  // We are inside an iframe - redirect iframe to the quiz engine directly  
+  window.location.replace('doggy-hr-quiz-v5.html'+window.location.search);
+}
+</script>
 </head>
 <body>
 <nav>
@@ -39,7 +46,15 @@ iframe{display:block;width:100%;flex:1;border:none}
   </div>
   <a class="nav-back" href="index.html">← Back to Home</a>
 </nav>
-<iframe src="doggy-hr-quiz-v5.html" title="Doggy HR Dog Breed Selector Quiz"></iframe>
+<iframe id="quiz-iframe" src="doggy-hr-quiz-v5.html" title="Doggy HR Dog Breed Selector Quiz"></iframe>
+<script>
+(function(){
+  const params=window.location.search;
+  if(params){
+    document.getElementById('quiz-iframe').src='doggy-hr-quiz-v5.html'+params;
+  }
+})();
+</script>
 <script>
 (function(){
   const img=document.getElementById('nav-photo');
