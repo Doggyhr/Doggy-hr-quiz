@@ -1,17 +1,17 @@
 name: Deploy Doggy HR Update
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'  # runs every hour
+  workflow_dispatch:      # keep manual trigger as backup
     inputs:
       confirm:
         description: 'Type DEPLOY to confirm'
-        required: true
-        default: ''
+        required: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.inputs.confirm == 'DEPLOY'
     permissions:
       contents: write
 
@@ -27,22 +27,29 @@ jobs:
       - name: Install dependencies
         run: pip install google-auth google-auth-httplib2 google-api-python-client
 
-      - name: Download files from Google Drive
+      - name: Check and download files from Google Drive
         env:
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: python3 drive_download.py
 
-      - name: Verify files
+      - name: Check if files were downloaded
+        id: check_files
         run: |
-          test -f doggy-hr-quiz-v5.html && echo "quiz OK" || exit 1
-          test -f videos.html && echo "videos OK" || exit 1
+          if [ -f doggy-hr-quiz-v5.html ] && [ -f videos.html ]; then
+            echo "files_ready=true" >> $GITHUB_OUTPUT
+          else
+            echo "files_ready=false" >> $GITHUB_OUTPUT
+            echo "No new files to deploy"
+          fi
 
       - name: Commit and push
+        if: steps.check_files.outputs.files_ready == 'true'
         run: |
           git config user.name "Doggy HR Bot"
           git config user.email "doggydoggyhr@gmail.com"
           git add doggy-hr-quiz-v5.html videos.html
           [ -f quiz.html ] && git add quiz.html || true
           [ -f index.html ] && git add index.html || true
-          git diff --staged --quiet && echo "No changes" || git commit -m "Doggy HR update $(date +'%Y-%m-%d')"
+          git diff --staged --quiet && echo "No changes to commit" || git commit -m "Doggy HR update $(date +'%Y-%m-%d')"
           git push
+          echo "Deployed successfully"
