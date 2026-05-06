@@ -1,8 +1,4 @@
-- name: Commit and push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/Doggyhr/Doggy-hr-quiz.gitname: Deploy Doggy HR Update
+name: Deploy Doggy HR Update
 
 on:
   workflow_dispatch:
@@ -16,6 +12,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event.inputs.confirm == 'DEPLOY'
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -32,103 +30,19 @@ jobs:
       - name: Download files from Google Drive
         env:
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+        run: python3 drive_download.py
+
+      - name: Verify files
         run: |
-          python3 << 'EOF'
-          import os
-          import json
-          import io
-          from google.oauth2 import service_account
-          from googleapiclient.discovery import build
-          from googleapiclient.http import MediaIoBaseDownload
-
-          # Auth
-          creds_info = json.loads(os.environ['GDRIVE_CREDENTIALS'])
-          creds = service_account.Credentials.from_service_account_info(
-              creds_info,
-              scopes=['https://www.googleapis.com/auth/drive.readonly']
-          )
-          service = build('drive', 'v3', credentials=creds)
-
-          # Find the "Doggy HR — Ready to Deploy" folder
-          results = service.files().list(
-              q="name='Doggy HR — Ready to Deploy' and mimeType='application/vnd.google-apps.folder' and trashed=false",
-              fields="files(id, name)"
-          ).execute()
-          folders = results.get('files', [])
-
-          if not folders:
-              print("ERROR: Deploy folder not found")
-              exit(1)
-
-          folder_id = folders[0]['id']
-          print(f"Found deploy folder: {folder_id}")
-
-          # List files in folder
-          results = service.files().list(
-              q=f"'{folder_id}' in parents and trashed=false",
-              fields="files(id, name, mimeType)"
-          ).execute()
-          files = results.get('files', [])
-
-          if not files:
-              print("ERROR: No files found in deploy folder")
-              exit(1)
-
-          # Download each file
-          for file in files:
-              file_id = file['id']
-              file_name = file['name']
-              mime_type = file['mimeType']
-
-              print(f"Downloading: {file_name}")
-
-              # Export Google Docs as plain text, download others directly
-              if mime_type == 'application/vnd.google-apps.document':
-                  request = service.files().export_media(
-                      fileId=file_id,
-                      mimeType='text/plain'
-                  )
-              else:
-                  request = service.files().get_media(fileId=file_id)
-
-              fh = io.BytesIO()
-              downloader = MediaIoBaseDownload(fh, request)
-              done = False
-              while not done:
-                  status, done = downloader.next_chunk()
-
-              with open(file_name, 'wb') as f:
-                  f.write(fh.getvalue())
-              print(f"Saved: {file_name}")
-
-          print("All files downloaded successfully")
-          EOF
-
-      - name: Verify required files present
-        run: |
-          if [ ! -f "doggy-hr-quiz-v5.html" ]; then
-            echo "ERROR: doggy-hr-quiz-v5.html not found in deploy folder"
-            exit 1
-          fi
-          if [ ! -f "videos.html" ]; then
-            echo "ERROR: videos.html not found in deploy folder"
-            exit 1
-          fi
-          echo "✓ All required files present"
+          test -f doggy-hr-quiz-v5.html && echo "quiz OK" || exit 1
+          test -f videos.html && echo "videos OK" || exit 1
 
       - name: Commit and push
         run: |
           git config user.name "Doggy HR Bot"
           git config user.email "doggydoggyhr@gmail.com"
           git add doggy-hr-quiz-v5.html videos.html
-          # Add quiz.html if present
-          if [ -f "quiz.html" ]; then
-            git add quiz.html
-          fi
-          # Add index.html if present
-          if [ -f "index.html" ]; then
-            git add index.html
-          fi
-          git diff --staged --quiet || git commit -m "Doggy HR batch update — $(date +'%Y-%m-%d')"
+          [ -f quiz.html ] && git add quiz.html || true
+          [ -f index.html ] && git add index.html || true
+          git diff --staged --quiet && echo "No changes" || git commit -m "Doggy HR update $(date +'%Y-%m-%d')"
           git push
-          echo "✓ Deployed successfully"
