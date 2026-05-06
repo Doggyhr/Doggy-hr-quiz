@@ -16,8 +16,8 @@ results = service.files().list(
 ).execute()
 folders = results.get('files', [])
 if not folders:
-    print("ERROR: Deploy folder not found")
-    exit(1)
+    print("Deploy folder not found - skipping")
+    exit(0)
 
 folder_id = folders[0]['id']
 print(f"Found folder: {folder_id}")
@@ -28,8 +28,8 @@ results = service.files().list(
 ).execute()
 files = results.get('files', [])
 if not files:
-    print("ERROR: No files in deploy folder")
-    exit(1)
+    print("No files in deploy folder - nothing to deploy")
+    exit(0)
 
 for file in files:
     print(f"Downloading: {file['name']}")
