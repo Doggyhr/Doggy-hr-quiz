@@ -723,10 +723,9 @@ function renderVideoSlot(breedKey,breedName){
 
 function showResults(){
   // Save core answers when Path 01 finishes so Path 02 can skip them
-  if(state.path==='discover'){
-    const coreIds=CORE_QUESTIONS.map(q=>q.id);
-    coreIds.forEach(id=>{if(id in state.answers)savedCoreAnswers[id]=state.answers[id];});
-  }
+  // Save core answers regardless of path so Test Another Breed carries them over
+  const coreIds=CORE_QUESTIONS.map(q=>q.id);
+  coreIds.forEach(id=>{if(id in state.answers)savedCoreAnswers[id]=state.answers[id];});
   if(typeof gtag!=='undefined')gtag('event','quiz_complete',{quiz_path:state.path==='discover'?'path_01':'path_02',breed:state.selectedBreed||'none'});
   const content=document.getElementById('results-content');
   state.path==='discover'?renderDiscoverResults(content):renderSpecificResults(content);
