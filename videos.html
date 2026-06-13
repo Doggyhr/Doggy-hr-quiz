@@ -12,11 +12,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dog Breed Videos — Discover Your Perfect Dog Match | Doggy HR</title>
-<meta name="description" content="Watch all 12 Doggy HR breed episodes before you choose the right dog. Bull Terrier, Border Collie, Labrador, French Bulldog and more — honest breed intelligence from the dogs themselves.">
-<meta property="og:title" content="Dog Breed Videos — Choose the Right Dog | Doggy HR">
-<meta property="og:description" content="Not sure which dog breed is right for you? Watch the episodes first. Chopper covers all 12 breeds — what they actually need, and whether you're ready.">
-<meta property="og:url" content="https://doggyhr.com/videos.html">
-<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -24,13 +19,10 @@
 body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;min-height:100vh}
 nav{display:flex;justify-content:space-between;align-items:center;padding:10px 28px;border-bottom:1px solid rgba(200,120,42,0.2);gap:12px}
 .nav-left{display:flex;align-items:center;gap:10px}
-.nav-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(200,120,42,0.5);flex-shrink:0;background:rgba(200,120,42,0.15)}
 .nav-logo{font-size:22px;font-weight:900;color:var(--amber);text-decoration:none;letter-spacing:-.01em}
 .nav-right{display:flex;align-items:center;gap:14px}
 .nav-link{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,237,228,0.4);text-decoration:none;transition:color .2s;font-weight:600}
 .nav-link:hover{color:var(--amber)}
-.nav-icon{width:17px;height:17px;opacity:.38;transition:opacity .2s}
-.nav-icon:hover{opacity:.85}
 .page-header{text-align:center;padding:48px 24px 36px}
 .page-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;font-weight:800}
 .page-title{font-size:clamp(30px,7vw,68px);font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:10px}
@@ -45,7 +37,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .video-card:hover .video-thumb img{transform:scale(1.03)}
 .video-overlay{position:absolute;inset:0;background:rgba(10,10,8,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
 .video-card:hover .video-overlay{opacity:1}
-.interviewer-badge{position:absolute;top:10px;left:10px;background:var(--amber);color:#000;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;pointer-events:none}
 .play-ring{width:50px;height:50px;border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid var(--amber);margin-left:4px}
 .video-info{padding:14px 16px}
@@ -59,7 +50,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 2
 .lightbox-inner{width:100%;max-width:880px;position:relative}
 .lightbox-video{width:100%;aspect-ratio:16/9;background:#000}
 .lightbox-video iframe{width:100%;height:100%;border:none}
-.lightbox-close{position:absolute;top:-38px;right:0;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;opacity:.7;line-height:1;font-family:'Montserrat',sans-serif}
+.lightbox-close{position:absolute;top:-38px;right:0;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;opacity:.7;line-height:1}
 .lightbox-close:hover{opacity:1}
 .lightbox-title{margin-top:12px;font-size:13px;font-weight:700;color:var(--cream);letter-spacing:.04em}
 footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
@@ -75,24 +66,17 @@ footer{border-top:1px solid rgba(200,120,42,.14);padding:14px 28px}
 <body>
 <nav>
   <div class="nav-left">
-    <img class="nav-photo" id="nav-photo" src="data:image/jpeg;base64,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" alt="Chopper and Cherie">
     <a class="nav-logo" href="index.html">DOGGY HR</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="quiz.html">Take the Test</a>
-    <a href="https://www.youtube.com/@doggyhr" target="_blank" aria-label="YouTube">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@doggyhr" target="_blank" aria-label="TikTok">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
-    </a>
     <a class="nav-link" href="mailto:doggydoggyhr@gmail.com">Contact</a>
   </div>
 </nav>
 <div class="page-header">
   <div class="page-eyebrow">Doggy HR — Interview Panel</div>
   <div class="page-title">PREPARE FOR YOUR <span>INTERVIEW</span></div>
-  <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready. Watch first. Apply second.</div>
+  <div class="page-sub">Meet your interviewers before you apply. Each breed episode covers what they actually need — and whether you're genuinely ready.</div>
   <a class="path2-callout" href="quiz.html?path=2">Ready? Select Your Interviewer — Path 02 →</a>
 </div>
 <div class="grid" id="video-grid"></div>
@@ -123,11 +107,11 @@ const BREEDS=[
   {key:'blueheeler',name:'Blue Heeler',tag:'The Working Dog',vid:'QqaFxw9vuoI',summary:'Built to work cattle for twelve hours in the Australian outback. Will apply the same energy to your sofa if you let it.'},
   {key:'greatdane',name:'Great Dane',tag:'The Gentle Giant',vid:'l3yESSYAcmI',summary:'The largest dog in most rooms and somehow the most emotionally sensitive. Requires space, budget, and the ability to love something that will not live long enough.'},
   {key:'dachshund',name:'Dachshund',tag:'The Stubborn Sausage',vid:'nenxru1vcLs',summary:'Fierce, opinionated, and built like a structural risk. The confidence does not scale down with the frame.'},
-  {key:'germanshepherd',name:'German Shepherd',tag:'The Working Professional',vid:'faiU_r_epAA',summary:'One of the most capable dogs ever bred. Requires leadership, engagement, and an owner who is unambiguously in charge.',seo:"Is a German Shepherd the right dog breed for you? German Shepherd owner guide: one of the most versatile and capable dog breeds in existence, German Shepherds excel in work, sport, and family life when properly trained. German Shepherd personality traits include intelligence, loyalty, and a protective instinct that requires careful socialisation. Should I get a German Shepherd? Only if you can provide consistent training, daily exercise, and clear leadership. German Shepherd compatibility test and breed guide."},
-  {key:'shihtzu',name:'Shih Tzu',tag:'The Imperial Companion',vid:'Bi2ZfyAAhlY',summary:'Bred for the imperial courts of China. Expects palace-level service. Will occupy your lap, your schedule, and your standards permanently.',seo:"Is a Shih Tzu the right dog breed for you? Shih Tzu owner guide: bred for Chinese imperial palaces, the Shih Tzu expects attentive daily care including coat grooming, eye cleaning, and climate management. Shih Tzu personality traits include an aristocratic temperament, low exercise needs, and strong attachment to their owners. Should I get a Shih Tzu? Only if you can commit to daily grooming and palace-level service. Shih Tzu compatibility test and breed guide."},
-  {key:'yorkshireterrier',name:'Yorkshire Terrier',tag:'The Pocket Executive',vid:'Ggbt0aWigqE',summary:'Seven pounds of absolute conviction. Convinced of their superiority over every dog, person, and situation they encounter. Usually correct.',seo:"Is a Yorkshire Terrier the right dog breed for you? Yorkshire Terrier owner guide: small in size but not in personality, Yorkshire Terriers require consistent training, regular professional grooming, and daily dental care. Yorkshire Terrier personality traits include boldness, loyalty to one person, and a tendency to challenge dogs many times their size. Should I get a Yorkshire Terrier? Only if you can provide firm boundaries and a grooming budget. Yorkshire Terrier compatibility test and breed guide."},
-  {key:'boxer',name:'Boxer',tag:'The Enthusiastic Liability',vid:'3TbSQQwvb9Q',summary:'Perpetually adolescent. Communicates through physical contact. Will destroy your property with love and greet strangers like long-lost family members.',seo:"Is a Boxer the right dog breed for you? Boxer owner guide: energetic and affectionate, Boxers require structured training throughout adolescence, careful heat management, and owners who can handle their physical enthusiasm. Boxer personality traits include playfulness, loyalty, and a mouthing habit that requires consistent redirection. Should I get a Boxer? Only if you have time, physical strength, and a strong training commitment. Boxer compatibility test and breed guide."},
-  {key:'goldenretriever',name:'Golden Retriever',tag:'The Optimistic Employee',vid:'dvkqGWJda-k',summary:'Enthusiastic, shedding, food-obsessed, emotionally dependent. Will love you unconditionally while systematically dismantling your furniture, budget, and clothing.',seo:"Is a Golden Retriever the right dog breed for you? Golden Retriever owner guide: one of the most popular breeds globally, Golden Retrievers require structured feeding, daily exercise, and a care plan for time spent alone. Golden Retriever personality traits include eagerness to please, food obsession, and a lifelong emotional dependency on their owners. Should I get a Golden Retriever? Only if you can commit to grooming, portion control, and consistent company. Golden Retriever compatibility test and breed guide."}
+  {key:'germanshepherd',name:'German Shepherd',tag:'The Working Professional',vid:'faiU_r_epAA',summary:'One of the most capable dogs ever bred. Requires leadership, engagement, and an owner who is unambiguously in charge.'},
+  {key:'shihtzu',name:'Shih Tzu',tag:'The Imperial Companion',vid:'Bi2ZfyAAhlY',summary:'Bred for the imperial courts of China. Expects palace-level service. Will occupy your lap, your schedule, and your standards permanently.'},
+  {key:'yorkshireterrier',name:'Yorkshire Terrier',tag:'The Pocket Executive',vid:'Ggbt0aWigqE',summary:'Seven pounds of absolute conviction. Convinced of their superiority over every dog, person, and situation they encounter. Usually correct.'},
+  {key:'boxer',name:'Boxer',tag:'The Enthusiastic Liability',vid:'3TbSQQwvb9Q',summary:'Perpetually adolescent. Communicates through physical contact. Will destroy your property with love and greet strangers like long-lost family members.'},
+  {key:'goldenretriever',name:'Golden Retriever',tag:'The Optimistic Employee',vid:'dvkqGWJda-k',summary:'Enthusiastic, shedding, food-obsessed, emotionally dependent. Will love you unconditionally while systematically dismantling your furniture, budget, and clothing.'}
 ];
 function buildGrid(){
   const grid=document.getElementById('video-grid');
@@ -136,7 +120,7 @@ function buildGrid(){
     card.className='video-card';
     card.innerHTML=`
       <div class="video-thumb" onclick="openLightbox('${b.vid}','${b.name}')">
-        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} interviewer episode" loading="lazy">
+        <img src="https://img.youtube.com/vi/${b.vid}/hqdefault.jpg" alt="${b.name} episode" loading="lazy">
         <div class="video-overlay"><div class="play-ring"><div class="play-icon"></div></div></div>
       </div>
       <div class="video-info">
@@ -161,11 +145,6 @@ function closeLightbox(e){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox({target:document.getElementById('lightbox')});});
-(function(){
-  const img=document.getElementById('nav-photo');
-  if(!img.src||img.src===window.location.href){img.style.display='none';}
-  img.onerror=function(){this.style.display='none';};
-})();
 buildGrid();
 </script>
 </body>
