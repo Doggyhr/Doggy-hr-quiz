@@ -712,31 +712,6 @@ function sendToFriend(){
   else{navigator.clipboard.writeText(text).then(()=>alert('Link copied!')).catch(()=>alert(text));}
 }
 
-const AFFILIATE_PRODUCTS={
-  bullterrier:[
-    {label:'Waterproof Dog Shoes',note:'Chopper-approved. Grass allergy sorted.',url:'https://amzn.to/4oK8lbc'},
-    {label:'Slow Feeder Bowl',note:'Mandatory for this breed. No exceptions.',url:'https://amzn.to/4oJvXfR'},
-    {label:'No-Pull Harness',note:'BT4 compliance equipment. Start day one.',url:'https://amzn.to/4vqpF7p'},
-    {label:'Heavy-Duty Kennel',note:'Secure containment. Non-negotiable.',url:'https://amzn.to/4uUtSiW'}
-  ]
-};
-
-function getAffiliateBlock(breedKey){
-  const products=AFFILIATE_PRODUCTS[breedKey];
-  if(!products||!products.length)return'';
-  return`<div style="margin:32px 0;padding:28px 28px 20px;background:var(--black);border-top:3px solid var(--amber)">
-    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:16px">Chopper Recommends — Equipment List</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
-      ${products.map(p=>`<a href="${p.url}" target="_blank" rel="noopener noreferrer sponsored" style="display:block;padding:14px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='var(--amber)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
-        <div style="font-size:13px;font-weight:700;color:var(--cream);margin-bottom:6px">${p.label}</div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:10px">${p.note}</div>
-        <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.05em">View on Amazon →</div>
-      </a>`).join('')}
-    </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:14px;opacity:.6">As an Amazon Associate, Doggy HR earns from qualifying purchases.</div>
-  </div>`;
-}
-
 function renderVideoSlot(breedKey,breedName){
   const vid=VIDEOS[breedKey];
   const cta=`<div class="video-cta">Watch the full breed episode before applying. <a href="videos.html">All breed videos →</a></div>`;
@@ -924,7 +899,6 @@ function renderSpecificResults(container){
       ${breed.weaknesses.map(w=>`<div class="weakness-item"><div class="weakness-title">${w.title}</div><div class="weakness-text">${w.text}</div></div>`).join('')}
     </div>
     ${similarOrRejectionBlock}
-    ${getAffiliateBlock(breedKey)}
     ${renderVideoSlot(breedKey,breed.name)}
     <div class="share-block">
       <button class="share-btn share-btn-primary" onclick="shareResult('${breed.name}',${pct},'${badgeText}')">Share Your Result</button>
